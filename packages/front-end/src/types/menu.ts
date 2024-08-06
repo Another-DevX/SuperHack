@@ -1,3 +1,3 @@
-import { ReactNode } from "react";
+import { ComponentType, ReactNode } from "react";
 
-export type MenuItem = { text: string; icon: ReactNode };
+export type MenuItemType = { text: string; icon: ComponentType};
