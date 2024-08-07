@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import ProfileImg from "@/public/images/profile-img.svg";
 import Image from "next/image";
 import React from "react";
-import MyProfileStats from "./Stats";
+import ProfileStats from "./Stats";
 import MyProfilePhoto from "./Photo";
 import MyProfileVerify from "./Verify";
 import MyProfileData from "./Data";
@@ -29,8 +29,8 @@ export default function MyProfile({ stars, greenPoints }: Props) {
           <MyProfilePhoto />
           <div className="flex flex-col gap-1">
             <MyProfileVerify />
-            <MyProfileStats value={stars} icon="/icons/stars-icon.svg" />
-            <MyProfileStats
+            <ProfileStats value={stars} icon="/icons/stars-icon.svg" />
+            <ProfileStats
               value={greenPoints}
               icon="/icons/green-points-icon.svg"
             />

@@ -6,3 +6,10 @@ export type MenuItemType = {
   headerIcon?: ComponentType | undefined;
   path: string;
 };
+
+export type LeaderBoardCardType = {
+  position: number;
+  name: string;
+  stars: number;
+  greenPoints: number;
+};

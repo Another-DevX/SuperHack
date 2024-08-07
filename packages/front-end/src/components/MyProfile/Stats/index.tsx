@@ -5,7 +5,7 @@ type Props = {
   value: number
   icon: string
 }
-export default function MyProfileStats({value, icon}: Props) {
+export default function ProfileStats({value, icon}: Props) {
   return (
     <div className="flex gap-1 items-center">
       <p className="font-semibold text-sm">{value}</p>

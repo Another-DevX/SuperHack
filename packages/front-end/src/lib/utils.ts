@@ -36,6 +36,6 @@ export const menuItems: MenuItemType[] = [
     text: "Profile",
     icon: ProfileIcon,
     headerIcon: EditIcon,
-    path: "Profile",
+    path: "profile",
   },
 ];

@@ -16,7 +16,7 @@ export const PageLayout = ({
     <>
       <main className="w-screen h-screen flex flex-col justify-between items-center">
         <Header text={item?.text ? item.text : ""} icon={item?.headerIcon} />
-        <div className="w-full h-full p-4">{children}</div>
+        <div className="w-full h-full p-4 overflow-y-scroll">{children}</div>
         <Menu />
       </main>
     </>
