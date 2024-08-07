@@ -14,7 +14,7 @@ import {
   SelectLabel,
   SelectTrigger,
   SelectValue,
-} from "@radix-ui/react-select";
+} from "@/components/ui/select";
 
 type Props = {
   stars: number;
