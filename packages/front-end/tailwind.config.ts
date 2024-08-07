@@ -19,6 +19,8 @@ const config = {
     },
     extend: {
       colors: {
+        softGray: "#C4C4BA",
+        textSoftGray: "#767670",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
