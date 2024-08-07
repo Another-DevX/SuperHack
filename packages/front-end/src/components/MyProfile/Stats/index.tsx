@@ -13,7 +13,7 @@ export default function MyProfileStats({value, icon}: Props) {
         width={16}
         height={16}
         src={icon}
-        alt="starsIcon"
+        alt={`statsIcon: ${icon}`}
       />
     </div>
   );

@@ -1,3 +1,8 @@
-import { ComponentType, ReactNode } from "react";
+import { ComponentType } from "react";
 
-export type MenuItemType = { text: string; icon: ComponentType};
+export type MenuItemType = {
+  text: string;
+  icon: ComponentType;
+  headerIcon?: ComponentType | undefined;
+  path: string;
+};
