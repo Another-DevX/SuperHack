@@ -7,3 +7,10 @@ libs = ["lib"]
 
 
 remappings = ["@openzeppelin/contracts/=lib/openzeppelin-contracts/contracts/"]
+
+
+[etherscan]
+base-sepolia = { key = "3S3MF6Z2XVJQNEZBPVQ86EY684Q44XE3E2" }
+
+[rpc_endpoints]
+base-sepolia = "https://rpc.ankr.com/base_sepolia"

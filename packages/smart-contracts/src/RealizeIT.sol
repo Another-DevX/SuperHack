@@ -70,7 +70,7 @@ contract RealizeIT is IRealizeIT {
         nullifierHashes[nullifierHash] = true;
     }
 
-    function signIn(address user, uint256 hypercertID) public {
+    function signUp(address user, uint256 hypercertID) public {
         Campaign storage campaign = campaigns[hypercertID];
         require(
             campaign.currentQuota < campaign.maxQuota,

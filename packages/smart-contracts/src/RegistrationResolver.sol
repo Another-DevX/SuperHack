@@ -28,7 +28,7 @@ contract RegistrationResolver is SchemaResolver {
     function onRevoke(
         Attestation calldata attestation,
         uint256 /*value*/
-    ) internal pure override returns (bool) {
+    ) internal override returns (bool) {
         (address user, uint256 hypercertID) = abi.decode(
             attestation.data,
             (address, uint256)
