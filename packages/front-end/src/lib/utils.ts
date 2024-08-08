@@ -4,6 +4,7 @@ import WalletIcon from "@/public/icons/wallet-menu-icon.svg";
 import LeaderBoardIcon from "@/public/icons/leaderboard-menu-icon.svg";
 import ProfileIcon from "@/public/icons/profile-menu-icon.svg";
 import EditIcon from "@/public/icons/edit-icon.svg";
+import PlusCircleIcon from "@/public/icons/plus-circle-icon.svg";
 import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
 
@@ -20,6 +21,7 @@ export const menuItems: MenuItemType[] = [
   {
     text: "Activities",
     icon: ActivitiesIcon,
+    headerIcon: PlusCircleIcon,
     path: "activities",
   },
   {

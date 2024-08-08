@@ -12,6 +12,8 @@ export const PageLayout = ({
 }): ReactNode => {
   const pathName = usePathname();
   const item = pathToMenuItem(pathName);
+  if (pathName == "/")
+    return <main className="w-screen h-screen bg-signInBg">{children}</main>;
   return (
     <>
       <main className="w-screen h-screen flex flex-col justify-between items-center bg-generalBg">

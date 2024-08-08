@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import { withAccountKitUi, createColorSet } from "@account-kit/react/tailwind";
 
 const config = {
   darkMode: ["class"],
@@ -22,9 +23,12 @@ const config = {
         softGray: "#C4C4BA",
         softGrayBg: "#E4E4DD",
         generalBg: "#f3f3ef",
+        signInBg: "#e6e7e2",
         softGrayBoderDark: "#D7D7CC",
         softGrayBoderLight: "#E4E4E4",
         textSoftGray: "#767670",
+        textSignIn: "#6D6D6D",
+        buttonGreen: "#4c705b",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
@@ -83,4 +87,15 @@ const config = {
   plugins: [require("tailwindcss-animate")],
 } satisfies Config;
 
-export default config;
+export default withAccountKitUi(
+  {
+    ...config,
+  },
+  {
+    // override account kit themes
+    colors: {
+      "btn-primary": createColorSet("#363FF9", "#9AB7FF"),
+      "fg-accent-brand": createColorSet("#363FF9", "#9AB7FF"),
+    },
+  }
+);

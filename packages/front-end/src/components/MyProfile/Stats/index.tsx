@@ -7,7 +7,7 @@ type Props = {
 }
 export default function ProfileStats({value, icon}: Props) {
   return (
-    <div className="flex gap-1 items-center">
+    <div className="flex gap-1 items-center justify-center">
       <p className="font-semibold text-sm">{value}</p>
       <Image
         width={16}
