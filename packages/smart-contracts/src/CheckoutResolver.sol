@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.13;
-import {IRealizeIT} from "../interfaces/IRealizeIT.sol";
+import {IRealizeIT} from "./interfaces/IRealizeIT.sol";
 import {SchemaResolver} from "eas-contracts/resolver/SchemaResolver.sol";
 import {IEAS, Attestation} from "eas-contracts/IEAS.sol";
 

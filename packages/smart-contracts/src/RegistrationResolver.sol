@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.13;
-import {IRealizeIT} from "../interfaces/IRealizeIT.sol";
+import {IRealizeIT} from "./interfaces/IRealizeIT.sol";
 import {SchemaResolver} from "eas-contracts/resolver/SchemaResolver.sol";
 import {IEAS, Attestation} from "eas-contracts/IEAS.sol";
 
@@ -26,8 +26,8 @@ contract RegistrationResolver is SchemaResolver {
     }
 
     function onRevoke(
-        Attestation calldata,
-        /*attestation*/ uint256 /*value*/
+        Attestation calldata attestation,
+        uint256 /*value*/
     ) internal pure override returns (bool) {
         (address user, uint256 hypercertID) = abi.decode(
             attestation.data,
