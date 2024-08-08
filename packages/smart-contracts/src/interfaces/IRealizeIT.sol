@@ -25,7 +25,15 @@ interface IRealizeIT {
         address user;
     }
 
-    function signIn(address user, uint256 hypercertID) external;
+    function createHypercerts() external;
+    function verifyPublicAddress(
+        address signal,
+        uint256 root,
+        uint256 nullifierHash,
+        uint256[8] calldata proof
+    ) external;
+
+    function signUp(address user, uint256 hypercertID) external;
     function signOut(address user, uint256 hypercertID) external;
     function checkOut(
         address user,

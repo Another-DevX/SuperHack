@@ -1,17 +1,76 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.13;
 import {IRealizeIT} from "./interfaces/IRealizeIT.sol";
+import {IWorldID} from "./interfaces/IWorldID.sol";
+import {ByteHasher} from "./helpers/ByteHasher.sol";
 
 contract RealizeIT is IRealizeIT {
     mapping(address => Account) users;
     mapping(uint256 => Campaign) campaigns;
+
+    /// @dev This allows us to use our hashToField function on bytes
+    using ByteHasher for bytes;
+
+    /// @notice Thrown when attempting to reuse a nullifier
+    error InvalidNullifier();
+
+    /// @dev The address of the World ID Router contract that will be used for verifying proofs
+    IWorldID internal immutable worldId;
+
+    /// @dev The keccak256 hash of the externalNullifier (unique identifier of the action performed), combination of appId and action
+    uint256 internal immutable externalNullifierHash;
+
+    /// @dev The World ID group ID (1 for Orb-verified)
+    uint256 internal immutable groupId = 1;
+
+    /// @dev Whether a nullifier hash has been used already. Used to guarantee an action is only performed once by a single person
+    mapping(uint256 => bool) internal nullifierHashes;
+
+    /// @param _worldId The address of the WorldIDRouter that will verify the proofs
+    /// @param _appId The World ID App ID (from Developer Portal)
+    /// @param _action The World ID Action (from Developer Portal)
+    constructor(
+        IWorldID _worldId,
+        string memory _appId,
+        string memory _action
+    ) {
+        worldId = _worldId;
+        externalNullifierHash = abi
+            .encodePacked(abi.encodePacked(_appId).hashToField(), _action)
+            .hashToField();
+    }
 
     function createHypercerts() public {
         // TODO: Implement createHypercerts
         // Create a new Hypercerts per each campaign and point the campaign to the hypercertID
     }
 
-    function signIn(address user, uint256 hypercertID) public {
+    function verifyPublicAddress(
+        address signal,
+        uint256 root,
+        uint256 nullifierHash,
+        uint256[8] calldata proof
+    ) public {
+        Account storage account = users[signal];
+        require(
+            account.isVerifiedWithWorldCoin,
+            "The account is not verified with WorldCoin"
+        );
+        if (nullifierHashes[nullifierHash]) revert InvalidNullifier();
+
+        worldId.verifyProof(
+            root,
+            groupId, // set to "1" in the constructor
+            abi.encodePacked(signal).hashToField(),
+            nullifierHash,
+            externalNullifierHash,
+            proof
+        );
+        account.isVerifiedWithWorldCoin = true;
+        nullifierHashes[nullifierHash] = true;
+    }
+
+    function signUp(address user, uint256 hypercertID) public {
         Campaign storage campaign = campaigns[hypercertID];
         require(
             campaign.currentQuota < campaign.maxQuota,
