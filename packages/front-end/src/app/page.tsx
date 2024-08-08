@@ -20,7 +20,7 @@ export default function Home() {
         height={20}
         src={"/images/signin-img.svg"}
         alt="signin-img"
-        style={{ width: "100vw", height: "44vh" }}
+        style={{ width: "100vw", height: "auto" }}
       />
       <div className="flex flex-col gap-4 p-4">
         <Image
