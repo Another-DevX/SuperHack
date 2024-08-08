@@ -20,7 +20,7 @@ export const menuItems: MenuItemType[] = [
   {
     text: "Activities",
     icon: ActivitiesIcon,
-    path: "Activities",
+    path: "activities",
   },
   {
     text: "Wallet",

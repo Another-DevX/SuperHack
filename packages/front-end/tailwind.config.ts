@@ -21,6 +21,7 @@ const config = {
       colors: {
         softGray: "#C4C4BA",
         softGrayBg: "#E4E4DD",
+        generalBg: "#f3f3ef",
         softGrayBoderDark: "#D7D7CC",
         softGrayBoderLight: "#E4E4E4",
         textSoftGray: "#767670",

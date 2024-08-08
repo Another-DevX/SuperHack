@@ -14,7 +14,7 @@ export const PageLayout = ({
   const item = pathToMenuItem(pathName);
   return (
     <>
-      <main className="w-screen h-screen flex flex-col justify-between items-center">
+      <main className="w-screen h-screen flex flex-col justify-between items-center bg-generalBg">
         <Header text={item?.text ? item.text : ""} icon={item?.headerIcon} />
         <div className="w-full h-full p-4 overflow-y-scroll">{children}</div>
         <Menu />
