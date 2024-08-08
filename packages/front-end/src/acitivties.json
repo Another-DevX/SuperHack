@@ -1,0 +1,30 @@
+[
+  {
+    "icon": "/icons/broom-icon.svg",
+    "name": "Beach Cleanup",
+    "stars": 5,
+    "usdc": 200,
+    "date": "August 7th, 12:00 - 18:00"
+  },
+  {
+    "icon": "/icons/broom-icon.svg",
+    "name": "Tarea 2",
+    "stars": 4,
+    "usdc": 8.75,
+    "date": "2024-08-02"
+  },
+  {
+    "icon": "/icons/broom-icon.svg",
+    "name": "Tarea 3",
+    "stars": 3,
+    "usdc": 5.0,
+    "date": "2024-08-03"
+  },
+  {
+    "icon": "/icons/broom-icon.svg",
+    "name": "Tarea 4",
+    "stars": 2,
+    "usdc": 3.25,
+    "date": "2024-08-04"
+  }
+]
