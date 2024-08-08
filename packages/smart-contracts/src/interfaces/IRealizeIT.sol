@@ -25,7 +25,7 @@ interface IRealizeIT {
         address user;
     }
 
-    function signIn(address user, uint256 hypercertID) external;
+    function signUp(address user, uint256 hypercertID) external;
     function signOut(address user, uint256 hypercertID) external;
     function checkOut(
         address user,
