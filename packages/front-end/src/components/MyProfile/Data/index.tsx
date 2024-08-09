@@ -7,7 +7,7 @@ type Props = {
   type: HTMLInputTypeAttribute;
   placeHolder: string;
 };
-export default function MyProfileData({ label, type, placeHolder }: Props) {
+export default function InputWithLabel({ label, type, placeHolder }: Props) {
   return (
     <div className="grid w-full max-w-sm items-center gap-1.5">
       <Label htmlFor="text" className="text-xs text-textSoftGray">
