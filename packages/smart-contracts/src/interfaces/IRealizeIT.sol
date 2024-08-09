@@ -1,29 +1,12 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.13;
+import {Campaign} from "./Campaign.sol";
+import {Account} from "./Account.sol";
+import {Review} from "./Review.sol";
 
 interface IRealizeIT {
-    struct Account {
-        uint16 stars;
-        uint256 points;
-        string username;
-        bool isVerifiedWithWorldCoin;
-        string metadataURI;
-        uint32 reviews;
-    }
-
-    struct Campaign {
-        address host;
-        uint16 maxQuota;
-        uint16 currentQuota;
-        uint256 pricePool;
-        uint256 checkouts;
-        mapping(address => bool) attenders;
-    }
-
-    struct Review {
-        uint16 stars;
-        address user;
-    }
+   
+   
 
     function createCampaign() external;
     function verifyPublicAddress(
