@@ -22,6 +22,7 @@ const config = {
       colors: {
         softGray: "#C4C4BA",
         softGrayBg: "#E4E4DD",
+        softGrayPlaceHolder: "#999991",
         generalBg: "#f3f3ef",
         signInBg: "#e6e7e2",
         softGrayBoderDark: "#D7D7CC",

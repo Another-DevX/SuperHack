@@ -2,21 +2,31 @@ import React, { ComponentType, SVGProps } from "react";
 
 type Props = {
   text: string;
-  icon: ComponentType<SVGProps<SVGSVGElement>> | undefined;
+  iconLeft?: ComponentType<SVGProps<SVGSVGElement>> | undefined;
+  iconRight?: ComponentType<SVGProps<SVGSVGElement>> | undefined;
 };
-export default function Header({ text, icon: Icon }: Props) {
-
+export default function Header({
+  text,
+  iconLeft: IconLeft,
+  iconRight: IconRight,
+}: Props) {
   return (
-    <div className="w-full py-4 flex justify-center font-medium text-base border-b-2">
-      <p className="font-semibold">{text}</p>
-      {Icon && (
-        <Icon
+    <div className="relative w-full py-4 flex justify-center items-center font-medium text-base border-b-2 border-softGrayBoderDark">
+      {IconLeft && (
+        <IconLeft
           width={24}
           height={24}
-          className="absolute flex justify-center items-center right-4"
+          className="absolute flex justify-center items-center left-4 top-1/2 translate-y-[-50%]"
         />
       )}
-      {!Icon && <span></span>}
+      <p className="font-semibold">{text}</p>
+      {IconRight && (
+        <IconRight
+          width={24}
+          height={24}
+          className="absolute flex justify-center items-center right-4 top-1/2 translate-y-[-50%]"
+        />
+      )}
     </div>
   );
 }
