@@ -29,11 +29,13 @@ export default function MyProfile({ stars, greenPoints }: Props) {
           <MyProfilePhoto />
           <div className="flex flex-col gap-1">
             <MyProfileVerify />
-            <ProfileStats value={stars} icon="/icons/stars-icon.svg" />
-            <ProfileStats
-              value={greenPoints}
-              icon="/icons/green-points-icon.svg"
-            />
+            <div className="flex flex-col items-start">
+              <ProfileStats value={stars} icon="/icons/stars-icon.svg" />
+              <ProfileStats
+                value={greenPoints}
+                icon="/icons/green-points-icon.svg"
+              />
+            </div>
           </div>
         </div>
         <div className="flex flex-col gap-4">
