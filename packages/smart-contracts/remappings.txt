@@ -1,2 +1,3 @@
 @openzeppelin/contracts/=lib/openzeppelin-contracts/contracts/
 eas-contracts/=lib/eas-contracts/contracts/
+@hypercerts-org/contracts=lib/hypercerts/contracts/contracts

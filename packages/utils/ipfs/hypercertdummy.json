@@ -1,0 +1,40 @@
+ {
+   "name": "Testing hypercert",
+  "description": "This is a test of the hypercert object",
+
+    "work_scope": {
+        "name": "Work Scope",
+        "value": ["IPFS"],
+        "excludes": [],
+        "display_value": "IPFS"
+    },
+    "impact_scope": {
+        "name": "Impact Scope",
+        "value": ["All"],
+        "excludes": [],
+        "display_value": "All"
+    },    
+    "work_timeframe": {
+        "name": "Work Timeframe",
+        "value": [1380585600, 1388534399],
+        "display_value": "2013-10-01 -> 2013-12-31"
+    },
+    "impact_timeframe": {
+        "name": "Impact Timeframe",
+        "value": [1380585600, 0],
+        "display_value": "2013-10-01 -> Indefinite"
+    },
+    "contributors": {
+        "name": "Contributors",
+        "value": ["Protocol Labs"],
+        "display_value": "Protocol Labs"
+    },
+    "rights": {
+        "name": "Rights",
+        "value": ["Public Display"],
+        "display_value": "Public Display"
+    }
+}
+
+
+

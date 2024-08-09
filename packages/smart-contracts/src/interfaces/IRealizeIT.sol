@@ -25,7 +25,7 @@ interface IRealizeIT {
         address user;
     }
 
-    function createHypercerts() external;
+    function createCampaign() external;
     function verifyPublicAddress(
         address signal,
         uint256 root,

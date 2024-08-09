@@ -3,8 +3,12 @@ pragma solidity ^0.8.13;
 import {IRealizeIT} from "./interfaces/IRealizeIT.sol";
 import {IWorldID} from "./interfaces/IWorldID.sol";
 import {ByteHasher} from "./helpers/ByteHasher.sol";
+import {IHypercertToken} from "../src/interfaces/IHypercertToken.sol";
 
 contract RealizeIT is IRealizeIT {
+    /// @dev The Hypercerts contract that will be used to mint Hypercerts
+    IHypercertToken hypercerts;
+
     mapping(address => Account) users;
     mapping(uint256 => Campaign) campaigns;
 
@@ -32,17 +36,23 @@ contract RealizeIT is IRealizeIT {
     constructor(
         IWorldID _worldId,
         string memory _appId,
-        string memory _action
+        string memory _action,
+        IHypercertToken _hypercerts
     ) {
         worldId = _worldId;
         externalNullifierHash = abi
             .encodePacked(abi.encodePacked(_appId).hashToField(), _action)
             .hashToField();
+        hypercerts = _hypercerts;
     }
 
-    function createHypercerts() public {
-        // TODO: Implement createHypercerts
-        // Create a new Hypercerts per each campaign and point the campaign to the hypercertID
+    function createCampaign() public {
+        hypercerts.mintClaim(
+            msg.sender,
+            100,
+            "QmfEnLErwRV2Wqojt1xk4rxGQmGbzaUg4jT218JsUyH3PL",
+            IHypercertToken.TransferRestrictions.FromCreatorOnly
+        );
     }
 
     function verifyPublicAddress(

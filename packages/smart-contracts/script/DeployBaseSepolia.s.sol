@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.13;
 
+import {IHypercertToken} from "../src/interfaces/IHypercertToken.sol";
 import {Script, console} from "forge-std/Script.sol";
 import {RealizeIT} from "../src/RealizeIT.sol";
 import {NOTUSDC} from "../src/NOTUSDC.sol";
@@ -19,7 +20,8 @@ contract DeployBaseSepolia is Script {
         RealizeIT realizeIT = new RealizeIT(
             IWorldID(0x42FF98C4E85212a5D31358ACbFe76a621b50fC02),
             "app_staging_4989e6a8b385ae6116fb36aeae08c250",
-            "realizeit"
+            "realizeit",
+            IHypercertToken(0xC2d179166bc9dbB00A03686a5b17eCe2224c2704)
         );
         NOTUSDC notusdc = new NOTUSDC();
         RegistrationResolver registrationResolver = new RegistrationResolver(

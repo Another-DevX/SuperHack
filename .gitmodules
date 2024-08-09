@@ -7,6 +7,3 @@
 [submodule "packages/smart-contracts/lib/eas-contracts"]
 	path = packages/smart-contracts/lib/eas-contracts
 	url = https://github.com/ethereum-attestation-service/eas-contracts
-[submodule "packages/smart-contracts/lib/hypercerts"]
-	path = packages/smart-contracts/lib/hypercerts
-	url = https://github.com/hypercerts-org/hypercerts
