@@ -10,8 +10,8 @@ contract RealizeIT is IRealizeIT, IERC1155Receiver {
     /// @dev The Hypercerts contract that will be used to mint Hypercerts
     IHypercertToken hypercerts;
 
-    mapping(address => Account) users;
-    mapping(uint256 => Campaign) campaigns;
+    mapping(address => Account) public users;
+    mapping(uint256 => Campaign) public campaigns;
 
     /// @dev This allows us to use our hashToField function on bytes
     using ByteHasher for bytes;
@@ -64,8 +64,8 @@ contract RealizeIT is IRealizeIT, IERC1155Receiver {
     ) public {
         Account storage account = users[signal];
         require(
-            account.isVerifiedWithWorldCoin,
-            "The account is not verified with WorldCoin"
+            !account.isVerifiedWithWorldCoin,
+            "The account is verified with WorldCoin"
         );
         if (nullifierHashes[nullifierHash]) revert InvalidNullifier();
 

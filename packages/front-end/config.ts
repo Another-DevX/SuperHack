@@ -17,9 +17,10 @@ export const config = createConfig(
   {
     // if you don't want to leak api keys, you can proxy to a backend and set the rpcUrl instead here
     // get this from the app config you create at https://dashboard.alchemy.com/accounts
-    apiKey: "Sba5LfgDpvccNFsfyk7HEhmRDkEaVXSF",
+    apiKey: "rXNbpGmbE4M0FjiqAkE-gC3vyPBjjygT",
     chain: baseSepolia,
     ssr: true, // set to false if you're not using server-side rendering
+    policyId: "0118ff4e-f252-4eba-8bf0-1e02971a0399",
   },
   uiConfig,
 );

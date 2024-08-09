@@ -7,55 +7,25 @@ import {
   VerificationLevel,
 } from "@worldcoin/idkit";
 import {
-  useAccount,
   useSendUserOperation,
   useSmartAccountClient,
+  useUser,
 } from "@account-kit/react";
 import {
   decodeAbiParameters,
   parseAbiParameters,
   encodeFunctionData,
+  zeroAddress,
 } from "viem";
-import { REALIZE_IT_CONTRACT_ADDRESS } from "@/constants";
+import {
+  REALIZE_IT_CONTRACT_ABI,
+  REALIZE_IT_CONTRACT_ADDRESS,
+} from "@/constants";
 import type { Address } from "viem";
 import { useIsVerified } from "@/hooks/useIsVerified";
 
-const abi = [
-  // Definición de la función `verifyPublicAddress`
-  {
-    inputs: [
-      {
-        internalType: "address",
-        name: "address",
-        type: "address",
-      },
-      {
-        internalType: "uint256",
-        name: "merkle_root",
-        type: "uint256",
-      },
-      {
-        internalType: "uint256",
-        name: "nullifier_hash",
-        type: "uint256",
-      },
-      {
-        internalType: "uint256[8]",
-        name: "proof",
-        type: "uint256[8]",
-      },
-    ],
-    name: "verifyPublicAddress",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-];
-
 export default function MyProfileVerify() {
-  const { address } = useAccount({
-    type: "LightAccount",
-  });
+  const user = useUser();
   const isVerified = useIsVerified();
   const { client } = useSmartAccountClient({ type: "LightAccount" });
   const { sendUserOperation, isSendingUserOperation } = useSendUserOperation({
@@ -73,7 +43,7 @@ export default function MyProfileVerify() {
   const verifyProof = async (proof: ISuccessResult) => {
     try {
       const args = [
-        address,
+        user?.address,
         BigInt(proof!.merkle_root),
         BigInt(proof!.nullifier_hash),
         decodeAbiParameters(
@@ -86,7 +56,7 @@ export default function MyProfileVerify() {
         uo: {
           target: REALIZE_IT_CONTRACT_ADDRESS as Address,
           data: encodeFunctionData({
-            abi,
+            abi: REALIZE_IT_CONTRACT_ABI,
             functionName: "verifyPublicAddress",
             args,
           }),
@@ -119,7 +89,7 @@ export default function MyProfileVerify() {
           action="verify-public-address"
           verification_level={VerificationLevel.Orb}
           onSuccess={verifyProof}
-          signal={address}
+          signal={user?.address ?? zeroAddress}
         >
           {({ open }) => (
             <Button

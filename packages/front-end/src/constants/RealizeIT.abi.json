@@ -19,6 +19,19 @@
   },
   {
     "type": "function",
+    "name": "campaigns",
+    "inputs": [{ "name": "", "type": "uint256", "internalType": "uint256" }],
+    "outputs": [
+      { "name": "host", "type": "address", "internalType": "address" },
+      { "name": "maxQuota", "type": "uint16", "internalType": "uint16" },
+      { "name": "currentQuota", "type": "uint16", "internalType": "uint16" },
+      { "name": "pricePool", "type": "uint256", "internalType": "uint256" },
+      { "name": "checkouts", "type": "uint256", "internalType": "uint256" }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
     "name": "checkOut",
     "inputs": [
       { "name": "user", "type": "address", "internalType": "address" },
@@ -106,6 +119,24 @@
       { "name": "interfaceId", "type": "bytes4", "internalType": "bytes4" }
     ],
     "outputs": [{ "name": "", "type": "bool", "internalType": "bool" }],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "users",
+    "inputs": [{ "name": "", "type": "address", "internalType": "address" }],
+    "outputs": [
+      { "name": "stars", "type": "uint16", "internalType": "uint16" },
+      { "name": "points", "type": "uint256", "internalType": "uint256" },
+      { "name": "username", "type": "string", "internalType": "string" },
+      {
+        "name": "isVerifiedWithWorldCoin",
+        "type": "bool",
+        "internalType": "bool"
+      },
+      { "name": "metadataURI", "type": "string", "internalType": "string" },
+      { "name": "reviews", "type": "uint32", "internalType": "uint32" }
+    ],
     "stateMutability": "view"
   },
   {
