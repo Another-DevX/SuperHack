@@ -1,12 +1,9 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.13;
-import {IRealizeIT} from "./interfaces/IRealizeIT.sol";
+import "./interfaces/IRealizeIT.sol";
 import {IWorldID} from "./interfaces/IWorldID.sol";
 import {ByteHasher} from "./helpers/ByteHasher.sol";
 import {IHypercertToken} from "../src/interfaces/IHypercertToken.sol";
-import {Campaign} from "./interfaces/Campaign.sol";
-import {Account} from "./interfaces/Account.sol";
-import {Review} from "./interfaces/Review.sol";
 
 contract RealizeIT is IRealizeIT {
     /// @dev The Hypercerts contract that will be used to mint Hypercerts
