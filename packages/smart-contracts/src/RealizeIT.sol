@@ -3,9 +3,10 @@ pragma solidity ^0.8.13;
 import "./interfaces/IRealizeIT.sol";
 import {IWorldID} from "./interfaces/IWorldID.sol";
 import {ByteHasher} from "./helpers/ByteHasher.sol";
+import {IERC1155Receiver} from "@openzeppelin/contracts/token/ERC1155/IERC1155Receiver.sol";
 import {IHypercertToken} from "../src/interfaces/IHypercertToken.sol";
 
-contract RealizeIT is IRealizeIT {
+contract RealizeIT is IRealizeIT, IERC1155Receiver {
     /// @dev The Hypercerts contract that will be used to mint Hypercerts
     IHypercertToken hypercerts;
 
@@ -46,12 +47,12 @@ contract RealizeIT is IRealizeIT {
         hypercerts = _hypercerts;
     }
 
-    function createCampaign() public {
+    function createCampaign(string memory uri) public {
         hypercerts.mintClaim(
-            msg.sender,
+            address(this),
             100,
-            "QmfEnLErwRV2Wqojt1xk4rxGQmGbzaUg4jT218JsUyH3PL",
-            IHypercertToken.TransferRestrictions.FromCreatorOnly
+            uri,
+            IHypercertToken.TransferRestrictions.AllowAll
         );
     }
 
@@ -149,5 +150,33 @@ contract RealizeIT is IRealizeIT {
         account.stars += newStars;
         account.reviews += 1;
         avgStars = uint16(account.stars / account.reviews);
+    }
+
+    function onERC1155Received(
+        address /* operator */,
+        address /* from */,
+        uint256 /* id */,
+        uint256 /* value */,
+        bytes calldata /* data */
+    ) external override returns (bytes4) {
+        // Handle token reception
+        return this.onERC1155Received.selector;
+    }
+
+    function onERC1155BatchReceived(
+        address /* operator */,
+        address /* from */,
+        uint256[] calldata /* ids */,
+        uint256[] calldata /* values */,
+        bytes calldata /* data */
+    ) external override returns (bytes4) {
+        // Handle batch token reception
+        return this.onERC1155BatchReceived.selector;
+    }
+
+    function supportsInterface(
+        bytes4 interfaceId
+    ) public view virtual override returns (bool) {
+        return interfaceId == type(IERC1155Receiver).interfaceId;
     }
 }

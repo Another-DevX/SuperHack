@@ -1,40 +1,42 @@
- {
-   "name": "Testing hypercert",
-  "description": "This is a test of the hypercert object",
-
+{
+  "name": "RealizeIt Hypercert",
+  "description": "This is a dummy hypercert for testing purposes",
+  "image": "https://directus.voicedeck.org/assets/52769676-f766-47fa-accd-50a53cb4ebf0",
+  "external_url": "https://google.com",
+  "properties": [
+    {
+      "trait_type": "State",
+      "value": "BR"
+    },
+    {
+      "trait_type": "State",
+      "value": "Bihar"
+    }
+  ],
+  "hypercert": {
     "work_scope": {
-        "name": "Work Scope",
-        "value": ["IPFS"],
-        "excludes": [],
-        "display_value": "IPFS"
+      "value": [
+        "Thirst"
+      ]
+    },
+    "work_timeframe": {
+      "value": [1686182400, 0]
     },
     "impact_scope": {
-        "name": "Impact Scope",
-        "value": ["All"],
-        "excludes": [],
-        "display_value": "All"
-    },    
-    "work_timeframe": {
-        "name": "Work Timeframe",
-        "value": [1380585600, 1388534399],
-        "display_value": "2013-10-01 -> 2013-12-31"
+      "value": [
+        "Government scheme, Water, Social accountability  "
+      ]
     },
     "impact_timeframe": {
-        "name": "Impact Timeframe",
-        "value": [1380585600, 0],
-        "display_value": "2013-10-01 -> Indefinite"
+      "value": [1686182400, 0]
     },
     "contributors": {
-        "name": "Contributors",
-        "value": ["Protocol Labs"],
-        "display_value": "Protocol Labs"
+      "value": [
+        "Mobile Vaani"
+      ]
     },
     "rights": {
-        "name": "Rights",
-        "value": ["Public Display"],
-        "display_value": "Public Display"
+      "value": []
     }
+  }
 }
-
-
-
