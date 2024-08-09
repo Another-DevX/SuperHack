@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { QueryClientProvider } from "@tanstack/react-query";
 import React, { ReactNode } from "react";
 import { AlchemyClientState } from "@account-kit/core";

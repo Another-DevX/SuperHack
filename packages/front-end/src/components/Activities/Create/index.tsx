@@ -1,7 +1,5 @@
-import React from 'react'
+import React from "react";
 
 export default function CreateActivity() {
-  return (
-    <div>CreateActivity</div>
-  )
+  return <div>CreateActivity</div>;
 }

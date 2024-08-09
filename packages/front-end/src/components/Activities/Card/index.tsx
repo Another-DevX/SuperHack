@@ -7,7 +7,7 @@ type Props = {
   name: string;
   stars: number;
   usdc: number;
-  date: string
+  date: string;
 };
 
 export default function ActivityCard({ icon, name, stars, usdc, date }: Props) {

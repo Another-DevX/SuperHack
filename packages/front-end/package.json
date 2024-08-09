@@ -16,6 +16,7 @@
     "@radix-ui/react-slot": "^1.1.0",
     "@svgr/webpack": "^8.1.0",
     "@tanstack/react-query": "^5.51.21",
+    "@worldcoin/idkit": "^1.2.2",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "lucide-react": "^0.424.0",
@@ -24,7 +25,8 @@
     "react-dom": "^18",
     "shadcn": "^1.0.0",
     "tailwind-merge": "^2.4.0",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss-animate": "^1.0.7",
+    "viem": "^2.19.3"
   },
   "devDependencies": {
     "@types/node": "^20",

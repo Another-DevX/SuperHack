@@ -21,7 +21,7 @@ export default function RootLayout({
 }>) {
   const initialState = cookieToInitialState(
     config,
-    headers().get("cookie") ?? undefined
+    headers().get("cookie") ?? undefined,
   );
   return (
     <html lang="en">

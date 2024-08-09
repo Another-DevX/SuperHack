@@ -48,7 +48,10 @@ export default function Home() {
             </button>
           </div>
         ) : (
-          <button className="btn bg-buttonGreen text-white" onClick={openAuthModal}>
+          <button
+            className="btn bg-buttonGreen text-white"
+            onClick={openAuthModal}
+          >
             Sign In
           </button>
         )}

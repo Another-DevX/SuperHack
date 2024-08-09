@@ -97,5 +97,5 @@ export default withAccountKitUi(
       "btn-primary": createColorSet("#363FF9", "#9AB7FF"),
       "fg-accent-brand": createColorSet("#363FF9", "#9AB7FF"),
     },
-  }
+  },
 );

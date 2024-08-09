@@ -1,7 +1,5 @@
-import React from 'react'
+import React from "react";
 
 export default function ActivityBeforeImages() {
-  return (
-    <div>ActivityBeforeImages</div>
-  )
+  return <div>ActivityBeforeImages</div>;
 }

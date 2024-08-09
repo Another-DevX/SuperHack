@@ -9,7 +9,7 @@ export default function Menu() {
       <div className="flex gap-2 justify-between items-center text-xs font-medium">
         {menuItems.map(({ text, icon, path }) => (
           <Link key={text} href={path} className="cursor-pointer">
-            <MenuItem  text={text} icon={icon} />
+            <MenuItem text={text} icon={icon} />
           </Link>
         ))}
       </div>
