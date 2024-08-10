@@ -50,6 +50,12 @@ export const pathParams: PathParamsType[] = [
     path: "uploadBeforeImages",
   },
   {
+    text: "Review Participants",
+    headerIconLeft: ArrowLeftIcon,
+    notSeenOnMenu: true,
+    path: "reviewParticipants",
+  },
+  {
     text: "Wallet",
     icon: WalletIcon,
     path: "Wallet",

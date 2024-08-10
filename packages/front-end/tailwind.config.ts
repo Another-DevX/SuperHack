@@ -22,6 +22,7 @@ const config = {
       colors: {
         softGray: "#C4C4BA",
         softGrayBg: "#E4E4DD",
+        grayBg: "#DFDFD6",
         softGrayPlaceHolder: "#999991",
         generalBg: "#f3f3ef",
         signInBg: "#e6e7e2",
@@ -64,6 +65,7 @@ const config = {
           foreground: "hsl(var(--card-foreground))",
         },
       },
+      
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
