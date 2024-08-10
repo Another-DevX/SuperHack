@@ -17,7 +17,7 @@ export const PageLayout = ({
 
   if (pathName == "/")
     return (
-      <main className="w-screen h-screen bg-generalBg overflow-scroll">
+      <main className="w-screen h-screen bg-signInBg overflow-scroll">
         {children}
       </main>
     );

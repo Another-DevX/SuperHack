@@ -29,7 +29,6 @@ export default function Activities() {
             stars={activity.stars}
             usdc={activity.usdc}
             date={activity.date}
-            opaque
           />
         ))}
       </div>

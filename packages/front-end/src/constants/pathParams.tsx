@@ -25,8 +25,8 @@ export const pathParams: PathParamsType[] = [
         className="w-8 h-8 absolute flex justify-center items-center right-4 top-1/2 translate-y-[-50%]"
       >
         <Image
-          width={20}
-          height={20}
+          width={22}
+          height={22}
           src={"/icons/plus-circle-icon.svg"}
           alt={`plus cicle icon`}
         />
@@ -42,8 +42,8 @@ export const pathParams: PathParamsType[] = [
         className="w-8 h-8 absolute flex justify-center items-center left-4 top-1/2 translate-y-[-50%]"
       >
         <Image
-          width={20}
-          height={20}
+          width={22}
+          height={22}
           src={"/icons/close-circle-icon.svg"}
           alt={`plus cicle icon`}
         />
@@ -55,8 +55,8 @@ export const pathParams: PathParamsType[] = [
         className="w-8 h-8 absolute flex justify-center items-center right-4 top-1/2 translate-y-[-50%]"
       >
         <Image
-          width={20}
-          height={20}
+          width={22}
+          height={22}
           src={"/icons/arrow-right-icon.svg"}
           alt={`plus cicle icon`}
         />
@@ -67,15 +67,63 @@ export const pathParams: PathParamsType[] = [
   },
   {
     text: "Add Activity Rewards",
-    headerIconLeft: ArrowLeftIcon,
-    headerIconRight: ArrowRightIcon,
+    headerIconLeft: () => (
+      <Link
+        href={"/createActivity"}
+        className="w-8 h-8 absolute flex justify-center items-center left-4 top-1/2 translate-y-[-50%]"
+      >
+        <Image
+          width={22}
+          height={22}
+          src={"/icons/arrow-left-icon.svg"}
+          alt={`plus cicle icon`}
+        />
+      </Link>
+    ),
+    headerIconRight: () => (
+      <Link
+        href={"/uploadBeforeImages"}
+        className="w-8 h-8 absolute flex justify-center items-center right-4 top-1/2 translate-y-[-50%]"
+      >
+        <Image
+          width={22}
+          height={22}
+          src={"/icons/arrow-right-icon.svg"}
+          alt={`plus cicle icon`}
+        />
+      </Link>
+    ),
     notSeenOnMenu: true,
     path: "addActivityRewards",
   },
   {
     text: "Upload Before Images",
-    headerIconLeft: ArrowLeftIcon,
-    headerIconRight: UploadIcon,
+    headerIconLeft: () => (
+      <Link
+        href={"/createActivity"}
+        className="w-8 h-8 absolute flex justify-center items-center left-4 top-1/2 translate-y-[-50%]"
+      >
+        <Image
+          width={22}
+          height={22}
+          src={"/icons/arrow-left-icon.svg"}
+          alt={`plus cicle icon`}
+        />
+      </Link>
+    ),
+    headerIconRight: () => (
+      <Link
+        href={"/activities"}
+        className="w-8 h-8 absolute flex justify-center items-center right-4 top-1/2 translate-y-[-50%]"
+      >
+        <Image
+          width={22}
+          height={22}
+          src={"/icons/upload-icon.svg"}
+          alt={`plus cicle icon`}
+        />
+      </Link>
+    ),
     notSeenOnMenu: true,
     path: "uploadBeforeImages",
   },
