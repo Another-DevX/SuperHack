@@ -1,15 +1,19 @@
+"use client";
 import ProfileStats from "@/components/MyProfile/Stats";
 import { ActivityType } from "@/types/commons";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import React from "react";
 
 type Props = ActivityType & {
   active?: boolean;
   opaque?: boolean;
   iconSize?: number;
+  goTo?: string;
 };
 
 export default function ActivityCard({
+  id,
   icon,
   name,
   stars,
@@ -18,9 +22,17 @@ export default function ActivityCard({
   active,
   opaque,
   iconSize,
+  goTo,
 }: Props) {
+  const router = useRouter();
+  const redirectToReviews = () => {
+    if (goTo) {
+      router.push(`${goTo}`);
+    }
+  };
   return (
     <div
+      onClick={redirectToReviews}
       className={`flex items-start justify-between ${
         opaque ? "bg-grayBg" : "bg-white"
       } rounded-lg p-2`}

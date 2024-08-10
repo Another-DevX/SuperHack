@@ -10,6 +10,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "../ui/dialog";
+import Link from "next/link";
 
 type Props = {
   name: string;
@@ -38,6 +39,7 @@ export default function ActivityContent({
   return (
     <div className="relative flex flex-col gap-2">
       <ActivityCard
+        id={0}
         key={"activity"}
         icon={"/icons/broom-icon.svg"}
         name={"Beach Cleanup"}
@@ -145,9 +147,9 @@ export default function ActivityContent({
                 <button className="flex-1 btn tex-xs text-black border-buttonGreen border-2">
                   <p>Cancel</p>
                 </button>
-                <button className="flex-1 btn bg-buttonGreen tex-xs text-white">
+                <Link href="/fillIn" className="flex-1 btn bg-buttonGreen tex-xs text-white">
                   <p>Check Out</p>
-                </button>
+                </Link>
               </div>
             </DialogHeader>
           </DialogContent>

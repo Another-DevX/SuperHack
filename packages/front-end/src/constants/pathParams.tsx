@@ -129,24 +129,114 @@ export const pathParams: PathParamsType[] = [
   },
   {
     text: "Review Participants",
-    headerIconLeft: ArrowLeftIcon,
-    headerIconRight: ArrowRightIcon,
+    headerIconLeft: () => (
+      <Link
+        href={"/activities"}
+        className="w-8 h-8 absolute flex justify-center items-center left-4 top-1/2 translate-y-[-50%]"
+      >
+        <Image
+          width={22}
+          height={22}
+          src={"/icons/arrow-left-icon.svg"}
+          alt={`plus cicle icon`}
+        />
+      </Link>
+    ),
+    headerIconRight: () => (
+      <Link
+        href={"/fillIn"}
+        className="w-8 h-8 absolute flex justify-center items-center right-4 top-1/2 translate-y-[-50%]"
+      >
+        <Image
+          width={22}
+          height={22}
+          src={"/icons/arrow-right-icon.svg"}
+          alt={`plus cicle icon`}
+        />
+      </Link>
+    ),
     notSeenOnMenu: true,
     path: "reviewParticipants",
   },
   {
     text: "Fill In",
-    headerIconLeft: ArrowLeftIcon,
-    headerIconRight: ArrowRightIcon,
+    headerIconLeft: () => (
+      <Link
+        href={"/reviewParticipants"}
+        className="w-8 h-8 absolute flex justify-center items-center left-4 top-1/2 translate-y-[-50%]"
+      >
+        <Image
+          width={22}
+          height={22}
+          src={"/icons/arrow-left-icon.svg"}
+          alt={`plus cicle icon`}
+        />
+      </Link>
+    ),
+    headerIconRight: () => (
+      <Link
+        href={"/uploadAfterImages"}
+        className="w-8 h-8 absolute flex justify-center items-center right-4 top-1/2 translate-y-[-50%]"
+      >
+        <Image
+          width={22}
+          height={22}
+          src={"/icons/arrow-right-icon.svg"}
+          alt={`plus cicle icon`}
+        />
+      </Link>
+    ),
     notSeenOnMenu: true,
     path: "fillIn",
   },
   {
     text: "Upload After Images",
-    headerIconLeft: ArrowLeftIcon,
-    headerIconRight: UploadIcon,
+    headerIconLeft: () => (
+      <Link
+        href={"/fillIn"}
+        className="w-8 h-8 absolute flex justify-center items-center left-4 top-1/2 translate-y-[-50%]"
+      >
+        <Image
+          width={22}
+          height={22}
+          src={"/icons/arrow-left-icon.svg"}
+          alt={`plus cicle icon`}
+        />
+      </Link>
+    ),
+    headerIconRight: () => (
+      <Link
+        href={"/activities"}
+        className="w-8 h-8 absolute flex justify-center items-center right-4 top-1/2 translate-y-[-50%]"
+      >
+        <Image
+          width={22}
+          height={22}
+          src={"/icons/upload-icon.svg"}
+          alt={`plus cicle icon`}
+        />
+      </Link>
+    ),
     notSeenOnMenu: true,
     path: "uploadAfterImages",
+  },
+  {
+    text: "Activity",
+    headerIconLeft: () => (
+      <Link
+        href={"/activities"}
+        className="w-8 h-8 absolute flex justify-center items-center left-4 top-1/2 translate-y-[-50%]"
+      >
+        <Image
+          width={22}
+          height={22}
+          src={"/icons/arrow-left-icon.svg"}
+          alt={`plus cicle icon`}
+        />
+      </Link>
+    ),
+    notSeenOnMenu: true,
+    path: "activity",
   },
   {
     text: "Rate Host",
@@ -154,12 +244,6 @@ export const pathParams: PathParamsType[] = [
     headerIconRight: UploadIcon,
     notSeenOnMenu: true,
     path: "rateHost",
-  },
-  {
-    text: "Activity",
-    headerIconLeft: ArrowLeftIcon,
-    notSeenOnMenu: true,
-    path: "activity",
   },
   {
     text: "Wallet",

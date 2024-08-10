@@ -1,6 +1,7 @@
 {
   "organized": [
     {
+      "id": 1,
       "icon": "/icons/broom-icon.svg",
       "name": "Beach Cleanup",
       "stars": 5,
@@ -10,6 +11,7 @@
   ],
   "more": [
     {
+      "id": 2,
       "icon": "/icons/broom-icon.svg",
       "name": "Tarea 2",
       "stars": 4,
@@ -17,6 +19,7 @@
       "date": "2024-08-02"
     },
     {
+      "id": 3,
       "icon": "/icons/broom-icon.svg",
       "name": "Tarea 3",
       "stars": 3,
@@ -24,6 +27,7 @@
       "date": "2024-08-03"
     },
     {
+      "id": 4,
       "icon": "/icons/broom-icon.svg",
       "name": "Tarea 4",
       "stars": 2,

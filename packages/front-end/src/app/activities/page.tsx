@@ -9,12 +9,14 @@ export default function Activities() {
         <p className="text-textSoftGray text-xs">Organized Activities</p>
         {activities.organized.map((activity) => (
           <ActivityCard
-            key={activity.name}
+            key={activity.id}
+            id={activity.id}
             icon={activity.icon}
             name={activity.name}
             stars={activity.stars}
             usdc={activity.usdc}
             date={activity.date}
+            goTo="reviewParticipants"
             opaque
           />
         ))}
@@ -23,12 +25,14 @@ export default function Activities() {
         <p className="text-textSoftGray text-xs">More Activities</p>
         {activities.more.map((activity) => (
           <ActivityCard
-            key={activity.name}
+            key={activity.id}
+            id={activity.id}
             icon={activity.icon}
             name={activity.name}
             stars={activity.stars}
             usdc={activity.usdc}
             date={activity.date}
+            goTo="activity"
           />
         ))}
       </div>
