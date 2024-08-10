@@ -14,6 +14,7 @@ import Link from "next/link";
 import { DialogClose } from "@radix-ui/react-dialog";
 
 type Props = {
+  id: number
   name: string;
   stars: number;
   greenPoints: number;
@@ -27,6 +28,7 @@ type Props = {
 };
 
 export default function ActivityContent({
+  id,
   name,
   stars,
   greenPoints,
@@ -151,7 +153,7 @@ export default function ActivityContent({
                   </DialogClose>
                 </div>
                 <Link
-                  href="/fillIn"
+                  href={`/fillIn/${id}`}
                   className="flex-1 btn bg-buttonGreen tex-xs text-white"
                 >
                   <p>Check Out</p>

@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { pathToMenuItem } from "@/constants/pathParams";
 import CreateAccount from "../CreateAccount";
 import UploadAvatar from "../UploadAvatar";
+import Image from "next/image";
 
 export const PageLayout = ({
   children,
@@ -18,6 +19,18 @@ export const PageLayout = ({
   if (pathName == "/")
     return (
       <main className="w-screen h-screen bg-signInBg overflow-scroll">
+        <Image
+          width={120}
+          height={120}
+          src={"/images/phone-frame-img.png"}
+          alt="phone-frame-img"
+          style={{
+            zIndex: "200",
+            position: "absolute",
+            width: "100vw",
+            height: "100vh",
+          }}
+        />
         {children}
       </main>
     );
@@ -38,7 +51,19 @@ export const PageLayout = ({
 
   return (
     <>
-      <main className="w-screen h-screen flex flex-col justify-between items-center bg-generalBg">
+      <main className="relative w-screen h-screen flex flex-col justify-between items-center bg-generalBg">
+        <Image
+          width={120}
+          height={120}
+          src={"/icons/phone-frame-.svg"}
+          alt="phone-frame-img"
+          style={{
+            zIndex: "200",
+            position: "absolute",
+            width: "100vw",
+            height: "100vh",
+          }}
+        />
         <Header
           text={item?.text ? item.text : ""}
           iconLeft={item?.headerIconLeft}

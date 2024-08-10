@@ -2,7 +2,7 @@
 import ActivityContent from "@/components/Activity";
 import { useEffect, useState } from "react";
 
-export default function Activity() {
+export default function Page({ params }: { params: { id: number } }) {
   const [account, setAccount] = useState<boolean>(false);
   const [forCheckIn, setForCheckIn] = useState<boolean>(false);
   const [forCheckOut, setForCheckOut] = useState<boolean>(false);
@@ -16,6 +16,7 @@ export default function Activity() {
 
   return (
     <ActivityContent
+      id={params.id}
       name="luukdao"
       greenPoints={200}
       stars={4.9}

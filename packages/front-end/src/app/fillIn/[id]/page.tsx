@@ -1,11 +1,12 @@
 import React from "react";
-import ActivityCard from "../../components/Activities/Card";
-import InputWithLabel from "../../components/MyProfile/Data";
+import ActivityCard from "@/components/Activities/Card";
+import InputWithLabel from "@/components/MyProfile/Data";
 
-export default function FillIn() {
+export default function Page({ params }: { params: { id: number } }) {
   return (
     <div className="flex flex-col gap-4">
       <ActivityCard
+        id={params.id}
         icon={"/icons/broom-icon.svg"}
         name={"Beach Cleanup"}
         date={"August 7th, 12:00 - 18:00"}
@@ -19,11 +20,7 @@ export default function FillIn() {
           placeHolder="Land clearing"
           height={40}
         />
-        <InputWithLabel
-          label="Takeaways"
-          type="text"
-          placeHolder="things"
-        />
+        <InputWithLabel label="Takeaways" type="text" placeHolder="things" />
       </div>
     </div>
   );
