@@ -2,6 +2,14 @@ import ActivityCard from "@/components/Activities/Card";
 import ProfileStats from "@/components/MyProfile/Stats";
 import Image from "next/image";
 import React, { Dispatch, SetStateAction } from "react";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "../ui/dialog";
 
 type Props = {
   name: string;
@@ -114,9 +122,36 @@ export default function ActivityContent({
         </button>
       )}
       {account && forCheckIn && forCheckOut && (
-        <button className="w-full btn bg-buttonGreen tex-xs text-white">
-          <p>Check Out</p>
-        </button>
+        <Dialog>
+          <DialogTrigger>
+            <button className="w-full btn bg-buttonGreen tex-xs text-white">
+              <p>Check Out</p>
+            </button>
+          </DialogTrigger>
+          <DialogContent className="flex flex-col rounded-md bg-grayBg">
+            <DialogHeader className="flex justify-center items-center gap-2">
+              <Image
+                width={24}
+                height={24}
+                src="/icons/check-icon.svg"
+                alt="or img"
+              />
+              <DialogTitle>Check Out</DialogTitle>
+              <DialogDescription>
+                Are you sure you want to check-out? You cannot check back in to
+                this current activity
+              </DialogDescription>
+              <div className="w-full flex gap-2">
+                <button className="flex-1 btn tex-xs text-black border-buttonGreen border-2">
+                  <p>Cancel</p>
+                </button>
+                <button className="flex-1 btn bg-buttonGreen tex-xs text-white">
+                  <p>Check Out</p>
+                </button>
+              </div>
+            </DialogHeader>
+          </DialogContent>
+        </Dialog>
       )}
     </div>
   );
