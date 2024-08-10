@@ -19,7 +19,7 @@ const RegistrationSchema =
 const CheckoutSchema =
   "0x9773edf40273e0f916d8bc566b9dedf82e9b3f1caf9b5824081b20f0dc3aabfc";
 const HostReviewSchema =
-  "0x57e9642c4ed205c644d799388086fb2d45107d700d9b895682e630ecf2af1191c";
+  "0x57e9642c4ed205c644d799388086fb2d45107d700d9b895682e630ecf2af1191";
 
   
 export async function  attestSignUp(
