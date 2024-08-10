@@ -14,6 +14,7 @@ contract RealizeIT is IRealizeIT, IERC1155Receiver {
         address creator;
         uint256 prizePool;
         bool onlyVerified;
+        string uri;
     }
 
     TempCampaign private tempCampaign;
@@ -73,6 +74,7 @@ contract RealizeIT is IRealizeIT, IERC1155Receiver {
             creator: msg.sender,
             prizePool: prizePool,
             onlyVerified: onlyVerifiedAccounts
+            uri: uri
         });
 
         hypercerts.mintClaim(
@@ -211,7 +213,6 @@ contract RealizeIT is IRealizeIT, IERC1155Receiver {
         campaign.currentQuota = 0;
         campaign.checkouts = 0;
         campaign.onlyVerified = tempCampaign.onlyVerified;
-
         delete tempCampaign;
         return this.onERC1155Received.selector;
     }
