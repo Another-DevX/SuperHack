@@ -9,6 +9,7 @@ type CampaignCreated @entity(immutable: true) {
   blockNumber: BigInt!
   blockTimestamp: BigInt!
   transactionHash: Bytes!
+  hypercertID: BigInt! # uint256
 }
 
 type CheckOut @entity(immutable: true) {

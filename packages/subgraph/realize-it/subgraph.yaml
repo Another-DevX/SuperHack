@@ -8,7 +8,7 @@ dataSources:
     name: RealizeIT
     network: base-sepolia
     source:
-      address: "0xf4401497511738b7DaFD7063C6162ac0d7cf5982"
+      address: "0x79f0c6E889159BA87A7DafcFC40DDcbdBef9508B"
       abi: RealizeIT
       startBlock: 13758752
     mapping:
@@ -25,7 +25,7 @@ dataSources:
         - name: RealizeIT
           file: ./abis/RealizeIT.json
       eventHandlers:
-        - event: CampaignCreated(address,uint256,uint256,uint256,uint256,bool)
+        - event: CampaignCreated(address,uint256,uint256,uint256,uint256,bool,uint256)
           handler: handleCampaignCreated
         - event: CheckOut(address,uint256,uint16)
           handler: handleCheckOut
