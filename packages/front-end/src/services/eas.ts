@@ -15,12 +15,13 @@ const CheckoutContract = "0xad040f2565e1dA79278677Fcf7cf7C49E7b49e1E";
 const HostReviewContract = "0x5c56b6Bcf8752054981220CE084c021594e13Ca3";
 
 const RegistrationSchema =
-  "0xe4b131099876d653b5390d2f9e1d4b307dc4b9053e160b04e2e5d79a2783407e";
+  "0x1df8c9e0dd9db5399c10671b1e6fa955ed6b02acd0626171517f22651cc77b49";
 const CheckoutSchema =
-  "0xb0c31c19cbe2d5aec1bbee13950c04f4949d6797fef3b40b3c1c17d3036b7683";
+  "0x9773edf40273e0f916d8bc566b9dedf82e9b3f1caf9b5824081b20f0dc3aabfc";
 const HostReviewSchema =
-  "0xc717944d04dd49d2fd74d9cbee4ee1b34497aee24175882df4e5a0b3c6ae427c";
+  "0x57e9642c4ed205c644d799388086fb2d45107d700d9b895682e630ecf2af1191c";
 
+  
 export async function  attestSignUp(
   signer: TransactionSigner,
   user: string,
