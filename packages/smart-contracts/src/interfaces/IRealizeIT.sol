@@ -23,7 +23,7 @@ struct Review {
 }
 
 interface IRealizeIT {
-    function createCampaign(string memory uri) external;
+    function createCampaign(string memory uri, uint256 prizePool) external;
     function verifyPublicAddress(
         address signal,
         uint256 root,
