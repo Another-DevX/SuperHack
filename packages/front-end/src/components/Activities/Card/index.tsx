@@ -4,6 +4,7 @@ import Image from "next/image";
 import React from "react";
 
 type Props = ActivityType & {
+  active?: boolean;
   opaque?: boolean;
   iconSize?: number;
 };
@@ -14,6 +15,7 @@ export default function ActivityCard({
   stars,
   usdc,
   date,
+  active,
   opaque,
   iconSize,
 }: Props) {
@@ -32,7 +34,17 @@ export default function ActivityCard({
         />
         <div>
           <p className="font-semibold">{name}</p>
-          <p className="text-textSoftGray text-xs">{date}</p>
+          <div className="flex gap-1">
+            {active && (
+              <Image
+                width={8}
+                height={8}
+                src={"/icons/circle-green-icon.svg"}
+                alt={`activity-card-icon-${name}`}
+              />
+            )}
+            <p className="text-textSoftGray text-xs">{date}</p>
+          </div>
         </div>
       </div>
       <div className="flex justify-start items-start gap-2 px-2">

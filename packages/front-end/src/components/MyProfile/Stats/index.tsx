@@ -2,7 +2,7 @@ import Image from "next/image";
 import React from "react";
 
 type Props = {
-  value: number;
+  value: number | string;
   icon: string;
 };
 export default function ProfileStats({ value, icon }: Props) {

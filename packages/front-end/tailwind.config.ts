@@ -31,6 +31,7 @@ const config = {
         textSoftGray: "#767670",
         textSignIn: "#6D6D6D",
         buttonGreen: "#4c705b",
+        buttonYellow: "#D0A324",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
@@ -65,7 +66,7 @@ const config = {
           foreground: "hsl(var(--card-foreground))",
         },
       },
-      
+
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
@@ -100,5 +101,5 @@ export default withAccountKitUi(
       "btn-primary": createColorSet("#363FF9", "#9AB7FF"),
       "fg-accent-brand": createColorSet("#363FF9", "#9AB7FF"),
     },
-  },
+  }
 );

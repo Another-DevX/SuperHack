@@ -71,6 +71,12 @@ export const pathParams: PathParamsType[] = [
     path: "uploadAfterImages",
   },
   {
+    text: "Activity",
+    headerIconLeft: ArrowLeftIcon,
+    notSeenOnMenu: true,
+    path: "activity",
+  },
+  {
     text: "Wallet",
     icon: WalletIcon,
     path: "Wallet",
