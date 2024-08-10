@@ -28,7 +28,7 @@ export default function MyProfileVerify() {
   const user = useUser();
   const isVerified = useIsVerified();
   const { client } = useSmartAccountClient({ type: "LightAccount" });
-  const { sendUserOperation, isSendingUserOperation } = useSendUserOperation({
+  const { sendUserOperation } = useSendUserOperation({
     client,
     // optional parameter that will wait for the transaction to be mined before returning
     waitForTxn: true,
@@ -52,7 +52,7 @@ export default function MyProfileVerify() {
         )[0],
       ];
 
-      await sendUserOperation({
+       sendUserOperation({
         uo: {
           target: REALIZE_IT_CONTRACT_ADDRESS as Address,
           data: encodeFunctionData({

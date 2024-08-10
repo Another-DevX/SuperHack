@@ -1,5 +1,5 @@
 import { formatHypercertData } from "@hypercerts-org/sdk";
-export async function uploadHypercertMetadata() {
+export async function uploadHypercertMetadata(name: string, description: string) {
   const {
     data: metadata,
     valid,
