@@ -9,15 +9,15 @@ const ATTESTATOR_SIGNER_PRIVATE_KEY =
 const signer = new Wallet(ATTESTATOR_SIGNER_PRIVATE_KEY, provider);
 
 const schemaRegistry = new SchemaRegistry(
-  "0x4200000000000000000000000000000000000021"
+  "0x4200000000000000000000000000000000000020"
 ); //Testnet Base Sepolia
-const resolverAddress = "0x0a7E2Ff54e76B8E6659aedc9103FB21c038050D0"; // Sepolia 0.26
+
 
 const registrationSchema = "address user, uint256 hypercertID";
 const checkoutSchema = " address user,uint256 hypercertID, uint16 hostRate";
 const hostReviewSchema = "uint256 hypercertID,(uint16 stars,address user)[]";
 
-const registerSchema = async (schema, revocable) => {
+const registerSchema = async (schema :string, revocable :boolean, name: string, resolverAddress: string) => {
   schemaRegistry.connect(signer);
   const transaction = await schemaRegistry.register({
     schema,
@@ -25,13 +25,17 @@ const registerSchema = async (schema, revocable) => {
     revocable,
   });
 
-  await transaction.wait();
+  let res = await transaction.wait();
+  console.log(name + ": " +  res);
 };
 
 async function main() {
-  await registerSchema(registrationSchema, true);
-  await registerSchema(checkoutSchema, false);
-  await registerSchema(hostReviewSchema, false);
+  await registerSchema(registrationSchema, true, "RegistrationSchema", "0x6b097466783ec818785d194cF66942E764e67D4C");
+  await registerSchema(checkoutSchema, false,"CheckoutSchema", "0xad040f2565e1dA79278677Fcf7cf7C49E7b49e1E");
+  await registerSchema(hostReviewSchema, false,"HostReviewSchema", "0x5c56b6Bcf8752054981220CE084c021594e13Ca3");
 }
 
 main();
+/*RegistrationSchema: 0xe4b131099876d653b5390d2f9e1d4b307dc4b9053e160b04e2e5d79a2783407e
+CheckoutSchema: 0xb0c31c19cbe2d5aec1bbee13950c04f4949d6797fef3b40b3c1c17d3036b7683
+HostReviewSchema: 0xc717944d04dd49d2fd74d9cbee4ee1b34497aee24175882df4e5a0b3c6ae427c*/

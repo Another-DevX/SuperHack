@@ -7,6 +7,7 @@ struct Campaign {
     uint16 currentQuota;
     uint256 pricePool;
     uint256 checkouts;
+    bool onlyVerified;
     mapping(address => bool) attenders;
 }
 struct Account {
@@ -23,7 +24,11 @@ struct Review {
 }
 
 interface IRealizeIT {
-    function createCampaign(string memory uri) external;
+    function createCampaign(
+        string memory uri,
+        uint256 prizePool,
+        bool onlyVerified
+    ) external;
     function verifyPublicAddress(
         address signal,
         uint256 root,
