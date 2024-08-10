@@ -2,6 +2,14 @@
 import MyProfilePhoto from "@/components/MyProfile/Photo";
 import ProfileStats from "@/components/MyProfile/Stats";
 import Image from "next/image";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "../ui/dialog";
 import React, { useState } from "react";
 
 type Props = {
@@ -58,6 +66,32 @@ export default function RateHostContent({ name, stars, greenPoints }: Props) {
           )
         )}
       </div>
+      <Dialog>
+        <DialogTrigger>
+          <Image
+            width={24}
+            height={24}
+            src="/icons/upload-icon.svg"
+            alt="upload icon"
+          />
+        </DialogTrigger>
+        <DialogContent className="flex flex-col rounded-md bg-grayBg">
+          <DialogHeader className="flex justify-center items-center gap-2">
+            <DialogTitle>Rewards Earned</DialogTitle>
+            <DialogDescription>
+              <div className="flex gap-2">
+                <ProfileStats icon="/icons/usdc-icon.svg" value={10} />
+                <ProfileStats icon="/icons/green-points-icon.svg" value={10} />
+              </div>
+            </DialogDescription>
+            <div className="w-full flex gap-2">
+              <button className="flex-1 btn bg-buttonGreen tex-xs text-white">
+                <p>Continue</p>
+              </button>
+            </div>
+          </DialogHeader>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }
