@@ -17,6 +17,10 @@ const registrationSchema = "address user, uint256 hypercertID";
 const checkoutSchema = " address user,uint256 hypercertID, uint16 hostRate";
 const hostReviewSchema = "uint256 hypercertID,(uint16 stars,address user)[]";
 
+const RegistrationContract = "0x6b097466783ec818785d194cF66942E764e67D4C";
+const CheckoutContract = "0xad040f2565e1dA79278677Fcf7cf7C49E7b49e1E";
+const HostReviewResolver = "0x5c56b6Bcf8752054981220CE084c021594e13Ca3";
+
 const registerSchema = async (schema :string, revocable :boolean, name: string, resolverAddress: string) => {
   schemaRegistry.connect(signer);
   const transaction = await schemaRegistry.register({
@@ -30,9 +34,9 @@ const registerSchema = async (schema :string, revocable :boolean, name: string, 
 };
 
 async function main() {
-  await registerSchema(registrationSchema, true, "RegistrationSchema", "0x6b097466783ec818785d194cF66942E764e67D4C");
-  await registerSchema(checkoutSchema, false,"CheckoutSchema", "0xad040f2565e1dA79278677Fcf7cf7C49E7b49e1E");
-  await registerSchema(hostReviewSchema, false,"HostReviewSchema", "0x5c56b6Bcf8752054981220CE084c021594e13Ca3");
+  await registerSchema(registrationSchema, true, "RegistrationSchema", RegistrationContract);
+  await registerSchema(checkoutSchema, false,"CheckoutSchema", CheckoutContract);
+  await registerSchema(hostReviewSchema, false,"HostReviewSchema", HostReviewResolver);
 }
 
 main();
