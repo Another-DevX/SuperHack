@@ -1,9 +1,16 @@
-"use client"
+"use client";
 import ActivityContent from "@/components/Activity";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function Activity() {
-  const [account, setAccount] = useState<boolean>(false)
+  const [account, setAccount] = useState<boolean>(false);
+  const [forCheck, setForCheck] = useState<boolean>(false);
+  useEffect(() => {
+    if (account == true)
+      setTimeout(() => {
+        setForCheck(true);
+      }, 5000);
+  }, [account]);
   return (
     <ActivityContent
       name="luukdao"
@@ -13,6 +20,7 @@ export default function Activity() {
       maxUsdc={20}
       account={account}
       setAccount={setAccount}
+      forCheck={forCheck}
     />
   );
 }

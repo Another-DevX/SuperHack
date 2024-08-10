@@ -1,5 +1,6 @@
 import ActivityCard from "@/components/Activities/Card";
 import ProfileStats from "@/components/MyProfile/Stats";
+import Image from "next/image";
 import React, { Dispatch, SetStateAction } from "react";
 
 type Props = {
@@ -10,7 +11,9 @@ type Props = {
   maxUsdc: number;
   account: boolean;
   setAccount: Dispatch<SetStateAction<boolean>>;
+  forCheck: boolean;
 };
+
 export default function ActivityContent({
   name,
   stars,
@@ -18,9 +21,10 @@ export default function ActivityContent({
   maxUsdc,
   account,
   setAccount,
+  forCheck,
 }: Props) {
   return (
-    <div className="flex flex-col gap-2">
+    <div className="relative flex flex-col gap-2">
       <ActivityCard
         key={"activity"}
         icon={"/icons/broom-icon.svg"}
@@ -78,7 +82,7 @@ export default function ActivityContent({
           <p className="text-xs text-textSoftGray">{" * Sunblock"}</p>
         </div>
       </div>
-      {!account && (
+      {!account && !forCheck && (
         <button
           onClick={() => setAccount(true)}
           className="w-full btn bg-buttonGreen tex-xs text-white"
@@ -86,9 +90,20 @@ export default function ActivityContent({
           <p>Sign Up</p>
         </button>
       )}
-      {account && (
+      {account && !forCheck && (
         <button className="w-full btn bg-buttonYellow tex-xs text-white">
           <p>Withdraw</p>
+        </button>
+      )}
+      {account && forCheck && (
+        <button className="w-full btn bg-buttonGreen tex-xs text-white">
+          <p>Check In</p>
+          <Image
+            width={20}
+            height={20}
+            src="/icons/check-in-icon.svg"
+            alt="or img"
+          />
         </button>
       )}
     </div>
