@@ -30,9 +30,12 @@ const registerSchema = async (schema :string, revocable :boolean, name: string, 
 };
 
 async function main() {
-  await registerSchema(registrationSchema, true, "RegistrationSchema", "0x45d05d80f6A9C4d686877253b802f2B0bb840082");
-  await registerSchema(checkoutSchema, false,"CheckoutSchema", "0xBacFc9E5Cb60C716f5630387dBd5772da6c89943");
-  await registerSchema(hostReviewSchema, false,"HostReviewSchema", "");
+  await registerSchema(registrationSchema, true, "RegistrationSchema", "0x6b097466783ec818785d194cF66942E764e67D4C");
+  await registerSchema(checkoutSchema, false,"CheckoutSchema", "0xad040f2565e1dA79278677Fcf7cf7C49E7b49e1E");
+  await registerSchema(hostReviewSchema, false,"HostReviewSchema", "0x5c56b6Bcf8752054981220CE084c021594e13Ca3");
 }
 
 main();
+/*RegistrationSchema: 0xe4b131099876d653b5390d2f9e1d4b307dc4b9053e160b04e2e5d79a2783407e
+CheckoutSchema: 0xb0c31c19cbe2d5aec1bbee13950c04f4949d6797fef3b40b3c1c17d3036b7683
+HostReviewSchema: 0xc717944d04dd49d2fd74d9cbee4ee1b34497aee24175882df4e5a0b3c6ae427c*/
