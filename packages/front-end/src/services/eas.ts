@@ -24,7 +24,7 @@ const HostReviewSchema =
 export async function  attestSignUp(
   signer: TransactionSigner,
   user: string,
-  hypercertId: number,
+  hypercertId: bigint,
   recipient: string
 )  {
   const eas = new EAS(RegistrationContract);
