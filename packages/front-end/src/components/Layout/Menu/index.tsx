@@ -1,5 +1,5 @@
 import { MenuItem } from "./Item";
-import { pathParams } from "@/lib/utils";
+import { pathParams } from "@/constants/pathParams";
 import React from "react";
 import Link from "next/link";
 

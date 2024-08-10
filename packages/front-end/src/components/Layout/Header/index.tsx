@@ -1,9 +1,9 @@
-import React, { ComponentType, SVGProps } from "react";
+import React, { ComponentType } from "react";
 
 type Props = {
   text: string;
-  iconLeft?: ComponentType<SVGProps<SVGSVGElement>> | undefined;
-  iconRight?: ComponentType<SVGProps<SVGSVGElement>> | undefined;
+  iconLeft?: ComponentType<{ className?: string }> | undefined;
+  iconRight?: ComponentType<{ className?: string }> | undefined;
 };
 export default function Header({
   text,
@@ -12,21 +12,9 @@ export default function Header({
 }: Props) {
   return (
     <div className="relative w-full py-4 flex justify-center items-center font-medium text-base border-b-2 border-softGrayBoderDark">
-      {IconLeft && (
-        <IconLeft
-          width={24}
-          height={24}
-          className="absolute flex justify-center items-center left-4 top-1/2 translate-y-[-50%]"
-        />
-      )}
+      {IconLeft && <IconLeft />}
       <p className="font-semibold">{text}</p>
-      {IconRight && (
-        <IconRight
-          width={24}
-          height={24}
-          className="absolute flex justify-center items-center right-4 top-1/2 translate-y-[-50%]"
-        />
-      )}
+      {IconRight && <IconRight />}
     </div>
   );
 }
