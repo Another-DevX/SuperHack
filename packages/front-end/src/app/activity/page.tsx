@@ -4,13 +4,17 @@ import { useEffect, useState } from "react";
 
 export default function Activity() {
   const [account, setAccount] = useState<boolean>(false);
-  const [forCheck, setForCheck] = useState<boolean>(false);
+  const [forCheckIn, setForCheckIn] = useState<boolean>(false);
+  const [forCheckOut, setForCheckOut] = useState<boolean>(false);
+
   useEffect(() => {
     if (account == true)
       setTimeout(() => {
-        setForCheck(true);
+        setForCheckIn(true);
       }, 5000);
-  }, [account]);
+    if (forCheckIn == true) setForCheckOut(true);
+  }, [account, forCheckIn]);
+
   return (
     <ActivityContent
       name="luukdao"
@@ -20,7 +24,9 @@ export default function Activity() {
       maxUsdc={20}
       account={account}
       setAccount={setAccount}
-      forCheck={forCheck}
+      forCheckIn={forCheckIn}
+      setForCheckIn={setForCheckIn}
+      forCheckOut={forCheckOut}
     />
   );
 }

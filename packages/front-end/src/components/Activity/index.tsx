@@ -11,7 +11,9 @@ type Props = {
   maxUsdc: number;
   account: boolean;
   setAccount: Dispatch<SetStateAction<boolean>>;
-  forCheck: boolean;
+  forCheckIn: boolean;
+  setForCheckIn: Dispatch<SetStateAction<boolean>>;
+  forCheckOut: boolean;
 };
 
 export default function ActivityContent({
@@ -21,7 +23,9 @@ export default function ActivityContent({
   maxUsdc,
   account,
   setAccount,
-  forCheck,
+  forCheckIn,
+  setForCheckIn,
+  forCheckOut,
 }: Props) {
   return (
     <div className="relative flex flex-col gap-2">
@@ -82,7 +86,7 @@ export default function ActivityContent({
           <p className="text-xs text-textSoftGray">{" * Sunblock"}</p>
         </div>
       </div>
-      {!account && !forCheck && (
+      {!account && !forCheckIn && !forCheckOut && (
         <button
           onClick={() => setAccount(true)}
           className="w-full btn bg-buttonGreen tex-xs text-white"
@@ -90,13 +94,16 @@ export default function ActivityContent({
           <p>Sign Up</p>
         </button>
       )}
-      {account && !forCheck && (
+      {account && !forCheckIn && !forCheckOut && (
         <button className="w-full btn bg-buttonYellow tex-xs text-white">
           <p>Withdraw</p>
         </button>
       )}
-      {account && forCheck && (
-        <button className="w-full btn bg-buttonGreen tex-xs text-white">
+      {account && forCheckIn && !forCheckOut && (
+        <button
+          onClick={() => setForCheckIn(true)}
+          className="w-full btn bg-buttonGreen tex-xs text-white"
+        >
           <p>Check In</p>
           <Image
             width={20}
@@ -104,6 +111,11 @@ export default function ActivityContent({
             src="/icons/check-in-icon.svg"
             alt="or img"
           />
+        </button>
+      )}
+      {account && forCheckIn && forCheckOut && (
+        <button className="w-full btn bg-buttonGreen tex-xs text-white">
+          <p>Check Out</p>
         </button>
       )}
     </div>
