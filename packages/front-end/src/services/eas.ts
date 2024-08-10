@@ -7,11 +7,9 @@ import { ZeroHash } from "ethers";
 
 const registrationSchemaDefinition = "address user, uint256 hypercertID";
 const checkoutSchemaDefinition =
-  " address user,uint256 hypercertID, uint16 hostRate";
+  "address user, uint256 hypercertID, uint16 hostRate";
 const hostReviewSchemaDefinition =
   "uint256 hypercertID,(uint16 stars,address user)[]";
-
-
 
 const RegistrationSchema =
   "0xee95ef2317e2045c7e84dc58c9772178e5302971c52c46abbf17c333b2281240";
@@ -20,12 +18,11 @@ const CheckoutSchema =
 const HostReviewSchema =
   "0xc2d9966087f3968ba1a39713388eb89ded047ff2d3cb86701bce52cf536a52ea";
 
-
 export async function attestSignUp(
   signer: TransactionSigner,
   user: string,
   hypercertId: string,
-  recipient: string
+  recipient: string,
 ) {
   const eas = new EAS("0x4200000000000000000000000000000000000021");
   eas.connect(signer);
@@ -58,17 +55,20 @@ export async function attestSignUp(
 
 export async function attestSignOut(
   signer: TransactionSigner,
-  attestationId: string
+  attestationId: string,
 ) {
   const eas = new EAS("0x4200000000000000000000000000000000000021");
   eas.connect(signer);
 
-  const transaction = await eas.revoke({
+  const tx = await eas.revoke({
     schema: RegistrationSchema,
     data: { uid: attestationId },
   });
 
-  await transaction.wait();
+  const newAttestationUID = await tx.wait();
+
+  console.log("New attestation UID:", newAttestationUID);
+  return newAttestationUID;
 }
 
 export async function attestCheckout(
@@ -76,7 +76,7 @@ export async function attestCheckout(
   user: string,
   hypercertId: number,
   recipient: string,
-  hostRate: number
+  hostRate: number,
 ) {
   const eas = new EAS("0x4200000000000000000000000000000000000021");
   eas.connect(signer);
@@ -95,12 +95,16 @@ export async function attestCheckout(
       recipient: recipient,
       revocable: false, // Be aware that if your schema is not revocable, this MUST be false
       data: encodedData,
+      expirationTime: BigInt(0),
+      value: BigInt(0),
+      refUID: ZeroHash,
     },
   });
 
   const newAttestationUID = await tx.wait();
 
   console.log("New attestation UID:", newAttestationUID);
+  return newAttestationUID;
 }
 
 export async function attestHostReview(
@@ -108,7 +112,7 @@ export async function attestHostReview(
   user: string,
   hypercertId: number,
   recipient: string,
-  reviews: { stars: number; user: string }[]
+  reviews: { stars: number; user: string }[],
 ) {
   const eas = new EAS("0x4200000000000000000000000000000000000021");
   eas.connect(signer);
@@ -133,4 +137,5 @@ export async function attestHostReview(
   const newAttestationUID = await tx.wait();
 
   console.log("New attestation UID:", newAttestationUID);
+  return newAttestationUID;
 }
