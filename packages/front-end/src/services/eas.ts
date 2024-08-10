@@ -12,7 +12,7 @@ const hostReviewSchemaDefinition =
 
 const RegistrationContract = "0x6b097466783ec818785d194cF66942E764e67D4C";
 const CheckoutContract = "0xad040f2565e1dA79278677Fcf7cf7C49E7b49e1E";
-const HostReviewResolver = "0x5c56b6Bcf8752054981220CE084c021594e13Ca3";
+const HostReviewContract = "0x5c56b6Bcf8752054981220CE084c021594e13Ca3";
 
 const RegistrationSchema =
   "0xe4b131099876d653b5390d2f9e1d4b307dc4b9053e160b04e2e5d79a2783407e";
@@ -105,7 +105,7 @@ export async function attestHostReview(
   recipient: string,
   reviews: { stars: number; user: string }[]
 ) {
-  const eas = new EAS(CheckoutContract);
+  const eas = new EAS(HostReviewContract);
   eas.connect(signer);
 
   // Initialize SchemaEncoder with the schema string
