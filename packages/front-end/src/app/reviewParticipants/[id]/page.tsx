@@ -1,7 +1,7 @@
 "use client";
 import ActivityCard from "@/components/Activities/Card";
 import React, { useState } from "react";
-import ReviewCard from "./Card";
+import ReviewCard from "@/components/ReviewParticipants/Card";
 import participantsData from "@/participantsData.json";
 import { ParticipantData } from "@/types/commons";
 
@@ -11,6 +11,7 @@ export default function ReviewParticipants() {
   return (
     <div className="flex flex-col gap-4">
       <ActivityCard
+        id={0}
         icon={"/icons/broom-icon.svg"}
         name={"Beach Cleanup"}
         date={"August 7th, 12:00 - 18:00"}

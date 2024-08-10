@@ -27,7 +27,7 @@ export default function ActivityCard({
   const router = useRouter();
   const redirectToReviews = () => {
     if (goTo) {
-      router.push(`${goTo}`);
+      router.push(`${goTo}/${id}`);
     }
   };
   return (

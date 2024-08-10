@@ -11,6 +11,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import Link from "next/link";
+import { DialogClose } from "@radix-ui/react-dialog";
 
 type Props = {
   name: string;
@@ -21,8 +22,8 @@ type Props = {
   account: boolean;
   setAccount: Dispatch<SetStateAction<boolean>>;
   forCheckIn: boolean;
-  setForCheckIn: Dispatch<SetStateAction<boolean>>;
   forCheckOut: boolean;
+  setForCheckOut: Dispatch<SetStateAction<boolean>>;
 };
 
 export default function ActivityContent({
@@ -33,8 +34,8 @@ export default function ActivityContent({
   account,
   setAccount,
   forCheckIn,
-  setForCheckIn,
   forCheckOut,
+  setForCheckOut,
 }: Props) {
   return (
     <div className="relative flex flex-col gap-2">
@@ -111,7 +112,7 @@ export default function ActivityContent({
       )}
       {account && forCheckIn && !forCheckOut && (
         <button
-          onClick={() => setForCheckIn(true)}
+          onClick={() => setForCheckOut(true)}
           className="w-full btn bg-buttonGreen tex-xs text-white"
         >
           <p>Check In</p>
@@ -126,9 +127,9 @@ export default function ActivityContent({
       {account && forCheckIn && forCheckOut && (
         <Dialog>
           <DialogTrigger>
-            <button className="w-full btn bg-buttonGreen tex-xs text-white">
+            <div className="w-full btn bg-buttonGreen tex-xs text-white">
               <p>Check Out</p>
-            </button>
+            </div>
           </DialogTrigger>
           <DialogContent className="flex flex-col rounded-md bg-grayBg">
             <DialogHeader className="flex justify-center items-center gap-2">
@@ -144,10 +145,15 @@ export default function ActivityContent({
                 this current activity
               </DialogDescription>
               <div className="w-full flex gap-2">
-                <button className="flex-1 btn tex-xs text-black border-buttonGreen border-2">
-                  <p>Cancel</p>
-                </button>
-                <Link href="/fillIn" className="flex-1 btn bg-buttonGreen tex-xs text-white">
+                <div className="flex-1 btn tex-xs text-black border-buttonGreen border-2">
+                  <DialogClose>
+                    <p>Cancel</p>
+                  </DialogClose>
+                </div>
+                <Link
+                  href="/fillIn"
+                  className="flex-1 btn bg-buttonGreen tex-xs text-white"
+                >
                   <p>Check Out</p>
                 </Link>
               </div>

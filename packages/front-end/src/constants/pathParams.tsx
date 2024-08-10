@@ -11,8 +11,7 @@ import Link from "next/link";
 import Image from "next/image";
 
 export const pathToMenuItem = (path: string) => {
-  const section = path.split("/")[1];
-  return pathParams.find((menuItem) => menuItem.path == section);
+  return pathParams.find((menuItem) => path.includes(menuItem.path));
 };
 
 export const pathParams: PathParamsType[] = [
