@@ -3,17 +3,17 @@ import { JsonRpcProvider, Wallet } from "ethers";
 import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {
-  const { asttestationID } = await req.json();
+  const { attestationID } = await req.json();
 
-  console.debug({ asttestationID });
+  console.debug({ attestationID });
 
   try {
     const provider = new JsonRpcProvider("https://rpc.ankr.com/base_sepolia");
     const wallet = new Wallet(
       process.env.ATTESTATOR_SIGNER_PRIVATE_KEY as string,
-      provider
+      provider,
     );
-    await attestSignOut(wallet, asttestationID);
+    await attestSignOut(wallet, attestationID);
 
     return NextResponse.json({ result: "OK" });
   } catch (e) {

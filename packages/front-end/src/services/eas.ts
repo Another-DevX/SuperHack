@@ -109,7 +109,6 @@ export async function attestCheckout(
 
 export async function attestHostReview(
   signer: TransactionSigner,
-  user: string,
   hypercertId: number,
   recipient: string,
   reviews: { stars: number; user: string }[],
@@ -120,7 +119,6 @@ export async function attestHostReview(
   // Initialize SchemaEncoder with the schema string
   const schemaEncoder = new SchemaEncoder(hostReviewSchemaDefinition);
   const encodedData = schemaEncoder.encodeData([
-    { name: "user", value: user, type: "address" },
     { name: "hypercertID", value: hypercertId, type: "uint256" },
     { name: "reviews", value: reviews, type: "(uint16 stars,address user)[]" },
   ]);
@@ -131,6 +129,9 @@ export async function attestHostReview(
       recipient: recipient,
       revocable: false, // Be aware that if your schema is not revocable, this MUST be false
       data: encodedData,
+      expirationTime: BigInt(0),
+      value: BigInt(0),
+      refUID: ZeroHash,
     },
   });
 

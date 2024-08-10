@@ -11,14 +11,14 @@ export async function POST(req: Request) {
     const provider = new JsonRpcProvider("https://rpc.ankr.com/base_sepolia");
     const wallet = new Wallet(
       process.env.ATTESTATOR_SIGNER_PRIVATE_KEY as string,
-      provider
+      provider,
     );
     const attestationId = await attestCheckout(
       wallet,
       address,
       hypercertID,
       address,
-      hostRate
+      hostRate,
     );
     console.debug("Response:" + attestationId);
     return NextResponse.json({ receipt: attestationId });
