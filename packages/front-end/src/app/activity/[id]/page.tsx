@@ -11,8 +11,7 @@ export default function Activity() {
     if (account == true)
       setTimeout(() => {
         setForCheckIn(true);
-      }, 2000);
-    if (forCheckIn == true) setForCheckOut(true);
+      }, 3000);
   }, [account, forCheckIn]);
 
   return (
@@ -25,8 +24,8 @@ export default function Activity() {
       account={account}
       setAccount={setAccount}
       forCheckIn={forCheckIn}
-      setForCheckIn={setForCheckIn}
       forCheckOut={forCheckOut}
+      setForCheckOut={setForCheckOut}
     />
   );
 }

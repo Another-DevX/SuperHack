@@ -1,16 +1,39 @@
 import React from "react";
 import Header from "../Layout/Header";
-import ArrowLeftIcon from "@/public/icons/arrow-left-icon.svg";
-import SaveIcon from "@/public/icons/save-icon.svg";
 import Image from "next/image";
 import UploadAvatarContent from "./Content";
+import Link from "next/link";
 
 export default function UploadAvatar() {
   return (
     <div className="w-full h-full flex flex-col items-center justify-between">
       <Header
-        iconLeft={ArrowLeftIcon}
-        iconRight={SaveIcon}
+        iconLeft={() => (
+          <Link
+            href={"/createAccount"}
+            className="w-8 h-8 absolute flex justify-center items-center left-4 top-1/2 translate-y-[-50%]"
+          >
+            <Image
+              width={22}
+              height={22}
+              src={"/icons/arrow-left-icon.svg"}
+              alt={`plus cicle icon`}
+            />
+          </Link>
+        )}
+        iconRight={() => (
+          <Link
+            href={"/activities"}
+            className="w-8 h-8 absolute flex justify-center items-center right-4 top-1/2 translate-y-[-50%]"
+          >
+            <Image
+              width={22}
+              height={22}
+              src={"/icons/save-icon.svg"}
+              alt={`save-icon`}
+            />
+          </Link>
+        )}
         text="Upload Avatar"
       />
       <div className="w-full h-full p-4 overflow-y-scroll">

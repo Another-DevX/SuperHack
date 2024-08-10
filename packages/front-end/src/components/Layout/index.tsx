@@ -3,7 +3,7 @@ import React, { ReactNode } from "react";
 import Menu from "./Menu";
 import Header from "./Header";
 import { usePathname } from "next/navigation";
-import { pathToMenuItem } from "@/lib/utils";
+import { pathToMenuItem } from "@/constants/pathParams";
 import CreateAccount from "../CreateAccount";
 import UploadAvatar from "../UploadAvatar";
 
@@ -17,7 +17,7 @@ export const PageLayout = ({
 
   if (pathName == "/")
     return (
-      <main className="w-screen h-screen bg-generalBg overflow-scroll">
+      <main className="w-screen h-screen bg-signInBg overflow-scroll">
         {children}
       </main>
     );
