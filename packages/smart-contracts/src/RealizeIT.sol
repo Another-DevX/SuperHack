@@ -10,6 +10,7 @@ contract RealizeIT is IRealizeIT, IERC1155Receiver {
     struct TempCampaign {
         address creator;
         uint256 prizePool;
+        bool onlyVerified;
     }
 
     TempCampaign private tempCampaign;
@@ -60,10 +61,15 @@ contract RealizeIT is IRealizeIT, IERC1155Receiver {
         USDC = _USDC;
     }
 
-    function createCampaign(string memory uri, uint256 prizePool) public {
+    function createCampaign(
+        string memory uri,
+        uint256 prizePool,
+        bool onlyVerifiedAccounts
+    ) public {
         tempCampaign = TempCampaign({
             creator: msg.sender,
-            prizePool: prizePool
+            prizePool: prizePool,
+            onlyVerified: onlyVerifiedAccounts
         });
 
         hypercerts.mintClaim(
@@ -106,6 +112,12 @@ contract RealizeIT is IRealizeIT, IERC1155Receiver {
             campaign.currentQuota < campaign.maxQuota,
             "The campaign is full"
         );
+        if (campaign.onlyVerified) {
+            require(
+                users[user].isVerifiedWithWorldCoin,
+                "The user is not verified with WorldCoin"
+            );
+        }
         require(!campaign.attenders[user], "The user is currently signed in");
         campaign.currentQuota += 1;
         campaign.attenders[user] = true;
@@ -196,6 +208,7 @@ contract RealizeIT is IRealizeIT, IERC1155Receiver {
         campaign.maxQuota = 100; // O cualquier otro valor que desees
         campaign.currentQuota = 0;
         campaign.checkouts = 0;
+        campaign.onlyVerified = tempCampaign.onlyVerified;
 
         delete tempCampaign;
         return this.onERC1155Received.selector;
