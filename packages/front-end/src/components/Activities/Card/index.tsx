@@ -1,14 +1,9 @@
 import ProfileStats from "@/components/MyProfile/Stats";
+import { ActivityType } from "@/types/commons";
 import Image from "next/image";
 import React from "react";
 
-type Props = {
-  icon: string;
-  name: string;
-  stars: number;
-  usdc: number;
-  date: string
-};
+type Props = ActivityType;
 
 export default function ActivityCard({ icon, name, stars, usdc, date }: Props) {
   return (
@@ -26,8 +21,8 @@ export default function ActivityCard({ icon, name, stars, usdc, date }: Props) {
         </div>
       </div>
       <div className="flex justify-start items-start gap-2 px-2">
-        <ProfileStats value={stars} icon="/icons/stars-icon.svg" />
-        <ProfileStats value={usdc} icon="/icons/usdc-icon.svg" />
+        {stars && <ProfileStats value={stars} icon="/icons/stars-icon.svg" />}
+        {usdc && <ProfileStats value={usdc} icon="/icons/usdc-icon.svg" />}
       </div>
     </div>
   );

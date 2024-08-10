@@ -1,9 +1,9 @@
+import ButtonUseCamera from "@/components/commons/ButtonUseCamera";
 import { Input } from "@/components/ui/input";
 import Image from "next/image";
 import React from "react";
 
 export default function UploadAvatarContent() {
-  const openCamera = () => {};
   return (
     <div className="flex flex-col items-center gap-4">
       <Input
@@ -18,15 +18,7 @@ export default function UploadAvatarContent() {
         alt="or img"
         style={{ width: "100%" }}
       />
-      <button className="w-full btn bg-buttonGreen tex-xs text-white" onClick={openCamera}>
-        <Image
-          width={16}
-          height={16}
-          src="/icons/camera-icon.svg"
-          alt="or img"
-        />
-        <p>Use Camera</p>
-      </button>
+      <ButtonUseCamera />
     </div>
   );
 }

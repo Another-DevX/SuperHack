@@ -6,6 +6,8 @@ import ProfileIcon from "@/public/icons/profile-menu-icon.svg";
 import EditIcon from "@/public/icons/edit-icon.svg";
 import PlusCircleIcon from "@/public/icons/plus-circle-icon.svg";
 import ArrowRightIcon from "@/public/icons/arrow-right-icon.svg";
+import ArrowLeftIcon from "@/public/icons/arrow-left-icon.svg"
+import UploadIcon from "@/public/icons/upload-icon.svg"
 import CloseIcon from "@/public/icons/close-circle-icon.svg";
 import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
@@ -28,11 +30,24 @@ export const pathParams: PathParamsType[] = [
   },
   {
     text: "Create Acitivity",
-    icon: ActivitiesIcon,
     headerIconLeft: CloseIcon,
     headerIconRight: ArrowRightIcon,
     notSeenOnMenu: true,
     path: "createActivity",
+  },
+  {
+    text: "Add Activity Rewards",
+    headerIconLeft: ArrowLeftIcon,
+    headerIconRight: ArrowRightIcon,
+    notSeenOnMenu: true,
+    path: "addActivityRewards",
+  },
+  {
+    text: "Upload Before Images",
+    headerIconLeft: ArrowLeftIcon,
+    headerIconRight: UploadIcon,
+    notSeenOnMenu: true,
+    path: "uploadBeforeImages",
   },
   {
     text: "Wallet",
