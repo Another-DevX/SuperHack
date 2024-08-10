@@ -3,6 +3,7 @@ import {
   SchemaEncoder,
   TransactionSigner,
 } from "@ethereum-attestation-service/eas-sdk";
+import { ZeroHash } from "ethers";
 
 const registrationSchemaDefinition = "address user, uint256 hypercertID";
 const checkoutSchemaDefinition =
@@ -10,9 +11,7 @@ const checkoutSchemaDefinition =
 const hostReviewSchemaDefinition =
   "uint256 hypercertID,(uint16 stars,address user)[]";
 
-const RegistrationContract = "0x6b097466783ec818785d194cF66942E764e67D4C";
-const CheckoutContract = "0xad040f2565e1dA79278677Fcf7cf7C49E7b49e1E";
-const HostReviewContract = "0x5c56b6Bcf8752054981220CE084c021594e13Ca3";
+
 
 const RegistrationSchema =
   "0x1df8c9e0dd9db5399c10671b1e6fa955ed6b02acd0626171517f22651cc77b49";
@@ -21,14 +20,14 @@ const CheckoutSchema =
 const HostReviewSchema =
   "0x57e9642c4ed205c644d799388086fb2d45107d700d9b895682e630ecf2af1191";
 
-  
-export async function  attestSignUp(
+
+export async function attestSignUp(
   signer: TransactionSigner,
   user: string,
-  hypercertId: bigint,
+  hypercertId: string,
   recipient: string
-)  {
-  const eas = new EAS(RegistrationContract);
+) {
+  const eas = new EAS("0x4200000000000000000000000000000000000021");
   eas.connect(signer);
 
   // Initialize SchemaEncoder with the schema string
@@ -37,6 +36,7 @@ export async function  attestSignUp(
     { name: "user", value: user, type: "address" },
     { name: "hypercertID", value: hypercertId, type: "uint256" },
   ]);
+  console.debug({ user, hypercertId, recipient, encodedData });
 
   const tx = await eas.attest({
     schema: RegistrationSchema,
@@ -44,6 +44,9 @@ export async function  attestSignUp(
       recipient: recipient,
       revocable: true, // Be aware that if your schema is not revocable, this MUST be false
       data: encodedData,
+      expirationTime: BigInt(0),
+      value: BigInt(0),
+      refUID: ZeroHash,
     },
   });
 
@@ -57,7 +60,7 @@ export async function attestSignOut(
   signer: TransactionSigner,
   attestationId: string
 ) {
-  const eas = new EAS(RegistrationContract);
+  const eas = new EAS("0x4200000000000000000000000000000000000021");
   eas.connect(signer);
 
   const transaction = await eas.revoke({
@@ -75,7 +78,7 @@ export async function attestCheckout(
   recipient: string,
   hostRate: number
 ) {
-  const eas = new EAS(CheckoutContract);
+  const eas = new EAS("0x4200000000000000000000000000000000000021");
   eas.connect(signer);
 
   // Initialize SchemaEncoder with the schema string
@@ -107,7 +110,7 @@ export async function attestHostReview(
   recipient: string,
   reviews: { stars: number; user: string }[]
 ) {
-  const eas = new EAS(HostReviewContract);
+  const eas = new EAS("0x4200000000000000000000000000000000000021");
   eas.connect(signer);
 
   // Initialize SchemaEncoder with the schema string
