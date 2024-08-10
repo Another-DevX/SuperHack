@@ -17,9 +17,9 @@ const registrationSchema = "address user, uint256 hypercertID";
 const checkoutSchema = " address user,uint256 hypercertID, uint16 hostRate";
 const hostReviewSchema = "uint256 hypercertID,(uint16 stars,address user)[]";
 
-const RegistrationContract = "0x4bDd8DF9653A2aDB7309c5297F0c4318A2E8e403";
-const CheckoutContract = "0x7e77e6f24faf45315512A6997BeDB7E5948077C1";
-const HostReviewResolver = "0xB9A0B213cd8C6E9f97056bb509736162e1e4e005";
+const RegistrationContract = "0xc4E3aDDF2eB8bCC3E3b8C890f4654Dc23d7452e4";
+const CheckoutContract = "0xdBF0E0d86ba089c5A7309E891c03a7b20F59b4a0";
+const HostReviewResolver = "0xeA1e63B205efaefA60Dc66314ea926CdF584C066";
 
 const registerSchema = async (schema :string, revocable :boolean, name: string, resolverAddress: string) => {
   schemaRegistry.connect(signer);
@@ -40,6 +40,10 @@ async function main() {
 }
 
 main();
-/*RegistrationSchema: 0x1df8c9e0dd9db5399c10671b1e6fa955ed6b02acd0626171517f22651cc77b49
-CheckoutSchema: 0x9773edf40273e0f916d8bc566b9dedf82e9b3f1caf9b5824081b20f0dc3aabfc
-HostReviewSchema: 0x57e9642c4ed205c644d799388086fb2d45107d700d9b895682e630ecf2af1191c*/
+/*
+
+RegistrationSchema: 0xee95ef2317e2045c7e84dc58c9772178e5302971c52c46abbf17c333b2281240
+CheckoutSchema: 0x85d37d4ed2e6d589c271b136b0f779e9208a7a2a6c57165c88554d3bbd807268
+HostReviewSchema: 0xc2d9966087f3968ba1a39713388eb89ded047ff2d3cb86701bce52cf536a52ea
+
+*/

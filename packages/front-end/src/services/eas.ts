@@ -14,11 +14,11 @@ const hostReviewSchemaDefinition =
 
 
 const RegistrationSchema =
-  "0x1df8c9e0dd9db5399c10671b1e6fa955ed6b02acd0626171517f22651cc77b49";
+  "0xee95ef2317e2045c7e84dc58c9772178e5302971c52c46abbf17c333b2281240";
 const CheckoutSchema =
-  "0x9773edf40273e0f916d8bc566b9dedf82e9b3f1caf9b5824081b20f0dc3aabfc";
+  "0x85d37d4ed2e6d589c271b136b0f779e9208a7a2a6c57165c88554d3bbd807268";
 const HostReviewSchema =
-  "0x57e9642c4ed205c644d799388086fb2d45107d700d9b895682e630ecf2af1191";
+  "0xc2d9966087f3968ba1a39713388eb89ded047ff2d3cb86701bce52cf536a52ea";
 
 
 export async function attestSignUp(

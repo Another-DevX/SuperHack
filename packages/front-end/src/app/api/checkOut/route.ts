@@ -1,11 +1,11 @@
-import { attestSignUp } from "@/services/eas";
+import { attestCheckout } from "@/services/eas";
 import { JsonRpcProvider, Wallet } from "ethers";
 import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {
-  const { address, hypercertID } = await req.json();
+  const { address, hypercertID, hostRate } = await req.json();
 
-  console.debug({ address, hypercertID });
+  console.debug({ address, hypercertID, hostRate });
 
   try {
     const provider = new JsonRpcProvider("https://rpc.ankr.com/base_sepolia");
@@ -13,11 +13,12 @@ export async function POST(req: Request) {
       process.env.ATTESTATOR_SIGNER_PRIVATE_KEY as string,
       provider
     );
-    const attestationId = await attestSignUp(
+    const attestationId = await attestCheckout(
       wallet,
       address,
       hypercertID,
-      address
+      address,
+      hostRate
     );
     console.debug("Response:" + attestationId);
     return NextResponse.json({ receipt: attestationId });

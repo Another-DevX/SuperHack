@@ -17,6 +17,13 @@ contract RealizeIT is IRealizeIT, IERC1155Receiver {
         string uri;
     }
 
+    event CampaignCreated(address host, uint256 pricePool, uint256 maxQuota ,uint256 currentQuota ,uint256 checkouts , bool onlyVerified);
+    event SingedUp(address user, uint256 hypercertID);
+    event SingedOut(address user, uint256 hypercertID);
+    event CheckOut( address user, uint256 hypercertID, uint16 hostRate);
+   
+    event HostReviewed(uint256 hypercertID, uint16[] stars, address user);
+
     TempCampaign private tempCampaign;
 
     /// @dev The Hypercerts contract that will be used to mint Hypercerts
@@ -73,7 +80,7 @@ contract RealizeIT is IRealizeIT, IERC1155Receiver {
         tempCampaign = TempCampaign({
             creator: msg.sender,
             prizePool: prizePool,
-            onlyVerified: onlyVerifiedAccounts
+            onlyVerified: onlyVerifiedAccounts,
             uri: uri
         });
 
@@ -125,6 +132,8 @@ contract RealizeIT is IRealizeIT, IERC1155Receiver {
         require(!campaign.attenders[user], "The user is currently signed in");
         campaign.currentQuota += 1;
         campaign.attenders[user] = true;
+
+        emit SingedUp(user,hypercertID);
     }
 
     function signOut(address user, uint256 hypercertID) public {
@@ -132,6 +141,7 @@ contract RealizeIT is IRealizeIT, IERC1155Receiver {
         require(campaign.attenders[user], "The user is not signed in");
         campaign.currentQuota -= 1;
         campaign.attenders[user] = false;
+        emit SingedOut(user,hypercertID);
     }
 
     function checkOut(
@@ -214,6 +224,8 @@ contract RealizeIT is IRealizeIT, IERC1155Receiver {
         campaign.checkouts = 0;
         campaign.onlyVerified = tempCampaign.onlyVerified;
         delete tempCampaign;
+
+        emit CampaignCreated(campaign.host,campaign.pricePool, campaign.maxQuota ,campaign.currentQuota ,campaign.checkouts = 0, campaign.onlyVerified);
         return this.onERC1155Received.selector;
     }
 
