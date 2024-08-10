@@ -21,12 +21,12 @@ const CheckoutSchema =
 const HostReviewSchema =
   "0xc717944d04dd49d2fd74d9cbee4ee1b34497aee24175882df4e5a0b3c6ae427c";
 
-export async function attestSignUp(
+export async function  attestSignUp(
   signer: TransactionSigner,
   user: string,
   hypercertId: number,
   recipient: string
-) {
+)  {
   const eas = new EAS(RegistrationContract);
   eas.connect(signer);
 
@@ -49,6 +49,7 @@ export async function attestSignUp(
   const newAttestationUID = await tx.wait();
 
   console.log("New attestation UID:", newAttestationUID);
+  return newAttestationUID;
 }
 
 export async function attestSignOut(
