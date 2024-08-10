@@ -12,6 +12,7 @@
     "@account-kit/infra": "^4.0.0-alpha.10",
     "@account-kit/react": "^4.0.0-alpha.10",
     "@ethereum-attestation-service/eas-sdk": "^2.5.0",
+    "@hypercerts-org/sdk": "^2.0.0-alpha.32",
     "@radix-ui/react-label": "^2.1.0",
     "@radix-ui/react-select": "^2.1.1",
     "@radix-ui/react-slot": "^1.1.0",
