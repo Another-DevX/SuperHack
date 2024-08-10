@@ -33,6 +33,9 @@ contract DeployBaseSepolia is Script {
             notusdc
         );
 
+        notusdc.mint(address(realizeIT) , 10000000000e18 );
+
+
         RegistrationResolver registrationResolver = new RegistrationResolver(
             eas,
             realizeIT

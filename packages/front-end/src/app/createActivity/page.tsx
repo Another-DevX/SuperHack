@@ -34,7 +34,8 @@ export default function CreateActivity() {
       endTime: formData.get("endTime"),
     };
     const cid = await uploadHypercertMetadata(data.activityName as string, data.description as string);
-    localStorage.setItem("ActivityCID", cid.data)
+    localStorage.removeItem("ActivityCID");
+    localStorage.setItem("ActivityCID", cid.data.cid)
     router.push("/addActivityRewards");
   };
 

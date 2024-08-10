@@ -5,6 +5,9 @@ import {IWorldID} from "./interfaces/IWorldID.sol";
 import {ByteHasher} from "./helpers/ByteHasher.sol";
 import {IERC1155Receiver} from "@openzeppelin/contracts/token/ERC1155/IERC1155Receiver.sol";
 import {IHypercertToken} from "../src/interfaces/IHypercertToken.sol";
+import {Points} from "../src/Points.sol";
+
+
 import {IERC20} from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 contract RealizeIT is IRealizeIT, IERC1155Receiver {
     struct TempCampaign {
@@ -17,7 +20,7 @@ contract RealizeIT is IRealizeIT, IERC1155Receiver {
 
     /// @dev The Hypercerts contract that will be used to mint Hypercerts
     IHypercertToken hypercerts;
-    IERC20 points;
+    Points points;
     IERC20 USDC;
 
     mapping(address => Account) public users;
@@ -49,7 +52,7 @@ contract RealizeIT is IRealizeIT, IERC1155Receiver {
         string memory _appId,
         string memory _action,
         IHypercertToken _hypercerts,
-        IERC20 _points,
+        Points _points,
         IERC20 _USDC
     ) {
         worldId = _worldId;
@@ -78,7 +81,6 @@ contract RealizeIT is IRealizeIT, IERC1155Receiver {
             uri,
             IHypercertToken.TransferRestrictions.AllowAll
         );
-        USDC.transferFrom(msg.sender, address(this), prizePool);
     }
 
     function verifyPublicAddress(
@@ -171,12 +173,12 @@ contract RealizeIT is IRealizeIT, IERC1155Receiver {
             );
             if (reviews[i].stars >= 3) {
                 if (reviews[i].stars == 5) {
-                    points.transfer(reviews[i].user, 25);
+                    points.mint(reviews[i].user, 25);
                 }
                 if (reviews[i].stars == 4) {
-                    points.transfer(reviews[i].user, 10);
+                    points.mint(reviews[i].user, 10);
                 } else {
-                    points.transfer(reviews[i].user, 5);
+                    points.mint(reviews[i].user, 5);
                 }
             }
             _calculateAverageStars(reviews[i].user, reviews[i].stars);
