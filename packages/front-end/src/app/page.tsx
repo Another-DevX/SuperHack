@@ -38,7 +38,12 @@ export default function Home() {
           we create impactful transformations together.
         </p>
         {signerStatus.isInitializing ? (
-          <>Loading...</>
+          <button
+            className="btn bg-buttonGreen text-white"
+            onClick={openAuthModal}
+          >
+           Loading ... 
+          </button>
         ) : user ? (
           <div className="flex flex-col gap-2 p-2">
             <p className="text-xl font-bold">Success!</p>

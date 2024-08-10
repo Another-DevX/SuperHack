@@ -1,9 +1,11 @@
 import { ComponentType } from "react";
 
-export type MenuItemType = {
+export type PathParamsType = {
   text: string;
-  icon: ComponentType;
-  headerIcon?: ComponentType | undefined;
+  icon?: ComponentType;
+  headerIconLeft?: ComponentType | undefined;
+  headerIconRight?: ComponentType | undefined;
+  notSeenOnMenu?: boolean
   path: string;
 };
 

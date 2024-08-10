@@ -5,7 +5,7 @@ import React from "react";
 import ProfileStats from "./Stats";
 import MyProfilePhoto from "./Photo";
 import MyProfileVerify from "./Verify";
-import MyProfileData from "./Data";
+import InputWithLabel from "./Data";
 import {
   Select,
   SelectContent,
@@ -29,27 +29,29 @@ export default function MyProfile({ stars, greenPoints }: Props) {
           <MyProfilePhoto />
           <div className="flex flex-col gap-1">
             <MyProfileVerify />
-            <ProfileStats value={stars} icon="/icons/stars-icon.svg" />
-            <ProfileStats
-              value={greenPoints}
-              icon="/icons/green-points-icon.svg"
-            />
+            <div className="flex flex-col items-start">
+              <ProfileStats value={stars} icon="/icons/stars-icon.svg" />
+              <ProfileStats
+                value={greenPoints}
+                icon="/icons/green-points-icon.svg"
+              />
+            </div>
           </div>
         </div>
         <div className="flex flex-col gap-4">
-          <MyProfileData label="Username" type="text" placeHolder="luukdao" />
-          <MyProfileData
+          <InputWithLabel label="Username" type="text" placeHolder="luukdao" />
+          <InputWithLabel
             label="Age category"
             type="text"
             placeHolder="19 - 25"
           />
-          <MyProfileData
+          <InputWithLabel
             label="Location"
             type="text"
             placeHolder="Netherlands, Amsterdam"
           />
           <Select>
-            <SelectTrigger className="w-[180px]">
+            <SelectTrigger>
               <SelectValue placeholder="Select a network" />
             </SelectTrigger>
             <SelectContent>
