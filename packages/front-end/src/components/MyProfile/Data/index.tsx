@@ -14,7 +14,7 @@ export default function InputWithLabel({ label, type, placeHolder, height }: Pro
       <Label htmlFor="text" className="text-xs text-softGrayPlaceHolder">
         {label}
       </Label>
-      <Input className={`${height ? `h-${height}` : ''}`} id={placeHolder} type={type} placeholder={placeHolder} />
+      <Input className={`relative placeholder:absolute placeholder:top-3 ${height ? `h-${height}` : ''}`} id={placeHolder} type={type} placeholder={placeHolder} />
     </div>
   );
 }

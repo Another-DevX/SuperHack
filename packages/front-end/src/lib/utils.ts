@@ -6,8 +6,8 @@ import ProfileIcon from "@/public/icons/profile-menu-icon.svg";
 import EditIcon from "@/public/icons/edit-icon.svg";
 import PlusCircleIcon from "@/public/icons/plus-circle-icon.svg";
 import ArrowRightIcon from "@/public/icons/arrow-right-icon.svg";
-import ArrowLeftIcon from "@/public/icons/arrow-left-icon.svg"
-import UploadIcon from "@/public/icons/upload-icon.svg"
+import ArrowLeftIcon from "@/public/icons/arrow-left-icon.svg";
+import UploadIcon from "@/public/icons/upload-icon.svg";
 import CloseIcon from "@/public/icons/close-circle-icon.svg";
 import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
@@ -52,8 +52,23 @@ export const pathParams: PathParamsType[] = [
   {
     text: "Review Participants",
     headerIconLeft: ArrowLeftIcon,
+    headerIconRight: ArrowRightIcon,
     notSeenOnMenu: true,
     path: "reviewParticipants",
+  },
+  {
+    text: "Fill In",
+    headerIconLeft: ArrowLeftIcon,
+    headerIconRight: ArrowRightIcon,
+    notSeenOnMenu: true,
+    path: "fillIn",
+  },
+  {
+    text: "Upload After Images",
+    headerIconLeft: ArrowLeftIcon,
+    headerIconRight: UploadIcon,
+    notSeenOnMenu: true,
+    path: "uploadAfterImages",
   },
   {
     text: "Wallet",

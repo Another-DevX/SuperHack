@@ -23,7 +23,7 @@ export default function CreateActivity() {
         label="Description"
         type="text"
         placeHolder="Explain Your Acitivity"
-        height={32}
+        height={40}
       />
 
       <div className="grid w-full max-w-sm items-center gap-1.5">
