@@ -1,3 +1,4 @@
+"use client";
 import { PathParamsType } from "@/types/menu";
 import ActivitiesIcon from "@/public/icons/activities-menu-icon.svg";
 import WalletIcon from "@/public/icons/wallet-menu-icon.svg";
@@ -7,10 +8,12 @@ import Link from "next/link";
 import Image from "next/image";
 import sessionStorageService from "@/services/storageService";
 
-const currentActivityId = sessionStorage.getItem("currentActivityId");
-// sessionStorageService.on("storageChange", (e) => {
-//   console.log(currentActivityId);
-// });
+let currentActivityId = sessionStorageService.getItem("currentActivityId");
+sessionStorageService.on("storageChange", (e) => {
+  if (e.key == "currentActivityId") {
+    currentActivityId = e.newValue
+  }
+});
 
 export const pathToMenuItem = (path: string) => {
   return pathParams.find((menuItem) => path.includes(menuItem.path));
@@ -98,10 +101,10 @@ export const pathParams: PathParamsType[] = [
     path: "addActivityRewards",
   },
   {
-    text: "Upload Before Images",
+    text: "Upload After Images",
     headerIconLeft: () => (
       <Link
-        href={`/checkoutFillIn/${currentActivityId}`}
+        href={`/reviewFillIn/${currentActivityId}`}
         className="z-20 w-8 h-8 absolute flex justify-center items-center left-10 top-1/2 translate-y-[-50%]"
       >
         <Image
@@ -114,7 +117,7 @@ export const pathParams: PathParamsType[] = [
     ),
     headerIconRight: () => (
       <Link
-        href={`/rateHost/${currentActivityId}`}
+        href={`/activities`}
         className="z-20 w-8 h-8 absolute flex justify-center items-center right-10 top-1/2 translate-y-[-50%]"
       >
         <Image
@@ -126,7 +129,7 @@ export const pathParams: PathParamsType[] = [
       </Link>
     ),
     notSeenOnMenu: true,
-    path: "uploadBeforeImages",
+    path: "uploadAfterImages",
   },
   {
     text: "Review Participants",
@@ -145,7 +148,7 @@ export const pathParams: PathParamsType[] = [
     ),
     headerIconRight: () => (
       <Link
-        href={"/fillIn"}
+        href={`/reviewFillIn/${currentActivityId}`}
         className="z-20 w-8 h-8 absolute flex justify-center items-center right-10 top-1/2 translate-y-[-50%]"
       >
         <Image
@@ -189,6 +192,37 @@ export const pathParams: PathParamsType[] = [
     ),
     notSeenOnMenu: true,
     path: "checkoutFillIn",
+  },
+  {
+    text: "Fill In",
+    headerIconLeft: () => (
+      <Link
+        href={`/reviewParticipants/${currentActivityId}`}
+        className="z-20 w-8 h-8 absolute flex justify-center items-center left-10 top-1/2 translate-y-[-50%]"
+      >
+        <Image
+          width={22}
+          height={22}
+          src={"/icons/arrow-left-icon.svg"}
+          alt={`plus cicle icon`}
+        />
+      </Link>
+    ),
+    headerIconRight: () => (
+      <Link
+        href={`/uploadAfterImages/${currentActivityId}`}
+        className="z-20 w-8 h-8 absolute flex justify-center items-center right-10 top-1/2 translate-y-[-50%]"
+      >
+        <Image
+          width={22}
+          height={22}
+          src={"/icons/arrow-right-icon.svg"}
+          alt={`plus cicle icon`}
+        />
+      </Link>
+    ),
+    notSeenOnMenu: true,
+    path: "reviewFillIn",
   },
   {
     text: "Upload Participation Images",
@@ -255,19 +289,21 @@ export const pathParams: PathParamsType[] = [
         />
       </Link>
     ),
-    headerIconRight: () => (
-      <Link
-        href={"/activities"}
-        className="z-20 w-8 h-8 absolute flex justify-center items-center right-10 top-1/2 translate-y-[-50%]"
-      >
-        <Image
-          width={22}
-          height={22}
-          src={"/icons/upload-icon.svg"}
-          alt={`plus cicle icon`}
-        />
-      </Link>
-    ),
+    headerIconRight: () => {
+      return (
+        <Link
+          href={"/activities"}
+          className="z-20 w-8 h-8 absolute flex justify-center items-center right-10 top-1/2 translate-y-[-50%]"
+        >
+          <Image
+            width={22}
+            height={22}
+            src={"/icons/upload-icon.svg"}
+            alt={`plus cicle icon`}
+          />
+        </Link>
+      );
+    },
     notSeenOnMenu: true,
     path: "rateHost",
   },

@@ -37,7 +37,7 @@ export default function ActivityCard({
       onClick={redirectToReviews}
       className={`flex items-start justify-between ${
         opaque ? "bg-grayBg" : "bg-white"
-      } rounded-lg p-2`}
+      } rounded-lg p-2 cursor-pointer`}
     >
       <div className="flex gap-2 items-start">
         <Image

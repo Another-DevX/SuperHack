@@ -1,6 +1,6 @@
 import { EventEmitter } from "events";
 class SessionStorageService extends EventEmitter {
-   constructor() {
+  constructor() {
     super();
     if (typeof window !== "undefined") {
       this.initStorageListener();
@@ -25,7 +25,9 @@ class SessionStorageService extends EventEmitter {
   }
 
   getItem(key: string) {
-    return sessionStorage.getItem(key);
+    if (typeof sessionStorage !== "undefined") {
+      return sessionStorage.getItem(key);
+    }
   }
 
   removeItem(key: string) {
