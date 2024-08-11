@@ -100,11 +100,7 @@ export function handleUserCreated(
     event.transaction.hash.concatI32(event.logIndex.toI32())
   );
   entity.user = event.params.user;
-  entity.hypercertID = event.params.hypercertID;
-
-  entity.blockNumber = event.block.number;
-  entity.blockTimestamp = event.block.timestamp;
-  entity.transactionHash = event.transaction.hash;
+  entity.userName = event.params.userName;
 
   entity.save();
 }
