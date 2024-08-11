@@ -15,12 +15,18 @@ export default function Page({ params }: { params: { id: number } }) {
       />
       <div className="flex flex-col gap-2">
         <InputWithLabel
-          label="Transformation statement"
+          label="Contribution statement"
           type="text"
           placeHolder="Land clearing"
           height={40}
+          name="transformation"
         />
-        <InputWithLabel label="Takeaways" type="text" placeHolder="things" />
+        <InputWithLabel
+          label="Takeaways"
+          type="text"
+          placeHolder="things"
+          name="Takeaways"
+        />
       </div>
     </div>
   );

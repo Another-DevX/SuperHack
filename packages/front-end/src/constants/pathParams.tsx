@@ -186,7 +186,7 @@ export const pathParams: PathParamsType[] = [
       </Link>
     ),
     notSeenOnMenu: true,
-    path: "fillIn",
+    path: "checkoutFillIn",
   },
   {
     text: "Upload After Images",

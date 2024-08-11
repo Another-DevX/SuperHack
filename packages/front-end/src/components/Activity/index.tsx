@@ -208,7 +208,7 @@ export default function ActivityContent({
                   </DialogClose>
                 </div>
                 <Link
-                  href={`/fillIn/${id}`}
+                  href={`/checkoutFillIn/${id}`}
                   className="flex-1 btn bg-buttonGreen tex-xs text-white"
                 >
                   <p>Check Out</p>
