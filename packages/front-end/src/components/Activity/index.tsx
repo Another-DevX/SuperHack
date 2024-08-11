@@ -1,7 +1,7 @@
 import ActivityCard from "@/components/Activities/Card";
 import ProfileStats from "@/components/MyProfile/Stats";
 import Image from "next/image";
-import React, { Dispatch, SetStateAction } from "react";
+import React, { Dispatch, SetStateAction, useMemo, useState } from "react";
 import {
   Dialog,
   DialogContent,
@@ -26,8 +26,8 @@ type Props = {
   greenPoints: number;
   usdc: number;
   maxUsdc: number;
-  account: boolean;
-  setAccount: Dispatch<SetStateAction<boolean>>;
+  setSimon: Dispatch<SetStateAction<boolean>>;
+  isSignUp: boolean;
   forCheckIn: boolean;
   forCheckOut: boolean;
   setForCheckOut: Dispatch<SetStateAction<boolean>>;
@@ -39,27 +39,27 @@ export default function ActivityContent({
   stars,
   greenPoints,
   maxUsdc,
-  account,
-  setAccount,
+  setSimon,
+  isSignUp,
   forCheckIn,
   forCheckOut,
   setForCheckOut,
 }: Props) {
   const user = useUser();
-
   const { mutate: signUp, isPending: isSignUpPending } = useMutation({
     mutationFn: async () => {
       if (!user) return;
       const response = await axios.post("/api/signUp", {
         address: user?.address,
-        hypercertID: "4083388403051261561560495289181218537473",
+        hypercertID: id,
       });
       return {
         data: response.data,
-        hypercertID: "4083388403051261561560495289181218537473",
+        hypercertID: id,
       };
     },
     onSuccess: (data) => {
+      setSimon(true);
       console.debug("signUp", data);
       localStorage.setItem(`${data?.hypercertID}-signUp`, data?.data.receipt);
     },
@@ -68,9 +68,7 @@ export default function ActivityContent({
   const { mutate: signOut, isPending: isSignOutPending } = useMutation({
     mutationFn: async () => {
       return await axios.post("/api/signOut", {
-        attestationID: localStorage.getItem(
-          `${"4083388403051261561560495289181218537473"}-signUp`
-        ),
+        attestationID: localStorage.getItem(`${id}-signUp`),
       });
     },
   });
@@ -135,7 +133,7 @@ export default function ActivityContent({
           <p className="text-xs text-textSoftGray">{" * Sunblock"}</p>
         </div>
       </div>
-      {!account && !forCheckIn && !forCheckOut && (
+      {!isSignUp && !forCheckIn && !forCheckOut && (
         <Button
           disabled={isSignUpPending}
           onClick={() => signUp()}
@@ -145,7 +143,7 @@ export default function ActivityContent({
           <p>Sign Up</p>
         </Button>
       )}
-      {account && !forCheckIn && !forCheckOut && (
+      {isSignUp && !forCheckIn && !forCheckOut && (
         <Button
           disabled={isSignOutPending}
           onClick={() => signOut()}
@@ -157,7 +155,7 @@ export default function ActivityContent({
           <p>Withdraw</p>
         </Button>
       )}
-      {account && forCheckIn && forCheckOut && (
+      {isSignUp && forCheckIn && forCheckOut && (
         <button
           onClick={() => setForCheckOut(true)}
           className="w-full btn bg-buttonGreen tex-xs text-white"
@@ -171,7 +169,7 @@ export default function ActivityContent({
           />
         </button>
       )}
-      {account && forCheckIn && forCheckOut && (
+      {isSignUp && forCheckIn && forCheckOut && (
         <Dialog>
           <DialogTrigger>
             <div className="w-full btn bg-buttonGreen tex-xs text-white"></div>
