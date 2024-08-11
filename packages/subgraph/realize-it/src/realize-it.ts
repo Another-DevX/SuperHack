@@ -24,6 +24,7 @@ export function handleCampaignCreated(event: CampaignCreatedEvent): void {
   entity.checkouts = event.params.checkouts;
   entity.onlyVerified = event.params.onlyVerified;
 
+  entity.hypercertID = event.params.hypercertID;
   entity.blockNumber = event.block.number;
   entity.blockTimestamp = event.block.timestamp;
   entity.transactionHash = event.transaction.hash;
@@ -36,7 +37,6 @@ export function handleCheckOut(event: CheckOutEvent): void {
     event.transaction.hash.concatI32(event.logIndex.toI32()),
   );
   entity.user = event.params.user;
-  entity.hypercertID = event.params.hypercertID;
   entity.hostRate = event.params.hostRate;
 
   entity.blockNumber = event.block.number;
