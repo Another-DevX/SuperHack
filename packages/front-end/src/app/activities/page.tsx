@@ -49,8 +49,7 @@ export default function Activities() {
                 stars={4.9}
                 usdc={10}
                 date={"August 7th, 12:00 - 18:00"}
-                goTo="reviewParticipants"
-                opaque
+                goTo="activity"
               />
             ))}
       </div>

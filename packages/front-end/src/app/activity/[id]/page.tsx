@@ -12,11 +12,12 @@ export default function Page({ params }: { params: { id: number } }) {
   );
 
   useEffect(() => {
-    if (isSingUp)
+    if (isSingUp) {
       setTimeout(() => {
         setForCheckIn(true);
       }, 3000);
-  }, [isSingUp, forCheckIn]);
+    }
+  }, [isSingUp, forCheckIn, forCheckOut]);
 
   return (
     <ActivityContent

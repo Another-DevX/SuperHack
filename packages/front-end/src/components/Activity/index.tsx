@@ -1,7 +1,13 @@
 import ActivityCard from "@/components/Activities/Card";
 import ProfileStats from "@/components/MyProfile/Stats";
 import Image from "next/image";
-import React, { Dispatch, SetStateAction, useMemo, useState } from "react";
+import React, {
+  Dispatch,
+  SetStateAction,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
 import {
   Dialog,
   DialogContent,
@@ -72,6 +78,12 @@ export default function ActivityContent({
       });
     },
   });
+
+  const onCheckIn = () => {
+    setTimeout(() => {
+      setForCheckOut(true);
+    }, 3000);
+  };
 
   return (
     <div className="relative flex flex-col gap-2">
@@ -155,9 +167,9 @@ export default function ActivityContent({
           <p>Withdraw</p>
         </Button>
       )}
-      {isSignUp && forCheckIn && forCheckOut && (
+      {isSignUp && forCheckIn && !forCheckOut && (
         <button
-          onClick={() => setForCheckOut(true)}
+          onClick={onCheckIn}
           className="w-full btn bg-buttonGreen tex-xs text-white"
         >
           <p>Check In</p>
@@ -172,7 +184,9 @@ export default function ActivityContent({
       {isSignUp && forCheckIn && forCheckOut && (
         <Dialog>
           <DialogTrigger>
-            <div className="w-full btn bg-buttonGreen tex-xs text-white"></div>
+            <div className="w-full btn bg-buttonGreen tex-xs text-white">
+              Check Out
+            </div>
           </DialogTrigger>
           <DialogContent className="flex flex-col rounded-md bg-grayBg">
             <DialogHeader className="flex justify-center items-center gap-2">
@@ -193,9 +207,6 @@ export default function ActivityContent({
                     <p>Cancel</p>
                   </DialogClose>
                 </div>
-                <button className="flex-1 btn tex-xs text-black border-buttonGreen border-2">
-                  <p>Cancel</p>
-                </button>
                 <Link
                   href={`/fillIn/${id}`}
                   className="flex-1 btn bg-buttonGreen tex-xs text-white"
