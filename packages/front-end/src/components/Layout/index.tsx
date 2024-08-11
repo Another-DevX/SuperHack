@@ -42,7 +42,7 @@ export const PageLayout = ({
   if (pathName == "/createAccount")
     return (
       <main className="w-screen h-screen flex items-center justify-center bg-signInBg">
-        <div className="relative w-[320px] h-[600px] pt-10 pb-4 flex flex-col items-center justify-between">
+        <div className="relative w-[320px] h-[600px] pt-10 pb-4 flex flex-col items-start justify-start">
           <CreateAccount />
           <Image
             width={120}
@@ -53,8 +53,8 @@ export const PageLayout = ({
               zIndex: 1,
               top: 0,
               position: "absolute",
-              width: "100vw",
-              height: "100vh",
+              width: "100%",
+              height: "100%",
               pointerEvents: "none",
             }}
           />
@@ -65,21 +65,23 @@ export const PageLayout = ({
   if (pathName == "/uploadAvatar")
     return (
       <main className="w-screen h-screen flex items-center justify-center bg-signInBg">
-        <UploadAvatar />
-        <Image
-          width={120}
-          height={120}
-          src={"/images/phone-frame-img.png"}
-          alt="phone-frame-img"
-          style={{
-            zIndex: 1,
-            top: 0,
-            position: "absolute",
-            width: "100vw",
-            height: "100vh",
-            pointerEvents: "none",
-          }}
-        />
+        <div className="relative w-[320px] h-[600px] pt-10 pb-4 flex flex-col items-start justify-start">
+          <UploadAvatar />
+          <Image
+            width={120}
+            height={120}
+            src={"/images/phone-frame-img.png"}
+            alt="phone-frame-img"
+            style={{
+              zIndex: 1,
+              top: 0,
+              position: "absolute",
+              width: "100%",
+              height: "100%",
+              pointerEvents: "none",
+            }}
+          />
+        </div>
       </main>
     );
 

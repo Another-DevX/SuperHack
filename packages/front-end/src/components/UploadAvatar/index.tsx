@@ -6,12 +6,12 @@ import Link from "next/link";
 
 export default function UploadAvatar() {
   return (
-    <div className="z-20 w-full h-full flex flex-col items-center justify-between">
+    <div className="w-full h-full flex flex-col items-center justify-between">
       <Header
         iconLeft={() => (
           <Link
             href={"/createAccount"}
-            className="w-8 h-8 absolute flex justify-center items-center left-4 top-1/2 translate-y-[-50%]"
+            className="w-8 h-8 absolute flex justify-center items-center left-6 top-1/2 translate-y-[-50%]"
           >
             <Image
               width={22}
@@ -24,7 +24,7 @@ export default function UploadAvatar() {
         iconRight={() => (
           <Link
             href={"/activities"}
-            className="w-8 h-8 absolute flex justify-center items-center right-4 top-1/2 translate-y-[-50%]"
+            className="w-8 h-8 absolute flex justify-center items-center right-6 top-1/2 translate-y-[-50%]"
           >
             <Image
               width={22}
@@ -36,7 +36,7 @@ export default function UploadAvatar() {
         )}
         text="Upload Avatar"
       />
-      <div className="w-full h-full p-4 overflow-y-scroll">
+      <div className="w-full h-full py-4 px-8 overflow-y-scroll">
         <UploadAvatarContent />
       </div>
       <Image

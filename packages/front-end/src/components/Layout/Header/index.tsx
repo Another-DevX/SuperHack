@@ -2,7 +2,7 @@ import React, { ComponentType } from "react";
 
 type Props = {
   text: string;
-  textSize: string | undefined;
+  textSize?: string | undefined;
   iconLeft?: ComponentType<{ className?: string }> | undefined;
   iconRight?: ComponentType<{ className?: string }> | undefined;
 };
