@@ -1,5 +1,5 @@
-type CampaignCreated @entity(immutable: true) {
-  id: Bytes!
+type CampaignCreated @entity{
+  id: String!
   host: Bytes! # address
   pricePool: BigInt! # uint256
   maxQuota: BigInt! # uint256
@@ -10,6 +10,8 @@ type CampaignCreated @entity(immutable: true) {
   blockTimestamp: BigInt!
   transactionHash: Bytes!
   hypercertID: BigInt! # uint256
+  signedUsers: [Bytes!]! # address[]
+  signedOutUsers: [Bytes!]! # address[]
 }
 
 type CheckOut @entity(immutable: true) {
@@ -30,6 +32,13 @@ type HostReviewed @entity(immutable: true) {
   blockNumber: BigInt!
   blockTimestamp: BigInt!
   transactionHash: Bytes!
+}
+
+type User @entity {
+  id: Bytes! # address
+  stars: BigInt!
+  points: BigInt!
+  name: String
 }
 
 type SingedOut @entity(immutable: true) {

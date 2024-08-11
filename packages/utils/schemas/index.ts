@@ -17,9 +17,9 @@ const checkoutSchema = " address user,uint256 hypercertID, uint16 hostRate";
 const hostReviewSchema =
   "uint256 hypercertID,(uint16 stars,address user)[] reviews";
 
-const RegistrationContract = "0xa684d2037F5Ac305E8293933535309aE98A9149A";
-const CheckoutContract = "0x9ac3b971bb4ce65c9583F14e7F016D65757A3F3d";
-const HostReviewResolver = "0xE3467AeC1c2bC406cadf363D94f829C9D4371655";
+const RegistrationContract = "0x19a685CcAfcfE70102B69F91C1928D2801E8f1aC";
+const CheckoutContract = "0x7Ef76eF7Cb84A852cD7f672B4b3dbc568b20cE0A";
+const HostReviewResolver = "0xcCF95BFFF3F9185400cd16135d2f92604160A494";
 
 const registerSchema = async (
   schema: string,
@@ -61,10 +61,9 @@ async function main() {
 
 main();
 /*
-
-RegistrationSchema: 0x3539dce80f1ead6893317037ff2ad4dc67ea032e5d65e1ee6afd0a3b21d6ccd3
-CheckoutSchema: 0x14f0592c71ea5076831b062ffa1eeb8e019edaea6b06a38c723e764197ac9757
-HostReviewSchema: 0xf6c5b8abb35f1ff4399a8ccf2c2fde1a88f460cf9f255a269b176c92ec789a19
+RegistrationSchema: 0x4b287d3f18ab895b1f7cd80fe72c304a9463015fcdcce0bde5502a0ad4b52472
+CheckoutSchema: 0x7be7f7a4013f1186414398496012e2781b26cb42ae1c9ca018d6ec9b788d8814
+HostReviewSchema: 0x51fad90fd41712934c205ff4fe1abe79c6563ee1993bce6c2ef38492ce534c4a
 
 */
 
