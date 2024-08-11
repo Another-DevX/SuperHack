@@ -1,21 +1,22 @@
 import { EventEmitter } from "events";
 class SessionStorageService extends EventEmitter {
-  constructor() {
+   constructor() {
     super();
-    this.initStorageListener();
+    if (typeof window !== "undefined") {
+      this.initStorageListener();
+    }
   }
 
   initStorageListener() {
-    // if (!window) return;
-    // window.addEventListener("storage", (event) => {
-    //   if (event.storageArea === sessionStorage) {
-    //     this.emit("storageChange", {
-    //       key: event.key,
-    //       newValue: event.newValue,
-    //       oldValue: event.oldValue,
-    //     });
-    //   }
-    // });
+    window.addEventListener("storage", (event) => {
+      if (event.storageArea === sessionStorage) {
+        this.emit("storageChange", {
+          key: event.key,
+          newValue: event.newValue,
+          oldValue: event.oldValue,
+        });
+      }
+    });
   }
 
   setItem(key: string, value: string) {
