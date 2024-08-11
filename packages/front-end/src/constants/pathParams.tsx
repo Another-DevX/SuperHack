@@ -3,9 +3,14 @@ import ActivitiesIcon from "@/public/icons/activities-menu-icon.svg";
 import WalletIcon from "@/public/icons/wallet-menu-icon.svg";
 import LeaderBoardIcon from "@/public/icons/leaderboard-menu-icon.svg";
 import ProfileIcon from "@/public/icons/profile-menu-icon.svg";
-import UploadIcon from "@/public/icons/upload-icon.svg";
 import Link from "next/link";
 import Image from "next/image";
+import sessionStorageService from "@/services/storageService";
+
+const currentActivityId = sessionStorageService.getItem("currentActivityId");
+sessionStorageService.on("storageChange", (e) => {
+  console.log(currentActivityId);
+});
 
 export const pathToMenuItem = (path: string) => {
   return pathParams.find((menuItem) => path.includes(menuItem.path));
@@ -93,10 +98,10 @@ export const pathParams: PathParamsType[] = [
     path: "addActivityRewards",
   },
   {
-    text: "Upload Participation Images",
+    text: "Upload Before Images",
     headerIconLeft: () => (
       <Link
-        href={"/rateHost"}
+        href={`/checkoutFillIn/${currentActivityId}`}
         className="z-20 w-8 h-8 absolute flex justify-center items-center left-10 top-1/2 translate-y-[-50%]"
       >
         <Image
@@ -109,7 +114,7 @@ export const pathParams: PathParamsType[] = [
     ),
     headerIconRight: () => (
       <Link
-        href={"/activities"}
+        href={`/rateHost/${currentActivityId}`}
         className="z-20 w-8 h-8 absolute flex justify-center items-center right-10 top-1/2 translate-y-[-50%]"
       >
         <Image
@@ -158,7 +163,7 @@ export const pathParams: PathParamsType[] = [
     text: "Fill In",
     headerIconLeft: () => (
       <Link
-        href={"/activities"}
+        href={`/activity/${currentActivityId}`}
         className="z-20 w-8 h-8 absolute flex justify-center items-center left-10 top-1/2 translate-y-[-50%]"
       >
         <Image
@@ -171,7 +176,7 @@ export const pathParams: PathParamsType[] = [
     ),
     headerIconRight: () => (
       <Link
-        href={"/uploadParticipationImages/1"}
+        href={`/uploadParticipationImages/${currentActivityId}`}
         className="z-20 w-8 h-8 absolute flex justify-center items-center right-10 top-1/2 translate-y-[-50%]"
       >
         <Image
@@ -190,7 +195,7 @@ export const pathParams: PathParamsType[] = [
     textSize: "xs",
     headerIconLeft: () => (
       <Link
-        href={"/activities"}
+        href={`/checkoutFillIn/${currentActivityId}`}
         className="z-20 w-8 h-8 absolute flex justify-center items-center left-10 top-1/2 translate-y-[-50%]"
       >
         <Image
@@ -203,7 +208,7 @@ export const pathParams: PathParamsType[] = [
     ),
     headerIconRight: () => (
       <Link
-        href={"/rateHost"}
+        href={`/rateHost/${currentActivityId}`}
         className="z-20 w-8 h-8 absolute flex justify-center items-center right-10 top-1/2 translate-y-[-50%]"
       >
         <Image
@@ -239,7 +244,7 @@ export const pathParams: PathParamsType[] = [
     text: "Rate Host",
     headerIconLeft: () => (
       <Link
-        href={"/activities"}
+        href={`/uploadParticipationImages/${currentActivityId}`}
         className="z-20 w-8 h-8 absolute flex justify-center items-center left-10 top-1/2 translate-y-[-50%]"
       >
         <Image

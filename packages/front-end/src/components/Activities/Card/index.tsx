@@ -1,5 +1,6 @@
 "use client";
 import ProfileStats from "@/components/MyProfile/Stats";
+import sessionStorageService from "@/services/storageService";
 import { ActivityType } from "@/types/commons";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
@@ -26,6 +27,7 @@ export default function ActivityCard({
 }: Props) {
   const router = useRouter();
   const redirectToReviews = () => {
+    sessionStorageService.setItem("currentActivityId", `${id}`);
     if (goTo) {
       router.push(`${goTo}/${id}`);
     }

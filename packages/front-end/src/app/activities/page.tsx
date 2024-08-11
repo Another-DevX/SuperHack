@@ -7,7 +7,6 @@ import { useUser } from "@account-kit/react";
 export default function Activities() {
   const { loading, error, data } = useGetActivities();
   const user = useUser();
-  console.log(data);
   return (
     <div className="flex flex-col gap-4">
       <div className="flex flex-col gap-2">
