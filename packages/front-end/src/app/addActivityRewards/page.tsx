@@ -10,13 +10,14 @@ import {
   useSendUserOperation,
   useSmartAccountClient,
 } from '@account-kit/react';
+import { Loader2 } from 'lucide-react';
 
 import React from 'react';
 import { encodeFunctionData, erc20Abi, parseEther, type Address } from 'viem';
 
 export default function AddActivityRewards() {
   const { client } = useSmartAccountClient({ type: 'LightAccount',     policyId: "8114749c-f841-481e-981e-5c8fb3ff247f",  });
-  const { sendUserOperation } = useSendUserOperation({
+  const { sendUserOperation, isSendingUserOperation } = useSendUserOperation({
     client,
     // optional parameter that will wait for the transaction to be mined before returning
     waitForTxn: true,
@@ -84,7 +85,9 @@ export default function AddActivityRewards() {
         placeHolder='10'
         name='rewardPerParticipant' // Añadir nombre para que pueda ser recogido en el handleSubmit
       />
-      <Button type='submit'>Next</Button>
+      <Button disabled={isSendingUserOperation} type='submit'>
+        {isSendingUserOperation && <Loader2/>}
+        Next</Button>
     </form>
   );
 }

@@ -8,7 +8,7 @@ dataSources:
     name: RealizeIT
     network: base-sepolia
     source:
-      address: "0x79f0c6E889159BA87A7DafcFC40DDcbdBef9508B"
+      address: "0x88ACdA903DC4F82B962f58A0e70211dFFE72FD09"
       abi: RealizeIT
       startBlock: 13781175
     mapping:
