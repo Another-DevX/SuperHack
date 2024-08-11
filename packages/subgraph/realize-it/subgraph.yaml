@@ -35,10 +35,10 @@ dataSources:
           handler: handleSingedOut
         - event: SingedUp(address,uint256)
           handler: handleSingedUp
-        - event: UserCreated(address,string);
+        - event: UserCreated(address,string)
           handler: handleUserCreated
-        - event: StarsEarned(address,uint256 ;
+        - event: StarsEarned(address,uint256)
           handler: handleStarsEarned
-        - event: PointsEarned(address,uint256);
+        - event: PointsEarned(address,uint256)
           handler: handlePointsEarned
       file: ./src/realize-it.ts
