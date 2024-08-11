@@ -4,7 +4,9 @@ import {
   HostReviewed as HostReviewedEvent,
   SingedOut as SingedOutEvent,
   SingedUp as SingedUpEvent,
-  UserCreated as UserCreatedEvent
+  UserCreated as UserCreatedEvent,
+  StarsEarned as StarsEarnedEvent,
+  PointsEarned as PointsEarnedEvent
 } from "../generated/RealizeIT/RealizeIT";
 import {
   CampaignCreated,
@@ -12,7 +14,9 @@ import {
   HostReviewed,
   SingedOut,
   SingedUp,
-  UserCreated
+  UserCreated,
+  StarsEarned,
+  PointsEarned
 } from "../generated/schema";
 
 export function handleCampaignCreated(event: CampaignCreatedEvent): void {
@@ -104,6 +108,28 @@ export function handleUserCreated(
 
   entity.save();
 }
+
+export function handleStarsEarned(
+  event: StarsEarnedEvent
+): void {
+  let entity = new StarsEarned(
+    event.transaction.hash.concatI32(event.logIndex.toI32())
+  );
+  
+
+  entity.save();
+}
+
+export function handlePointsEarned(
+  event: PointsEarnedEvent
+): void {
+  let entity = new PointsEarned(
+    event.transaction.hash.concatI32(event.logIndex.toI32())
+  );
+
+  entity.save();
+}
+
 
 
 // handler: handleSingedUp
