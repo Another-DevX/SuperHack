@@ -21,7 +21,7 @@ export const pathParams: PathParamsType[] = [
     headerIconRight: () => (
       <Link
         href={"/createActivity"}
-        className="w-8 h-8 absolute flex justify-center items-center right-4 top-1/2 translate-y-[-50%]"
+        className="z-20 w-8 h-8 absolute flex justify-center items-center right-10 top-1/2 translate-y-[-50%]"
       >
         <Image
           width={22}
@@ -38,7 +38,7 @@ export const pathParams: PathParamsType[] = [
     headerIconLeft: () => (
       <Link
         href={"/activities"}
-        className="w-8 h-8 absolute flex justify-center items-center left-4 top-1/2 translate-y-[-50%]"
+        className="z-20 w-8 h-8 absolute flex justify-center items-center left-10 top-1/2 translate-y-[-50%]"
       >
         <Image
           width={22}
@@ -51,7 +51,7 @@ export const pathParams: PathParamsType[] = [
     headerIconRight: () => (
       <Link
         href={"/addActivityRewards"}
-        className="w-8 h-8 absolute flex justify-center items-center right-4 top-1/2 translate-y-[-50%]"
+        className="z-20 w-8 h-8 absolute flex justify-center items-center right-10 top-1/2 translate-y-[-50%]"
       >
         <Image
           width={22}
@@ -69,7 +69,7 @@ export const pathParams: PathParamsType[] = [
     headerIconLeft: () => (
       <Link
         href={"/createActivity"}
-        className="w-8 h-8 absolute flex justify-center items-center left-4 top-1/2 translate-y-[-50%]"
+        className="z-20 w-8 h-8 absolute flex justify-center items-center left-10 top-1/2 translate-y-[-50%]"
       >
         <Image
           width={22}
@@ -82,7 +82,7 @@ export const pathParams: PathParamsType[] = [
     headerIconRight: () => (
       <Link
         href={"/uploadBeforeImages"}
-        className="w-8 h-8 absolute flex justify-center items-center right-4 top-1/2 translate-y-[-50%]"
+        className="z-20 w-8 h-8 absolute flex justify-center items-center right-10 top-1/2 translate-y-[-50%]"
       >
         <Image
           width={22}
@@ -100,7 +100,7 @@ export const pathParams: PathParamsType[] = [
     headerIconLeft: () => (
       <Link
         href={"/createActivity"}
-        className="w-8 h-8 absolute flex justify-center items-center left-4 top-1/2 translate-y-[-50%]"
+        className="z-20 w-8 h-8 absolute flex justify-center items-center left-10 top-1/2 translate-y-[-50%]"
       >
         <Image
           width={22}
@@ -113,7 +113,7 @@ export const pathParams: PathParamsType[] = [
     headerIconRight: () => (
       <Link
         href={"/activities"}
-        className="w-8 h-8 absolute flex justify-center items-center right-4 top-1/2 translate-y-[-50%]"
+        className="z-20 w-8 h-8 absolute flex justify-center items-center right-10 top-1/2 translate-y-[-50%]"
       >
         <Image
           width={22}
@@ -131,7 +131,7 @@ export const pathParams: PathParamsType[] = [
     headerIconLeft: () => (
       <Link
         href={"/activities"}
-        className="w-8 h-8 absolute flex justify-center items-center left-4 top-1/2 translate-y-[-50%]"
+        className="z-20 w-8 h-8 absolute flex justify-center items-center left-10 top-1/2 translate-y-[-50%]"
       >
         <Image
           width={22}
@@ -144,7 +144,7 @@ export const pathParams: PathParamsType[] = [
     headerIconRight: () => (
       <Link
         href={"/fillIn"}
-        className="w-8 h-8 absolute flex justify-center items-center right-4 top-1/2 translate-y-[-50%]"
+        className="z-20 w-8 h-8 absolute flex justify-center items-center right-10 top-1/2 translate-y-[-50%]"
       >
         <Image
           width={22}
@@ -162,7 +162,7 @@ export const pathParams: PathParamsType[] = [
     headerIconLeft: () => (
       <Link
         href={"/reviewParticipants"}
-        className="w-8 h-8 absolute flex justify-center items-center left-4 top-1/2 translate-y-[-50%]"
+        className="z-20 w-8 h-8 absolute flex justify-center items-center left-10 top-1/2 translate-y-[-50%]"
       >
         <Image
           width={22}
@@ -175,7 +175,7 @@ export const pathParams: PathParamsType[] = [
     headerIconRight: () => (
       <Link
         href={"/uploadAfterImages"}
-        className="w-8 h-8 absolute flex justify-center items-center right-4 top-1/2 translate-y-[-50%]"
+        className="z-20 w-8 h-8 absolute flex justify-center items-center right-10 top-1/2 translate-y-[-50%]"
       >
         <Image
           width={22}
@@ -193,7 +193,7 @@ export const pathParams: PathParamsType[] = [
     headerIconLeft: () => (
       <Link
         href={"/fillIn"}
-        className="w-8 h-8 absolute flex justify-center items-center left-4 top-1/2 translate-y-[-50%]"
+        className="z-20 w-8 h-8 absolute flex justify-center items-center left-10 top-1/2 translate-y-[-50%]"
       >
         <Image
           width={22}
@@ -206,7 +206,7 @@ export const pathParams: PathParamsType[] = [
     headerIconRight: () => (
       <Link
         href={"/activities"}
-        className="w-8 h-8 absolute flex justify-center items-center right-4 top-1/2 translate-y-[-50%]"
+        className="z-20 w-8 h-8 absolute flex justify-center items-center right-10 top-1/2 translate-y-[-50%]"
       >
         <Image
           width={22}
@@ -224,7 +224,7 @@ export const pathParams: PathParamsType[] = [
     headerIconLeft: () => (
       <Link
         href={"/activities"}
-        className="w-8 h-8 absolute flex justify-center items-center left-4 top-1/2 translate-y-[-50%]"
+        className="z-20 w-8 h-8 absolute flex justify-center items-center left-10 top-1/2 translate-y-[-50%]"
       >
         <Image
           width={22}
@@ -257,7 +257,16 @@ export const pathParams: PathParamsType[] = [
   {
     text: "Profile",
     icon: ProfileIcon,
-    headerIconRight: EditIcon,
+    headerIconRight: () => (
+      <div className="z-20 w-8 h-8 absolute flex justify-center items-center right-10 top-1/2 translate-y-[-50%]">
+        <Image
+          width={22}
+          height={22}
+          src={"/icons/edit-icon.svg"}
+          alt={`plus cicle icon`}
+        />
+      </div>
+    ),
     path: "profile",
   },
 ];
