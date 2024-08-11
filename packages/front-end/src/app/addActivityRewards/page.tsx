@@ -15,7 +15,7 @@ import React from 'react';
 import { encodeFunctionData, erc20Abi, parseEther, type Address } from 'viem';
 
 export default function AddActivityRewards() {
-  const { client } = useSmartAccountClient({ type: 'LightAccount' });
+  const { client } = useSmartAccountClient({ type: 'LightAccount',     policyId: "8114749c-f841-481e-981e-5c8fb3ff247f",  });
   const { sendUserOperation } = useSendUserOperation({
     client,
     // optional parameter that will wait for the transaction to be mined before returning
