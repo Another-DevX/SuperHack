@@ -28,7 +28,9 @@ contract RealizeIT is IRealizeIT, IERC1155Receiver {
     event SingedUp(address user, uint256 hypercertID);
     event SingedOut(address user, uint256 hypercertID);
     event CheckOut(address user, uint256 hypercertID, uint16 hostRate);
-
+    event UserCreated(address user, string userName);
+    event StarsEarned(address user, uint256 stars);
+    event PointsEarned(address user, uint256 points);
     event HostReviewed(uint256 hypercertID, uint16[] stars, address user);
 
     TempCampaign private tempCampaign;
@@ -77,6 +79,12 @@ contract RealizeIT is IRealizeIT, IERC1155Receiver {
         hypercerts = _hypercerts;
         points = _points;
         USDC = _USDC;
+    }
+
+    function createUser(address user, string memory userName) public {
+        Account storage account = users[user];
+        account.username = userName;
+        emit UserCreated(user, userName);
     }
 
     function createCampaign(
@@ -193,13 +201,17 @@ contract RealizeIT is IRealizeIT, IERC1155Receiver {
             if (reviews[i].stars >= 3) {
                 if (reviews[i].stars == 5) {
                     points.mint(reviews[i].user, 25);
+                    emit PointsEarned(reviews[i].user, 25);
                 }
                 if (reviews[i].stars == 4) {
                     points.mint(reviews[i].user, 10);
+                    emit PointsEarned(reviews[i].user, 10);
                 } else {
                     points.mint(reviews[i].user, 5);
+                    emit PointsEarned(reviews[i].user, 5);
                 }
             }
+
             _calculateAverageStars(reviews[i].user, reviews[i].stars);
         }
     }
@@ -212,6 +224,7 @@ contract RealizeIT is IRealizeIT, IERC1155Receiver {
         account.stars += newStars;
         account.reviews += 1;
         avgStars = uint16(account.stars / account.reviews);
+        emit StarsEarned(user, avgStars);
     }
 
     function onERC1155Received(

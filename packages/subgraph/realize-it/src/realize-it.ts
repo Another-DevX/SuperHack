@@ -15,7 +15,7 @@ import {
 
 export function handleCampaignCreated(event: CampaignCreatedEvent): void {
   let entity = new CampaignCreated(
-    event.transaction.hash.concatI32(event.logIndex.toI32()),
+    event.transaction.hash.concatI32(event.logIndex.toI32())
   );
   entity.host = event.params.host;
   entity.pricePool = event.params.pricePool;
@@ -34,7 +34,7 @@ export function handleCampaignCreated(event: CampaignCreatedEvent): void {
 
 export function handleCheckOut(event: CheckOutEvent): void {
   let entity = new CheckOut(
-    event.transaction.hash.concatI32(event.logIndex.toI32()),
+    event.transaction.hash.concatI32(event.logIndex.toI32())
   );
   entity.user = event.params.user;
   entity.hostRate = event.params.hostRate;
@@ -49,7 +49,7 @@ export function handleCheckOut(event: CheckOutEvent): void {
 
 export function handleHostReviewed(event: HostReviewedEvent): void {
   let entity = new HostReviewed(
-    event.transaction.hash.concatI32(event.logIndex.toI32()),
+    event.transaction.hash.concatI32(event.logIndex.toI32())
   );
   entity.hypercertID = event.params.hypercertID;
   entity.stars = event.params.stars;
@@ -64,7 +64,7 @@ export function handleHostReviewed(event: HostReviewedEvent): void {
 
 export function handleSingedOut(event: SingedOutEvent): void {
   let entity = new SingedOut(
-    event.transaction.hash.concatI32(event.logIndex.toI32()),
+    event.transaction.hash.concatI32(event.logIndex.toI32())
   );
   entity.user = event.params.user;
   entity.hypercertID = event.params.hypercertID;
@@ -78,7 +78,7 @@ export function handleSingedOut(event: SingedOutEvent): void {
 
 export function handleSingedUp(event: SingedUpEvent): void {
   let entity = new SingedUp(
-    event.transaction.hash.concatI32(event.logIndex.toI32()),
+    event.transaction.hash.concatI32(event.logIndex.toI32())
   );
   entity.user = event.params.user;
   entity.hypercertID = event.params.hypercertID;
@@ -89,3 +89,29 @@ export function handleSingedUp(event: SingedUpEvent): void {
 
   entity.save();
 }
+
+
+export function handleUserCreated(
+  event: SingedUpEvent
+): void {
+  let entity = new SingedUp(
+    event.transaction.hash.concatI32(event.logIndex.toI32())
+  );
+  entity.user = event.params.user;
+  entity.hypercertID = event.params.hypercertID;
+
+  entity.blockNumber = event.block.number;
+  entity.blockTimestamp = event.block.timestamp;
+  entity.transactionHash = event.transaction.hash;
+
+  entity.save();
+}
+
+
+// handler: handleSingedUp
+// - event: UserCreated(address user, string userName);
+//   handler: handleUserCreated
+// - event: StarsEarned(address user, uint256 stars);
+//   handler: handleStarsEarned
+// - event: PointsEarned(address user, uint256 points);
+//   handler: handlePointsEarned

@@ -32,6 +32,13 @@ type HostReviewed @entity(immutable: true) {
   transactionHash: Bytes!
 }
 
+type User @entity {
+  id: Bytes! # address
+  stars: BigInt!
+  points: BigInt!
+  name: String
+}
+
 type SingedOut @entity(immutable: true) {
   id: Bytes!
   user: Bytes! # address
