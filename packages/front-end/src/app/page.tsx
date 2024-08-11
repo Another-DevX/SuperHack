@@ -6,15 +6,24 @@ import {
   useUser,
 } from "@account-kit/react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
 export default function Home() {
+  const router = useRouter();
   const user = useUser();
   const { openAuthModal } = useAuthModal();
   const signerStatus = useSignerStatus();
   const { logout } = useLogout();
 
+  useEffect(() => {
+    if (user) {
+      router.push("activities");
+    }
+  }, [user, router]);
+
   return (
-    <div className="pt-16">
+    <div className="pt-16 px-4">
       <Image
         width={20}
         height={20}
@@ -42,19 +51,20 @@ export default function Home() {
             className="btn bg-buttonGreen text-white"
             onClick={openAuthModal}
           >
-           Loading ... 
+            Loading ...
           </button>
         ) : user ? (
           <div className="flex flex-col gap-2 p-2">
-            <p className="text-xl font-bold">Success!</p>
-            You&apos;re logged in as {user.email ?? "anon"}.
-            <button className="w-full" onClick={() => logout()}>
+            <button
+              className="z-20 btn bg-buttonGreen text-white"
+              onClick={() => logout()}
+            >
               Log out
             </button>
           </div>
         ) : (
           <button
-            className="btn bg-buttonGreen text-white"
+            className="z-20 btn bg-buttonGreen text-white"
             onClick={openAuthModal}
           >
             Sign In

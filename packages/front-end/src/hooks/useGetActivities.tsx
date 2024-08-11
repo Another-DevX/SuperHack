@@ -1,19 +1,16 @@
-import { gql, useQuery } from '@apollo/client';
-import React from 'react';
+import { gql, useQuery } from "@apollo/client";
 
 function useGetActivities() {
   const GET_CAMPAIGNS = gql`
     query GetLocations {
-      campaignCreateds() {
-            id
-    host
-    pricePool
-    maxQuota
-    onlyVerified
-    hypercertID
-signedUsers
-signedOutUsers
-    }
+      campaignCreateds {
+        id
+        host
+        pricePool
+        maxQuota
+        onlyVerified
+        hypercertID
+      }
     }
   `;
 

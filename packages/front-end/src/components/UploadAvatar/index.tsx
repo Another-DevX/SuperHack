@@ -6,7 +6,7 @@ import Link from "next/link";
 
 export default function UploadAvatar() {
   return (
-    <div className="w-full h-full flex flex-col items-center justify-between">
+    <div className="z-20 w-full h-full flex flex-col items-center justify-between">
       <Header
         iconLeft={() => (
           <Link

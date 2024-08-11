@@ -3,12 +3,14 @@ import ActivitiesIcon from "@/public/icons/activities-menu-icon.svg";
 import WalletIcon from "@/public/icons/wallet-menu-icon.svg";
 import LeaderBoardIcon from "@/public/icons/leaderboard-menu-icon.svg";
 import ProfileIcon from "@/public/icons/profile-menu-icon.svg";
-import EditIcon from "@/public/icons/edit-icon.svg";
-import ArrowRightIcon from "@/public/icons/arrow-right-icon.svg";
-import ArrowLeftIcon from "@/public/icons/arrow-left-icon.svg";
-import UploadIcon from "@/public/icons/upload-icon.svg";
 import Link from "next/link";
 import Image from "next/image";
+import sessionStorageService from "@/services/storageService";
+
+const currentActivityId = sessionStorageService.getItem("currentActivityId");
+sessionStorageService.on("storageChange", (e) => {
+  console.log(currentActivityId);
+});
 
 export const pathToMenuItem = (path: string) => {
   return pathParams.find((menuItem) => path.includes(menuItem.path));
@@ -21,7 +23,7 @@ export const pathParams: PathParamsType[] = [
     headerIconRight: () => (
       <Link
         href={"/createActivity"}
-        className="w-8 h-8 absolute flex justify-center items-center right-4 top-1/2 translate-y-[-50%]"
+        className="z-20 w-8 h-8 absolute flex justify-center items-center right-10 top-1/2 translate-y-[-50%]"
       >
         <Image
           width={22}
@@ -38,7 +40,7 @@ export const pathParams: PathParamsType[] = [
     headerIconLeft: () => (
       <Link
         href={"/activities"}
-        className="w-8 h-8 absolute flex justify-center items-center left-4 top-1/2 translate-y-[-50%]"
+        className="z-20 w-8 h-8 absolute flex justify-center items-center left-10 top-1/2 translate-y-[-50%]"
       >
         <Image
           width={22}
@@ -51,7 +53,7 @@ export const pathParams: PathParamsType[] = [
     headerIconRight: () => (
       <Link
         href={"/addActivityRewards"}
-        className="w-8 h-8 absolute flex justify-center items-center right-4 top-1/2 translate-y-[-50%]"
+        className="z-20 w-8 h-8 absolute flex justify-center items-center right-10 top-1/2 translate-y-[-50%]"
       >
         <Image
           width={22}
@@ -69,7 +71,7 @@ export const pathParams: PathParamsType[] = [
     headerIconLeft: () => (
       <Link
         href={"/createActivity"}
-        className="w-8 h-8 absolute flex justify-center items-center left-4 top-1/2 translate-y-[-50%]"
+        className="z-20 w-8 h-8 absolute flex justify-center items-center left-10 top-1/2 translate-y-[-50%]"
       >
         <Image
           width={22}
@@ -82,7 +84,7 @@ export const pathParams: PathParamsType[] = [
     headerIconRight: () => (
       <Link
         href={"/uploadBeforeImages"}
-        className="w-8 h-8 absolute flex justify-center items-center right-4 top-1/2 translate-y-[-50%]"
+        className="z-20 w-8 h-8 absolute flex justify-center items-center right-10 top-1/2 translate-y-[-50%]"
       >
         <Image
           width={22}
@@ -99,8 +101,8 @@ export const pathParams: PathParamsType[] = [
     text: "Upload Before Images",
     headerIconLeft: () => (
       <Link
-        href={"/createActivity"}
-        className="w-8 h-8 absolute flex justify-center items-center left-4 top-1/2 translate-y-[-50%]"
+        href={`/checkoutFillIn/${currentActivityId}`}
+        className="z-20 w-8 h-8 absolute flex justify-center items-center left-10 top-1/2 translate-y-[-50%]"
       >
         <Image
           width={22}
@@ -112,8 +114,8 @@ export const pathParams: PathParamsType[] = [
     ),
     headerIconRight: () => (
       <Link
-        href={"/activities"}
-        className="w-8 h-8 absolute flex justify-center items-center right-4 top-1/2 translate-y-[-50%]"
+        href={`/rateHost/${currentActivityId}`}
+        className="z-20 w-8 h-8 absolute flex justify-center items-center right-10 top-1/2 translate-y-[-50%]"
       >
         <Image
           width={22}
@@ -131,7 +133,7 @@ export const pathParams: PathParamsType[] = [
     headerIconLeft: () => (
       <Link
         href={"/activities"}
-        className="w-8 h-8 absolute flex justify-center items-center left-4 top-1/2 translate-y-[-50%]"
+        className="z-20 w-8 h-8 absolute flex justify-center items-center left-10 top-1/2 translate-y-[-50%]"
       >
         <Image
           width={22}
@@ -144,7 +146,7 @@ export const pathParams: PathParamsType[] = [
     headerIconRight: () => (
       <Link
         href={"/fillIn"}
-        className="w-8 h-8 absolute flex justify-center items-center right-4 top-1/2 translate-y-[-50%]"
+        className="z-20 w-8 h-8 absolute flex justify-center items-center right-10 top-1/2 translate-y-[-50%]"
       >
         <Image
           width={22}
@@ -161,8 +163,8 @@ export const pathParams: PathParamsType[] = [
     text: "Fill In",
     headerIconLeft: () => (
       <Link
-        href={"/reviewParticipants"}
-        className="w-8 h-8 absolute flex justify-center items-center left-4 top-1/2 translate-y-[-50%]"
+        href={`/activity/${currentActivityId}`}
+        className="z-20 w-8 h-8 absolute flex justify-center items-center left-10 top-1/2 translate-y-[-50%]"
       >
         <Image
           width={22}
@@ -174,8 +176,8 @@ export const pathParams: PathParamsType[] = [
     ),
     headerIconRight: () => (
       <Link
-        href={"/uploadAfterImages"}
-        className="w-8 h-8 absolute flex justify-center items-center right-4 top-1/2 translate-y-[-50%]"
+        href={`/uploadParticipationImages/${currentActivityId}`}
+        className="z-20 w-8 h-8 absolute flex justify-center items-center right-10 top-1/2 translate-y-[-50%]"
       >
         <Image
           width={22}
@@ -186,14 +188,15 @@ export const pathParams: PathParamsType[] = [
       </Link>
     ),
     notSeenOnMenu: true,
-    path: "fillIn",
+    path: "checkoutFillIn",
   },
   {
-    text: "Upload After Images",
+    text: "Upload Participation Images",
+    textSize: "xs",
     headerIconLeft: () => (
       <Link
-        href={"/fillIn"}
-        className="w-8 h-8 absolute flex justify-center items-center left-4 top-1/2 translate-y-[-50%]"
+        href={`/checkoutFillIn/${currentActivityId}`}
+        className="z-20 w-8 h-8 absolute flex justify-center items-center left-10 top-1/2 translate-y-[-50%]"
       >
         <Image
           width={22}
@@ -205,26 +208,26 @@ export const pathParams: PathParamsType[] = [
     ),
     headerIconRight: () => (
       <Link
-        href={"/activities"}
-        className="w-8 h-8 absolute flex justify-center items-center right-4 top-1/2 translate-y-[-50%]"
+        href={`/rateHost/${currentActivityId}`}
+        className="z-20 w-8 h-8 absolute flex justify-center items-center right-10 top-1/2 translate-y-[-50%]"
       >
         <Image
           width={22}
           height={22}
-          src={"/icons/upload-icon.svg"}
+          src={"/icons/arrow-right-icon.svg"}
           alt={`plus cicle icon`}
         />
       </Link>
     ),
     notSeenOnMenu: true,
-    path: "uploadAfterImages",
+    path: "uploadParticipationImages",
   },
   {
     text: "Activity",
     headerIconLeft: () => (
       <Link
         href={"/activities"}
-        className="w-8 h-8 absolute flex justify-center items-center left-4 top-1/2 translate-y-[-50%]"
+        className="z-20 w-8 h-8 absolute flex justify-center items-center left-10 top-1/2 translate-y-[-50%]"
       >
         <Image
           width={22}
@@ -239,8 +242,32 @@ export const pathParams: PathParamsType[] = [
   },
   {
     text: "Rate Host",
-    headerIconLeft: ArrowLeftIcon,
-    headerIconRight: UploadIcon,
+    headerIconLeft: () => (
+      <Link
+        href={`/uploadParticipationImages/${currentActivityId}`}
+        className="z-20 w-8 h-8 absolute flex justify-center items-center left-10 top-1/2 translate-y-[-50%]"
+      >
+        <Image
+          width={22}
+          height={22}
+          src={"/icons/arrow-left-icon.svg"}
+          alt={`plus cicle icon`}
+        />
+      </Link>
+    ),
+    headerIconRight: () => (
+      <Link
+        href={"/activities"}
+        className="z-20 w-8 h-8 absolute flex justify-center items-center right-10 top-1/2 translate-y-[-50%]"
+      >
+        <Image
+          width={22}
+          height={22}
+          src={"/icons/upload-icon.svg"}
+          alt={`plus cicle icon`}
+        />
+      </Link>
+    ),
     notSeenOnMenu: true,
     path: "rateHost",
   },
@@ -257,7 +284,16 @@ export const pathParams: PathParamsType[] = [
   {
     text: "Profile",
     icon: ProfileIcon,
-    headerIconRight: EditIcon,
+    headerIconRight: () => (
+      <div className="z-20 w-8 h-8 absolute flex justify-center items-center right-10 top-1/2 translate-y-[-50%]">
+        <Image
+          width={22}
+          height={22}
+          src={"/icons/edit-icon.svg"}
+          alt={`plus cicle icon`}
+        />
+      </div>
+    ),
     path: "profile",
   },
 ];

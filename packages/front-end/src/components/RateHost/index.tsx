@@ -84,7 +84,7 @@ export default function RateHostContent({ name, stars, greenPoints }: Props) {
           )
         )}
       </div>
-      <Dialog>
+      {/* <Dialog>
         <DialogTrigger>
           <Image
             width={24}
@@ -109,7 +109,7 @@ export default function RateHostContent({ name, stars, greenPoints }: Props) {
             </div>
           </DialogHeader>
         </DialogContent>
-      </Dialog>
+      </Dialog> */}
     </div>
   );
 }
