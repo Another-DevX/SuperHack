@@ -1,0 +1,51 @@
+type CampaignCreated @entity(immutable: true) {
+  id: Bytes!
+  host: Bytes! # address
+  pricePool: BigInt! # uint256
+  maxQuota: BigInt! # uint256
+  currentQuota: BigInt! # uint256
+  checkouts: BigInt! # uint256
+  onlyVerified: Boolean! # bool
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+  hypercertID: BigInt! # uint256
+}
+
+type CheckOut @entity(immutable: true) {
+  id: Bytes!
+  user: Bytes! # address
+  hypercertID: BigInt! # uint256
+  hostRate: Int! # uint16
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type HostReviewed @entity(immutable: true) {
+  id: Bytes!
+  hypercertID: BigInt! # uint256
+  stars: [Int!]! # uint16[]
+  user: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type SingedOut @entity(immutable: true) {
+  id: Bytes!
+  user: Bytes! # address
+  hypercertID: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type SingedUp @entity(immutable: true) {
+  id: Bytes!
+  user: Bytes! # address
+  hypercertID: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
