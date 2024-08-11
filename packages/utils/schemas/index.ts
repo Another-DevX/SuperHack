@@ -2,14 +2,14 @@ import { SchemaRegistry } from "@ethereum-attestation-service/eas-sdk";
 import { JsonRpcProvider } from "ethers";
 import { Wallet } from "ethers";
 
-const provider = new JsonRpcProvider("https://rpc.ankr.com/base_sepolia");
+const provider = new JsonRpcProvider("https://rpc.ankr.com/celo");
 
 const ATTESTATOR_SIGNER_PRIVATE_KEY =
-  "e58aa0579165d19d30699c2572106d502aa5225c65023fcb0165acd3818b0268";
+  "PRIVATE_KEY";
 const signer = new Wallet(ATTESTATOR_SIGNER_PRIVATE_KEY, provider);
 
 const schemaRegistry = new SchemaRegistry(
-  "0x4200000000000000000000000000000000000020",
+  "0x5ece93bE4BDCF293Ed61FA78698B594F2135AF34",
 ); //Testnet Base Sepolia
 
 const registrationSchema = "address user, uint256 hypercertID";
@@ -17,9 +17,9 @@ const checkoutSchema = " address user,uint256 hypercertID, uint16 hostRate";
 const hostReviewSchema =
   "uint256 hypercertID,(uint16 stars,address user)[] reviews";
 
-const RegistrationContract = "0x19a685CcAfcfE70102B69F91C1928D2801E8f1aC";
-const CheckoutContract = "0x7Ef76eF7Cb84A852cD7f672B4b3dbc568b20cE0A";
-const HostReviewResolver = "0xcCF95BFFF3F9185400cd16135d2f92604160A494";
+const RegistrationContract = "0x716939517706d422e3fCe3AacF16F1BEe08869c8";
+const CheckoutContract = "0x4375E936bab7d8674206849c0598de2B4C7DB780";
+const HostReviewResolver = "0xEAF0DD8e96cfD1c0511AC811888cb5B92A464F5c";
 
 const registerSchema = async (
   schema: string,

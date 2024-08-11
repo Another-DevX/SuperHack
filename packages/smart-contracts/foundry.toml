@@ -11,6 +11,7 @@ remappings = ["@openzeppelin/contracts/=lib/openzeppelin-contracts/contracts/"]
 
 [etherscan]
 base-sepolia = { key = "3S3MF6Z2XVJQNEZBPVQ86EY684Q44XE3E2" }
-
+celo = { key = "DV3QPMMQ8ZYG176IGWH7WHFEWB3UJYG7N2", url = "https://api.celoscan.io/api" }
 [rpc_endpoints]
 base-sepolia = "https://rpc.ankr.com/base_sepolia"
+celo = "https://forno.celo.org"

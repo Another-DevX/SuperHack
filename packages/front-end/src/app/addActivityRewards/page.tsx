@@ -4,30 +4,18 @@ import { Button } from '@/components/ui/button';
 import {
   REALIZE_IT_CONTRACT_ABI,
   REALIZE_IT_CONTRACT_ADDRESS,
-  TOKEN_CONTRACT_ADDRESS,
 } from '@/constants';
-import {
-  useSendUserOperation,
-  useSmartAccountClient,
-} from '@account-kit/react';
+import { useWriteContract } from 'wagmi'
+
 import { Loader2 } from 'lucide-react';
 
 import React from 'react';
 import { encodeFunctionData, erc20Abi, parseEther, type Address } from 'viem';
 
 export default function AddActivityRewards() {
-  const { client } = useSmartAccountClient({ type: 'LightAccount',     policyId: "8114749c-f841-481e-981e-5c8fb3ff247f",  });
-  const { sendUserOperation, isSendingUserOperation } = useSendUserOperation({
-    client,
-    // optional parameter that will wait for the transaction to be mined before returning
-    waitForTxn: true,
-    onSuccess: ({ hash, request }) => {
-      // [optional] Do something with the hash and request
-    },
-    onError: (error) => {
-      // [optional] Do something with the error
-    },
-  });
+  const { writeContract } = useWriteContract()
+
+
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
@@ -43,32 +31,19 @@ export default function AddActivityRewards() {
       BigInt(data.tokenPoolAmount as string),
       false,
     ]);
-    const approvalData = encodeFunctionData({
-      abi: erc20Abi,
-      functionName: 'approve',
-      args: [
-        REALIZE_IT_CONTRACT_ADDRESS,
-        BigInt(parseEther(data.tokenPoolAmount as string))
-      ],
-    });
 
-  
 
-     sendUserOperation({
-      uo: {
-        target: REALIZE_IT_CONTRACT_ADDRESS as Address,
-        data: encodeFunctionData({
+     writeContract({ 
           abi: REALIZE_IT_CONTRACT_ABI,
+          address: REALIZE_IT_CONTRACT_ADDRESS,
           functionName: 'createCampaign',
           args: [
             localStorage.getItem('ActivityCID'),
             BigInt(data.tokenPoolAmount as string),
             false,
           ],
-        }),
-        value: BigInt(0),
-      },
-    });
+       })
+
   };
 
   return (
@@ -85,8 +60,7 @@ export default function AddActivityRewards() {
         placeHolder='10'
         name='rewardPerParticipant' // Añadir nombre para que pueda ser recogido en el handleSubmit
       />
-      <Button disabled={isSendingUserOperation} type='submit'>
-        {isSendingUserOperation && <Loader2/>}
+      <Button type='submit'>
         Next</Button>
     </form>
   );

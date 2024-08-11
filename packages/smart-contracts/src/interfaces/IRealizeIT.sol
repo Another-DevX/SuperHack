@@ -29,12 +29,7 @@ interface IRealizeIT {
         uint256 prizePool,
         bool onlyVerified
     ) external;
-    function verifyPublicAddress(
-        address signal,
-        uint256 root,
-        uint256 nullifierHash,
-        uint256[8] calldata proof
-    ) external;
+
 
     function createUser(address user, string memory userName) external;
 

@@ -12,11 +12,11 @@ const hostReviewSchemaDefinition =
   "uint256 hypercertID,(uint16 stars,address user)[]";
 
 const RegistrationSchema =
-  "0x4b287d3f18ab895b1f7cd80fe72c304a9463015fcdcce0bde5502a0ad4b52472";
+  "0x6a120ae227dfaccbcdbdf882584acf6de5ff9c93d87918c93c1982425fdb32ed";
 const CheckoutSchema =
-  "0x7be7f7a4013f1186414398496012e2781b26cb42ae1c9ca018d6ec9b788d8814";
+  "0x7a974122faf2294abc354bea7fd8e01a0b2f700262e828228a2ec8f226ba26d2";
 const HostReviewSchema =
-  "0x51fad90fd41712934c205ff4fe1abe79c6563ee1993bce6c2ef38492ce534c4a";
+  "0xe51eee49680da48f65e67df6f1137b87380201e3c9a4a4a204fd4610fb596e5f";
 
 export async function attestSignUp(
   signer: TransactionSigner,
@@ -24,7 +24,7 @@ export async function attestSignUp(
   hypercertId: string,
   recipient: string,
 ) {
-  const eas = new EAS("0x4200000000000000000000000000000000000021");
+  const eas = new EAS("0x72E1d8ccf5299fb36fEfD8CC4394B8ef7e98Af92");
   eas.connect(signer);
 
   // Initialize SchemaEncoder with the schema string
@@ -57,7 +57,7 @@ export async function attestSignOut(
   signer: TransactionSigner,
   attestationId: string,
 ) {
-  const eas = new EAS("0x4200000000000000000000000000000000000021");
+  const eas = new EAS("0x72E1d8ccf5299fb36fEfD8CC4394B8ef7e98Af92");
   eas.connect(signer);
 
   const tx = await eas.revoke({
@@ -78,7 +78,7 @@ export async function attestCheckout(
   recipient: string,
   hostRate: number,
 ) {
-  const eas = new EAS("0x4200000000000000000000000000000000000021");
+  const eas = new EAS("0x72E1d8ccf5299fb36fEfD8CC4394B8ef7e98Af92");
   eas.connect(signer);
 
   // Initialize SchemaEncoder with the schema string
@@ -113,7 +113,7 @@ export async function attestHostReview(
   recipient: string,
   reviews: { stars: number; user: string }[],
 ) {
-  const eas = new EAS("0x4200000000000000000000000000000000000021");
+  const eas = new EAS("0x72E1d8ccf5299fb36fEfD8CC4394B8ef7e98Af92");
   eas.connect(signer);
 
   // Initialize SchemaEncoder with the schema string

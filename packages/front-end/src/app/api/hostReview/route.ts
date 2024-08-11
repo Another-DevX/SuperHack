@@ -8,7 +8,7 @@ export async function POST(req: Request) {
   console.debug({ address, hypercertID, reviews });
 
   try {
-    const provider = new JsonRpcProvider("https://rpc.ankr.com/base_sepolia");
+    const provider = new JsonRpcProvider("https://rpc.ankr.com/celo");
     const wallet = new Wallet(
       "e58aa0579165d19d30699c2572106d502aa5225c65023fcb0165acd3818b0268" as string,
       provider,

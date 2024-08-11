@@ -11,16 +11,8 @@ import { useEffect } from "react";
 
 export default function Home() {
   const router = useRouter();
-  const user = useUser();
-  const { openAuthModal } = useAuthModal();
-  const signerStatus = useSignerStatus();
-  const { logout } = useLogout();
 
-  useEffect(() => {
-    if (user) {
-      router.push("activities");
-    }
-  }, [user, router]);
+
 
   return (
     <div className="h-full w-full flex flex-col items-start overflow-scroll">
@@ -46,30 +38,7 @@ export default function Home() {
           and celebrate everyday heroes. Join, contribute, and earn rewards as
           we create impactful transformations together.
         </p>
-        {signerStatus.isInitializing ? (
-          <button
-            className="btn bg-buttonGreen text-white"
-            onClick={openAuthModal}
-          >
-            Loading ...
-          </button>
-        ) : user ? (
-          <div className="flex flex-col gap-2 p-2">
-            <button
-              className="z-20 btn bg-buttonGreen text-white"
-              onClick={() => logout()}
-            >
-              Log out
-            </button>
-          </div>
-        ) : (
-          <button
-            className="z-20 btn bg-buttonGreen text-white"
-            onClick={openAuthModal}
-          >
-            Sign In
-          </button>
-        )}
+        <w3m-button />
       </div>
     </div>
   );

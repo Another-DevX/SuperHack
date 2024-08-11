@@ -19,16 +19,13 @@ contract DeployBaseSepolia is Script {
 
     function run() public {
         vm.startBroadcast();
-        IEAS eas = IEAS(0x4200000000000000000000000000000000000021);
+        IEAS eas = IEAS(0x72E1d8ccf5299fb36fEfD8CC4394B8ef7e98Af92);
 
         NOTUSDC notusdc = new NOTUSDC();
         Points points = new Points(msg.sender);
 
         RealizeIT realizeIT = new RealizeIT(
-            IWorldID(0x42FF98C4E85212a5D31358ACbFe76a621b50fC02),
-            "app_staging_fa589b04290a1f98828f1ddc5e4b6394",
-            "verify-public-address",
-            IHypercertToken(0xC2d179166bc9dbB00A03686a5b17eCe2224c2704),
+            IHypercertToken(0x16bA53B74c234C870c61EFC04cD418B8f2865959),
             points,
             notusdc
         );
