@@ -36,6 +36,8 @@ interface IRealizeIT {
         uint256[8] calldata proof
     ) external;
 
+    function createUser(address user, string memory userName) external;
+
     function signUp(address user, uint256 hypercertID) external;
     function signOut(address user, uint256 hypercertID) external;
     function checkOut(

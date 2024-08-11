@@ -21,6 +21,7 @@ dataSources:
         - HostReviewed
         - SingedOut
         - SingedUp
+        - User
       abis:
         - name: RealizeIT
           file: ./abis/RealizeIT.json
@@ -35,4 +36,10 @@ dataSources:
           handler: handleSingedOut
         - event: SingedUp(address,uint256)
           handler: handleSingedUp
+        - event: UserCreated(address,string)
+          handler: handleUserCreated
+        - event: StarsEarned(address,uint256)
+          handler: handleStarsEarned
+        - event: PointsEarned(address,uint256)
+          handler: handlePointsEarned
       file: ./src/realize-it.ts
