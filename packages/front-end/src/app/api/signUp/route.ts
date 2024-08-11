@@ -10,7 +10,7 @@ export async function POST(req: Request) {
   try {
     const provider = new JsonRpcProvider("https://rpc.ankr.com/base_sepolia");
     const wallet = new Wallet(
-      process.env.ATTESTATOR_SIGNER_PRIVATE_KEY as string,
+      "e58aa0579165d19d30699c2572106d502aa5225c65023fcb0165acd3818b0268" as string,
       provider
     );
     const attestationId = await attestSignUp(
