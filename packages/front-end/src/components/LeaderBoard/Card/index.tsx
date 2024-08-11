@@ -24,7 +24,7 @@ export default function LeaderBoardCard({
             src="/images/profile-img.svg"
             alt="starsIcon"
           />
-          <p>{name}</p>
+          <p className="text-xs font-bold">{name}</p>
         </div>
       </div>
       <div className="flex gap-2">

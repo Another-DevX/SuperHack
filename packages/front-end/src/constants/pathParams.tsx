@@ -7,10 +7,10 @@ import Link from "next/link";
 import Image from "next/image";
 import sessionStorageService from "@/services/storageService";
 
-const currentActivityId = sessionStorageService.getItem("currentActivityId");
-sessionStorageService.on("storageChange", (e) => {
-  console.log(currentActivityId);
-});
+const currentActivityId = sessionStorage.getItem("currentActivityId");
+// sessionStorageService.on("storageChange", (e) => {
+//   console.log(currentActivityId);
+// });
 
 export const pathToMenuItem = (path: string) => {
   return pathParams.find((menuItem) => path.includes(menuItem.path));

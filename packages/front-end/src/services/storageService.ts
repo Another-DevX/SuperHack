@@ -6,7 +6,7 @@ class SessionStorageService extends EventEmitter {
   }
 
   initStorageListener() {
-    // if (!window) return
+    // if (!window) return;
     // window.addEventListener("storage", (event) => {
     //   if (event.storageArea === sessionStorage) {
     //     this.emit("storageChange", {

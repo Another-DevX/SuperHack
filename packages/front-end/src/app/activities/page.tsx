@@ -7,6 +7,7 @@ import { useUser } from "@account-kit/react";
 export default function Activities() {
   const [isMounted, setIsMounted] = useState<boolean>(false);
   const { loading, error, data } = useGetActivities();
+  console.log(data);
   const user = useUser();
 
   useEffect(() => {
@@ -22,7 +23,9 @@ export default function Activities() {
           data.campaignCreateds
             .filter(
               (createdActivity: any) =>
-                createdActivity && createdActivity.host == user?.address
+                createdActivity &&
+                createdActivity.host ==
+                  "0x1726cf86da996bc4b2f393e713f6f8ef83f2e4f6"
             )
             .map((activity: any) => (
               <ActivityCard
@@ -44,7 +47,10 @@ export default function Activities() {
           data.campaignCreateds
             .filter(
               (createdActivity: any) =>
-                createdActivity && createdActivity.host != user?.address
+                createdActivity &&
+                createdActivity.host != user?.address &&
+                createdActivity.host !=
+                  "0x1726cf86da996bc4b2f393e713f6f8ef83f2e4f6"
             )
             .map((activity: any) => (
               <ActivityCard
