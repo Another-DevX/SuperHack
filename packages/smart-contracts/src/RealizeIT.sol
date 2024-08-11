@@ -7,7 +7,6 @@ import {IERC1155Receiver} from "@openzeppelin/contracts/token/ERC1155/IERC1155Re
 import {IHypercertToken} from "../src/interfaces/IHypercertToken.sol";
 import {Points} from "../src/Points.sol";
 
-
 import {IERC20} from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 contract RealizeIT is IRealizeIT, IERC1155Receiver {
     struct TempCampaign {
@@ -17,11 +16,19 @@ contract RealizeIT is IRealizeIT, IERC1155Receiver {
         string uri;
     }
 
-    event CampaignCreated(address host, uint256 pricePool, uint256 maxQuota ,uint256 currentQuota ,uint256 checkouts , bool onlyVerified);
+    event CampaignCreated(
+        address host,
+        uint256 pricePool,
+        uint256 maxQuota,
+        uint256 currentQuota,
+        uint256 checkouts,
+        bool onlyVerified,
+        uint256 hypercertID
+    );
     event SingedUp(address user, uint256 hypercertID);
     event SingedOut(address user, uint256 hypercertID);
-    event CheckOut( address user, uint256 hypercertID, uint16 hostRate);
-   
+    event CheckOut(address user, uint256 hypercertID, uint16 hostRate);
+
     event HostReviewed(uint256 hypercertID, uint16[] stars, address user);
 
     TempCampaign private tempCampaign;
@@ -133,7 +140,7 @@ contract RealizeIT is IRealizeIT, IERC1155Receiver {
         campaign.currentQuota += 1;
         campaign.attenders[user] = true;
 
-        emit SingedUp(user,hypercertID);
+        emit SingedUp(user, hypercertID);
     }
 
     function signOut(address user, uint256 hypercertID) public {
@@ -141,7 +148,7 @@ contract RealizeIT is IRealizeIT, IERC1155Receiver {
         require(campaign.attenders[user], "The user is not signed in");
         campaign.currentQuota -= 1;
         campaign.attenders[user] = false;
-        emit SingedOut(user,hypercertID);
+        emit SingedOut(user, hypercertID);
     }
 
     function checkOut(
@@ -225,7 +232,15 @@ contract RealizeIT is IRealizeIT, IERC1155Receiver {
         campaign.onlyVerified = tempCampaign.onlyVerified;
         delete tempCampaign;
 
-        emit CampaignCreated(campaign.host,campaign.pricePool, campaign.maxQuota ,campaign.currentQuota ,campaign.checkouts = 0, campaign.onlyVerified);
+        emit CampaignCreated(
+            campaign.host,
+            campaign.pricePool,
+            campaign.maxQuota,
+            campaign.currentQuota,
+            campaign.checkouts,
+            campaign.onlyVerified,
+            id
+        );
         return this.onERC1155Received.selector;
     }
 

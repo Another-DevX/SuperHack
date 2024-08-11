@@ -1,297 +1,505 @@
 [
   {
+    "type": "constructor",
     "inputs": [
       {
-        "internalType": "contract IWorldID",
         "name": "_worldId",
-        "type": "address"
+        "type": "address",
+        "internalType": "contract IWorldID"
       },
-      { "internalType": "string", "name": "_appId", "type": "string" },
-      { "internalType": "string", "name": "_action", "type": "string" },
       {
-        "internalType": "contract IHypercertToken",
+        "name": "_appId",
+        "type": "string",
+        "internalType": "string"
+      },
+      {
+        "name": "_action",
+        "type": "string",
+        "internalType": "string"
+      },
+      {
         "name": "_hypercerts",
-        "type": "address"
+        "type": "address",
+        "internalType": "contract IHypercertToken"
       },
       {
-        "internalType": "contract Points",
         "name": "_points",
-        "type": "address"
-      },
-      { "internalType": "contract IERC20", "name": "_USDC", "type": "address" }
-    ],
-    "stateMutability": "nonpayable",
-    "type": "constructor"
-  },
-  { "inputs": [], "name": "InvalidNullifier", "type": "error" },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": false,
-        "internalType": "address",
-        "name": "host",
-        "type": "address"
+        "type": "address",
+        "internalType": "contract Points"
       },
       {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "pricePool",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "maxQuota",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "currentQuota",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "checkouts",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "internalType": "bool",
-        "name": "onlyVerified",
-        "type": "bool"
+        "name": "_USDC",
+        "type": "address",
+        "internalType": "contract IERC20"
       }
     ],
-    "name": "CampaignCreated",
-    "type": "event"
+    "stateMutability": "nonpayable"
   },
   {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": false,
-        "internalType": "address",
-        "name": "user",
-        "type": "address"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "hypercertID",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint16",
-        "name": "hostRate",
-        "type": "uint16"
-      }
-    ],
-    "name": "CheckOut",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "hypercertID",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint16[]",
-        "name": "stars",
-        "type": "uint16[]"
-      },
-      {
-        "indexed": false,
-        "internalType": "address",
-        "name": "user",
-        "type": "address"
-      }
-    ],
-    "name": "HostReviewed",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": false,
-        "internalType": "address",
-        "name": "user",
-        "type": "address"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "hypercertID",
-        "type": "uint256"
-      }
-    ],
-    "name": "SingedOut",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": false,
-        "internalType": "address",
-        "name": "user",
-        "type": "address"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "hypercertID",
-        "type": "uint256"
-      }
-    ],
-    "name": "SingedUp",
-    "type": "event"
-  },
-  {
-    "inputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "type": "function",
     "name": "campaigns",
-    "outputs": [
-      { "internalType": "address", "name": "host", "type": "address" },
-      { "internalType": "uint16", "name": "maxQuota", "type": "uint16" },
-      { "internalType": "uint16", "name": "currentQuota", "type": "uint16" },
-      { "internalType": "uint256", "name": "pricePool", "type": "uint256" },
-      { "internalType": "uint256", "name": "checkouts", "type": "uint256" },
-      { "internalType": "bool", "name": "onlyVerified", "type": "bool" }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
     "inputs": [
-      { "internalType": "address", "name": "user", "type": "address" },
-      { "internalType": "uint256", "name": "hypercertID", "type": "uint256" },
-      { "internalType": "uint16", "name": "hostRate", "type": "uint16" }
-    ],
-    "name": "checkOut",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      { "internalType": "string", "name": "uri", "type": "string" },
-      { "internalType": "uint256", "name": "prizePool", "type": "uint256" },
-      { "internalType": "bool", "name": "onlyVerifiedAccounts", "type": "bool" }
-    ],
-    "name": "createCampaign",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      { "internalType": "address", "name": "", "type": "address" },
-      { "internalType": "address", "name": "", "type": "address" },
-      { "internalType": "uint256[]", "name": "", "type": "uint256[]" },
-      { "internalType": "uint256[]", "name": "", "type": "uint256[]" },
-      { "internalType": "bytes", "name": "", "type": "bytes" }
-    ],
-    "name": "onERC1155BatchReceived",
-    "outputs": [{ "internalType": "bytes4", "name": "", "type": "bytes4" }],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      { "internalType": "address", "name": "", "type": "address" },
-      { "internalType": "address", "name": "", "type": "address" },
-      { "internalType": "uint256", "name": "id", "type": "uint256" },
-      { "internalType": "uint256", "name": "", "type": "uint256" },
-      { "internalType": "bytes", "name": "", "type": "bytes" }
-    ],
-    "name": "onERC1155Received",
-    "outputs": [{ "internalType": "bytes4", "name": "", "type": "bytes4" }],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      { "internalType": "address", "name": "user", "type": "address" },
-      { "internalType": "uint256", "name": "hypercertID", "type": "uint256" }
-    ],
-    "name": "signOut",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      { "internalType": "address", "name": "user", "type": "address" },
-      { "internalType": "uint256", "name": "hypercertID", "type": "uint256" }
-    ],
-    "name": "signUp",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      { "internalType": "uint256", "name": "hypercertID", "type": "uint256" },
       {
-        "components": [
-          { "internalType": "uint16", "name": "stars", "type": "uint16" },
-          { "internalType": "address", "name": "user", "type": "address" }
-        ],
-        "internalType": "struct Review[]",
-        "name": "reviews",
-        "type": "tuple[]"
+        "name": "",
+        "type": "uint256",
+        "internalType": "uint256"
       }
     ],
-    "name": "submitHostReview",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      { "internalType": "bytes4", "name": "interfaceId", "type": "bytes4" }
-    ],
-    "name": "supportsInterface",
-    "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [{ "internalType": "address", "name": "", "type": "address" }],
-    "name": "users",
     "outputs": [
-      { "internalType": "uint16", "name": "stars", "type": "uint16" },
-      { "internalType": "uint256", "name": "points", "type": "uint256" },
-      { "internalType": "string", "name": "username", "type": "string" },
       {
-        "internalType": "bool",
-        "name": "isVerifiedWithWorldCoin",
-        "type": "bool"
+        "name": "host",
+        "type": "address",
+        "internalType": "address"
       },
-      { "internalType": "string", "name": "metadataURI", "type": "string" },
-      { "internalType": "uint32", "name": "reviews", "type": "uint32" }
+      {
+        "name": "maxQuota",
+        "type": "uint16",
+        "internalType": "uint16"
+      },
+      {
+        "name": "currentQuota",
+        "type": "uint16",
+        "internalType": "uint16"
+      },
+      {
+        "name": "pricePool",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "checkouts",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "onlyVerified",
+        "type": "bool",
+        "internalType": "bool"
+      }
     ],
-    "stateMutability": "view",
-    "type": "function"
+    "stateMutability": "view"
   },
   {
+    "type": "function",
+    "name": "checkOut",
     "inputs": [
-      { "internalType": "address", "name": "signal", "type": "address" },
-      { "internalType": "uint256", "name": "root", "type": "uint256" },
-      { "internalType": "uint256", "name": "nullifierHash", "type": "uint256" },
-      { "internalType": "uint256[8]", "name": "proof", "type": "uint256[8]" }
+      {
+        "name": "user",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "hypercertID",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "hostRate",
+        "type": "uint16",
+        "internalType": "uint16"
+      }
     ],
-    "name": "verifyPublicAddress",
     "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "createCampaign",
+    "inputs": [
+      {
+        "name": "uri",
+        "type": "string",
+        "internalType": "string"
+      },
+      {
+        "name": "prizePool",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "onlyVerifiedAccounts",
+        "type": "bool",
+        "internalType": "bool"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "onERC1155BatchReceived",
+    "inputs": [
+      {
+        "name": "",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "",
+        "type": "uint256[]",
+        "internalType": "uint256[]"
+      },
+      {
+        "name": "",
+        "type": "uint256[]",
+        "internalType": "uint256[]"
+      },
+      {
+        "name": "",
+        "type": "bytes",
+        "internalType": "bytes"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "bytes4",
+        "internalType": "bytes4"
+      }
+    ],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "onERC1155Received",
+    "inputs": [
+      {
+        "name": "",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "id",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "",
+        "type": "bytes",
+        "internalType": "bytes"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "bytes4",
+        "internalType": "bytes4"
+      }
+    ],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "signOut",
+    "inputs": [
+      {
+        "name": "user",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "hypercertID",
+        "type": "uint256",
+        "internalType": "uint256"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "signUp",
+    "inputs": [
+      {
+        "name": "user",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "hypercertID",
+        "type": "uint256",
+        "internalType": "uint256"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "submitHostReview",
+    "inputs": [
+      {
+        "name": "hypercertID",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "reviews",
+        "type": "tuple[]",
+        "internalType": "struct Review[]",
+        "components": [
+          {
+            "name": "stars",
+            "type": "uint16",
+            "internalType": "uint16"
+          },
+          {
+            "name": "user",
+            "type": "address",
+            "internalType": "address"
+          }
+        ]
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "supportsInterface",
+    "inputs": [
+      {
+        "name": "interfaceId",
+        "type": "bytes4",
+        "internalType": "bytes4"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "bool",
+        "internalType": "bool"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "users",
+    "inputs": [
+      {
+        "name": "",
+        "type": "address",
+        "internalType": "address"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "stars",
+        "type": "uint16",
+        "internalType": "uint16"
+      },
+      {
+        "name": "points",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "username",
+        "type": "string",
+        "internalType": "string"
+      },
+      {
+        "name": "isVerifiedWithWorldCoin",
+        "type": "bool",
+        "internalType": "bool"
+      },
+      {
+        "name": "metadataURI",
+        "type": "string",
+        "internalType": "string"
+      },
+      {
+        "name": "reviews",
+        "type": "uint32",
+        "internalType": "uint32"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "verifyPublicAddress",
+    "inputs": [
+      {
+        "name": "signal",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "root",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "nullifierHash",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "proof",
+        "type": "uint256[8]",
+        "internalType": "uint256[8]"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "event",
+    "name": "CampaignCreated",
+    "inputs": [
+      {
+        "name": "host",
+        "type": "address",
+        "indexed": false,
+        "internalType": "address"
+      },
+      {
+        "name": "pricePool",
+        "type": "uint256",
+        "indexed": false,
+        "internalType": "uint256"
+      },
+      {
+        "name": "maxQuota",
+        "type": "uint256",
+        "indexed": false,
+        "internalType": "uint256"
+      },
+      {
+        "name": "currentQuota",
+        "type": "uint256",
+        "indexed": false,
+        "internalType": "uint256"
+      },
+      {
+        "name": "checkouts",
+        "type": "uint256",
+        "indexed": false,
+        "internalType": "uint256"
+      },
+      {
+        "name": "onlyVerified",
+        "type": "bool",
+        "indexed": false,
+        "internalType": "bool"
+      },
+      {
+        "name": "hypercertID",
+        "type": "uint256",
+        "indexed": false,
+        "internalType": "uint256"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "CheckOut",
+    "inputs": [
+      {
+        "name": "user",
+        "type": "address",
+        "indexed": false,
+        "internalType": "address"
+      },
+      {
+        "name": "hypercertID",
+        "type": "uint256",
+        "indexed": false,
+        "internalType": "uint256"
+      },
+      {
+        "name": "hostRate",
+        "type": "uint16",
+        "indexed": false,
+        "internalType": "uint16"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "HostReviewed",
+    "inputs": [
+      {
+        "name": "hypercertID",
+        "type": "uint256",
+        "indexed": false,
+        "internalType": "uint256"
+      },
+      {
+        "name": "stars",
+        "type": "uint16[]",
+        "indexed": false,
+        "internalType": "uint16[]"
+      },
+      {
+        "name": "user",
+        "type": "address",
+        "indexed": false,
+        "internalType": "address"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "SingedOut",
+    "inputs": [
+      {
+        "name": "user",
+        "type": "address",
+        "indexed": false,
+        "internalType": "address"
+      },
+      {
+        "name": "hypercertID",
+        "type": "uint256",
+        "indexed": false,
+        "internalType": "uint256"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "SingedUp",
+    "inputs": [
+      {
+        "name": "user",
+        "type": "address",
+        "indexed": false,
+        "internalType": "address"
+      },
+      {
+        "name": "hypercertID",
+        "type": "uint256",
+        "indexed": false,
+        "internalType": "uint256"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "error",
+    "name": "InvalidNullifier",
+    "inputs": []
   }
 ]

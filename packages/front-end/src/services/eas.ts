@@ -7,25 +7,22 @@ import { ZeroHash } from "ethers";
 
 const registrationSchemaDefinition = "address user, uint256 hypercertID";
 const checkoutSchemaDefinition =
-  " address user,uint256 hypercertID, uint16 hostRate";
+  "address user, uint256 hypercertID, uint16 hostRate";
 const hostReviewSchemaDefinition =
   "uint256 hypercertID,(uint16 stars,address user)[]";
 
-
-
 const RegistrationSchema =
-  "0xee95ef2317e2045c7e84dc58c9772178e5302971c52c46abbf17c333b2281240";
+  "0x3539dce80f1ead6893317037ff2ad4dc67ea032e5d65e1ee6afd0a3b21d6ccd3";
 const CheckoutSchema =
-  "0x85d37d4ed2e6d589c271b136b0f779e9208a7a2a6c57165c88554d3bbd807268";
+  "0x14f0592c71ea5076831b062ffa1eeb8e019edaea6b06a38c723e764197ac9757";
 const HostReviewSchema =
-  "0xc2d9966087f3968ba1a39713388eb89ded047ff2d3cb86701bce52cf536a52ea";
-
+  "0xf6c5b8abb35f1ff4399a8ccf2c2fde1a88f460cf9f255a269b176c92ec789a19";
 
 export async function attestSignUp(
   signer: TransactionSigner,
   user: string,
   hypercertId: string,
-  recipient: string
+  recipient: string,
 ) {
   const eas = new EAS("0x4200000000000000000000000000000000000021");
   eas.connect(signer);
@@ -58,17 +55,20 @@ export async function attestSignUp(
 
 export async function attestSignOut(
   signer: TransactionSigner,
-  attestationId: string
+  attestationId: string,
 ) {
   const eas = new EAS("0x4200000000000000000000000000000000000021");
   eas.connect(signer);
 
-  const transaction = await eas.revoke({
+  const tx = await eas.revoke({
     schema: RegistrationSchema,
     data: { uid: attestationId },
   });
 
-  await transaction.wait();
+  const newAttestationUID = await tx.wait();
+
+  console.log("New attestation UID:", newAttestationUID);
+  return newAttestationUID;
 }
 
 export async function attestCheckout(
@@ -76,7 +76,7 @@ export async function attestCheckout(
   user: string,
   hypercertId: number,
   recipient: string,
-  hostRate: number
+  hostRate: number,
 ) {
   const eas = new EAS("0x4200000000000000000000000000000000000021");
   eas.connect(signer);
@@ -95,20 +95,23 @@ export async function attestCheckout(
       recipient: recipient,
       revocable: false, // Be aware that if your schema is not revocable, this MUST be false
       data: encodedData,
+      expirationTime: BigInt(0),
+      value: BigInt(0),
+      refUID: ZeroHash,
     },
   });
 
   const newAttestationUID = await tx.wait();
 
   console.log("New attestation UID:", newAttestationUID);
+  return newAttestationUID;
 }
 
 export async function attestHostReview(
   signer: TransactionSigner,
-  user: string,
   hypercertId: number,
   recipient: string,
-  reviews: { stars: number; user: string }[]
+  reviews: { stars: number; user: string }[],
 ) {
   const eas = new EAS("0x4200000000000000000000000000000000000021");
   eas.connect(signer);
@@ -116,7 +119,6 @@ export async function attestHostReview(
   // Initialize SchemaEncoder with the schema string
   const schemaEncoder = new SchemaEncoder(hostReviewSchemaDefinition);
   const encodedData = schemaEncoder.encodeData([
-    { name: "user", value: user, type: "address" },
     { name: "hypercertID", value: hypercertId, type: "uint256" },
     { name: "reviews", value: reviews, type: "(uint16 stars,address user)[]" },
   ]);
@@ -127,10 +129,14 @@ export async function attestHostReview(
       recipient: recipient,
       revocable: false, // Be aware that if your schema is not revocable, this MUST be false
       data: encodedData,
+      expirationTime: BigInt(0),
+      value: BigInt(0),
+      refUID: ZeroHash,
     },
   });
 
   const newAttestationUID = await tx.wait();
 
   console.log("New attestation UID:", newAttestationUID);
+  return newAttestationUID;
 }
