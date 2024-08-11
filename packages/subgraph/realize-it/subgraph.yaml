@@ -21,6 +21,7 @@ dataSources:
         - HostReviewed
         - SingedOut
         - SingedUp
+        - User
       abis:
         - name: RealizeIT
           file: ./abis/RealizeIT.json

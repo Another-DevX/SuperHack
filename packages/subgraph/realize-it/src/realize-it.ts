@@ -1,3 +1,4 @@
+import { BigInt } from "@graphprotocol/graph-ts";
 import {
   CampaignCreated as CampaignCreatedEvent,
   CheckOut as CheckOutEvent,
@@ -14,14 +15,14 @@ import {
   HostReviewed,
   SingedOut,
   SingedUp,
-  UserCreated,
+ User ,
   StarsEarned,
   PointsEarned
 } from "../generated/schema";
 
 export function handleCampaignCreated(event: CampaignCreatedEvent): void {
   let entity = new CampaignCreated(
-    event.transaction.hash.concatI32(event.logIndex.toI32())
+    event.params.hypercertID.toString()
   );
   entity.host = event.params.host;
   entity.pricePool = event.params.pricePool;
@@ -72,6 +73,19 @@ export function handleSingedOut(event: SingedOutEvent): void {
   let entity = new SingedOut(
     event.transaction.hash.concatI32(event.logIndex.toI32())
   );
+
+  let campaign = CampaignCreated.load(event.params.hypercertID.toString());
+  if (campaign == null) {
+    return;
+  }
+
+  // Verificar si el usuario ya ha salido antes
+  if (!campaign.signedOutUsers.includes(event.params.user)) {
+    let previousOutUsers = campaign.signedOutUsers;
+    previousOutUsers.push(event.params.user);
+    campaign.signedOutUsers = previousOutUsers;
+    campaign.save()
+  }
   entity.user = event.params.user;
   entity.hypercertID = event.params.hypercertID;
 
@@ -86,6 +100,17 @@ export function handleSingedUp(event: SingedUpEvent): void {
   let entity = new SingedUp(
     event.transaction.hash.concatI32(event.logIndex.toI32())
   );
+
+  let campaign = CampaignCreated.load(event.params.hypercertID.toString());
+  if (campaign == null) {
+    return;
+  }
+  let previousUsers = campaign.signedUsers;
+  previousUsers.push(event.params.user);
+  campaign.signedUsers = previousUsers;
+  campaign.save()  
+
+
   entity.user = event.params.user;
   entity.hypercertID = event.params.hypercertID;
 
@@ -100,11 +125,12 @@ export function handleSingedUp(event: SingedUpEvent): void {
 export function handleUserCreated(
   event: UserCreatedEvent
 ): void {
-  let entity = new UserCreated(
-    event.transaction.hash.concatI32(event.logIndex.toI32())
+  let entity = new User(
+    event.params.user
   );
-  entity.user = event.params.user;
-  entity.userName = event.params.userName;
+  entity.stars =  new BigInt(0);
+  entity.points =  new BigInt(0);
+  entity.name = event.params.userName;
 
   entity.save();
 }
