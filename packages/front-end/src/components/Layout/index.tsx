@@ -81,6 +81,7 @@ export const PageLayout = ({
       <main className="pt-10 pb-4 relative w-screen h-screen flex flex-col justify-between items-center bg-generalBg">
         <Header
           text={item?.text ? item.text : ""}
+          textSize={item?.textSize}
           iconLeft={item?.headerIconLeft}
           iconRight={item?.headerIconRight}
         />

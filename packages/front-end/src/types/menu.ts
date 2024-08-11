@@ -2,6 +2,7 @@ import { ComponentType } from "react";
 
 export type PathParamsType = {
   text: string;
+  textSize?: string;
   icon?: ComponentType;
   headerIconLeft?: ComponentType | undefined;
   headerIconRight?: ComponentType | undefined;
