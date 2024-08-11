@@ -12,11 +12,11 @@ const hostReviewSchemaDefinition =
   "uint256 hypercertID,(uint16 stars,address user)[]";
 
 const RegistrationSchema =
-  "0x3539dce80f1ead6893317037ff2ad4dc67ea032e5d65e1ee6afd0a3b21d6ccd3";
+  "0x4b287d3f18ab895b1f7cd80fe72c304a9463015fcdcce0bde5502a0ad4b52472";
 const CheckoutSchema =
-  "0x14f0592c71ea5076831b062ffa1eeb8e019edaea6b06a38c723e764197ac9757";
+  "0x7be7f7a4013f1186414398496012e2781b26cb42ae1c9ca018d6ec9b788d8814";
 const HostReviewSchema =
-  "0xf6c5b8abb35f1ff4399a8ccf2c2fde1a88f460cf9f255a269b176c92ec789a19";
+  "0x51fad90fd41712934c205ff4fe1abe79c6563ee1993bce6c2ef38492ce534c4a";
 
 export async function attestSignUp(
   signer: TransactionSigner,
