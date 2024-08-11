@@ -31,7 +31,7 @@ contract RealizeIT is IRealizeIT, IERC1155Receiver {
     event UserCreated(address user, string userName);
     event StarsEarned(address user, uint256 stars);
     event PointsEarned(address user, uint256 points);
-    event HostReviewed(uint256 hypercertID, uint16[] stars, address user);
+    event HostReviewed(uint256 hypercertID, uint16[] stars, address[] user);
 
     TempCampaign private tempCampaign;
 
@@ -189,7 +189,13 @@ contract RealizeIT is IRealizeIT, IERC1155Receiver {
             "The campaign is not finished yet"
         );
         require(reviews.length == campaign.currentQuota, "Invalid reviews");
+
+        // uint16[] memory  stars = new uint16[](reviews.length);
+        // address[] memory  users= new address[](reviews.length);
+     
         for (uint i = 0; i < reviews.length; i++) {
+            // stars.push(reviews[i].stars);
+            // users.push(reviews[i].user);
             require(
                 campaign.attenders[reviews[i].user],
                 "The user is not signed in"
@@ -211,9 +217,10 @@ contract RealizeIT is IRealizeIT, IERC1155Receiver {
                     emit PointsEarned(reviews[i].user, 5);
                 }
             }
-
+            
             _calculateAverageStars(reviews[i].user, reviews[i].stars);
         }
+       // emit HostReviewed( hypercertID, stars, users);
     }
 
     function _calculateAverageStars(
