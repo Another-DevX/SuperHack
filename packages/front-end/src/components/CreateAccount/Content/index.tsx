@@ -17,6 +17,7 @@ export default function CreateAccountContent() {
         label="Username"
         type="text"
         placeHolder="enter unique username"
+        name="userName"
       />
       <div className="grid w-full max-w-sm items-center gap-1.5">
         <Label htmlFor="text" className="text-xs text-textSoftGray">
@@ -39,6 +40,7 @@ export default function CreateAccountContent() {
         label="Location"
         type="text"
         placeHolder="enter your location"
+        name="location"
       />
     </div>
   );

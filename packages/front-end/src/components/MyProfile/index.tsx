@@ -39,16 +39,23 @@ export default function MyProfile({ stars, greenPoints }: Props) {
           </div>
         </div>
         <div className="flex flex-col gap-4">
-          <InputWithLabel label="Username" type="text" placeHolder="luukdao" />
+          <InputWithLabel
+            label="Username"
+            type="text"
+            placeHolder="luukdao"
+            name="Username"
+          />
           <InputWithLabel
             label="Age category"
             type="text"
             placeHolder="19 - 25"
+            name="Age category"
           />
           <InputWithLabel
             label="Location"
             type="text"
             placeHolder="Netherlands, Amsterdam"
+            name="Location"
           />
           <Select>
             <SelectTrigger>

@@ -1,16 +1,19 @@
 "use client";
 import ActivityCard from "@/components/Activities/Card";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import useGetActivities from "@/hooks/useGetActivities";
 import { useUser } from "@account-kit/react";
 
 export default function Activities() {
+  const [isMounted, setIsMounted] = useState<boolean>(false);
   const { loading, error, data } = useGetActivities();
   const user = useUser();
 
   useEffect(() => {
-    console.log(data)
-  }, [data])
+    setIsMounted(true);
+  }, []);
+
+  if (!isMounted) return null;
   return (
     <div className="flex flex-col gap-4">
       <div className="flex flex-col gap-2">

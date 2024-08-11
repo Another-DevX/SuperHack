@@ -22,7 +22,7 @@ export const useIsVerified = () => {
           functionName: "users",
           args: [user.address],
         });
-        setIsVerified(data[3]);
+        setIsVerified((data as boolean[])[3] as boolean);
       } catch (error) {
         console.error("Error reading contract:", error);
         setIsVerified(false);
