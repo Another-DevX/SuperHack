@@ -11,6 +11,8 @@ function useGetActivities() {
     maxQuota
     onlyVerified
     hypercertID
+signedUsers
+signedOutUsers
     }
     }
   `;

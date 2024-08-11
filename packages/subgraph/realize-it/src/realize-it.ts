@@ -15,9 +15,8 @@ import {
   HostReviewed,
   SingedOut,
   SingedUp,
- User ,
-  StarsEarned,
-  PointsEarned
+  User,
+
 } from "../generated/schema";
 
 export function handleCampaignCreated(event: CampaignCreatedEvent): void {
@@ -108,7 +107,7 @@ export function handleSingedUp(event: SingedUpEvent): void {
   let previousUsers = campaign.signedUsers;
   previousUsers.push(event.params.user);
   campaign.signedUsers = previousUsers;
-  campaign.save()  
+  campaign.save()
 
 
   entity.user = event.params.user;
@@ -128,8 +127,8 @@ export function handleUserCreated(
   let entity = new User(
     event.params.user
   );
-  entity.stars =  new BigInt(0);
-  entity.points =  new BigInt(0);
+  entity.stars = new BigInt(0);
+  entity.points = new BigInt(0);
   entity.name = event.params.userName;
 
   entity.save();
@@ -138,22 +137,27 @@ export function handleUserCreated(
 export function handleStarsEarned(
   event: StarsEarnedEvent
 ): void {
-  let entity = new StarsEarned(
-    event.transaction.hash.concatI32(event.logIndex.toI32())
-  );
-  
 
-  entity.save();
+  let user = User.load(event.params.user);
+  if (user == null) {
+    return;
+  }
+  user.stars = event.params.stars;
+
+
+  user.save();
 }
 
 export function handlePointsEarned(
   event: PointsEarnedEvent
 ): void {
-  let entity = new PointsEarned(
-    event.transaction.hash.concatI32(event.logIndex.toI32())
-  );
+  let user = User.load(event.params.user);
+  if (user == null) {
+    return;
+  }
+  user.points = user.points.plus(event.params.points);
 
-  entity.save();
+  user.save();
 }
 
 
