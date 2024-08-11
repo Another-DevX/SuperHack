@@ -29,11 +29,14 @@ export function handleCampaignCreated(event: CampaignCreatedEvent): void {
   entity.currentQuota = event.params.currentQuota;
   entity.checkouts = event.params.checkouts;
   entity.onlyVerified = event.params.onlyVerified;
+  entity.signedUsers = [];
+  entity.signedOutUsers = [];
 
   entity.hypercertID = event.params.hypercertID;
   entity.blockNumber = event.block.number;
   entity.blockTimestamp = event.block.timestamp;
   entity.transactionHash = event.transaction.hash;
+  
 
   entity.save();
 }
