@@ -137,27 +137,24 @@ export function handleUserCreated(
 export function handleStarsEarned(
   event: StarsEarnedEvent
 ): void {
+  let entity = new StarsEarned(
+    event.transaction.hash.concatI32(event.logIndex.toI32())
+  );
+  entity.stars =  new BigInt(0);
+  entity.user = event.params.user;
 
-  let user = User.load(event.params.user);
-  if (user == null) {
-    return;
-  }
-  user.stars = event.params.stars;
-
-
-  user.save();
+  entity.save();
 }
 
 export function handlePointsEarned(
   event: PointsEarnedEvent
 ): void {
-  let user = User.load(event.params.user);
-  if (user == null) {
-    return;
-  }
-  user.points = user.points.plus(event.params.points);
-
-  user.save();
+  let entity = new PointsEarned(
+    event.transaction.hash.concatI32(event.logIndex.toI32())
+  );
+  entity.points =  new BigInt(0);
+  entity.user = event.params.user;
+  entity.save();
 }
 
 
