@@ -188,7 +188,7 @@ export default function ActivityContent({
               Check Out
             </div>
           </DialogTrigger>
-          <DialogContent className="flex flex-col rounded-md bg-grayBg">
+          <DialogContent className="w-[280px] flex flex-col rounded-md bg-grayBg">
             <DialogHeader className="flex justify-center items-center gap-2">
               <Image
                 width={24}

@@ -18,47 +18,53 @@ export const PageLayout = ({
 
   if (pathName == "/")
     return (
-      <main className="w-screen h-screen bg-signInBg overflow-scroll">
-        {children}
-        <Image
-          width={120}
-          height={120}
-          src={"/images/phone-frame-img.png"}
-          alt="phone-frame-img"
-          style={{
-            zIndex: 1,
-            top: 0,
-            position: "absolute",
-            width: "100vw",
-            height: "100vh",
-          }}
-        />
+      <main className="w-screen h-screen flex items-center justify-center bg-signInBg">
+        <div className="relative w-[320px] h-[600px] pt-10 pb-4 flex flex-col items-start">
+          {children}
+          <Image
+            width={120}
+            height={120}
+            src={"/images/phone-frame-img.png"}
+            alt="phone-frame-img"
+            style={{
+              zIndex: 1,
+              top: 0,
+              position: "absolute",
+              width: "100%",
+              height: "100%",
+              pointerEvents: "none",
+            }}
+          />
+        </div>
       </main>
     );
 
   if (pathName == "/createAccount")
     return (
-      <main className="w-screen h-screen  bg-signInBg overflow-scroll">
-        <CreateAccount />
-        <Image
-          width={120}
-          height={120}
-          src={"/images/phone-frame-img.png"}
-          alt="phone-frame-img"
-          style={{
-            zIndex: 1,
-            top: 0,
-            position: "absolute",
-            width: "100vw",
-            height: "100vh",
-          }}
-        />
+      <main className="w-screen h-screen flex items-center justify-center bg-signInBg">
+        <div className="relative w-[320px] h-[600px] pt-10 pb-4 flex flex-col items-center justify-between">
+          <CreateAccount />
+          <Image
+            width={120}
+            height={120}
+            src={"/images/phone-frame-img.png"}
+            alt="phone-frame-img"
+            style={{
+              zIndex: 1,
+              top: 0,
+              position: "absolute",
+              width: "100vw",
+              height: "100vh",
+              pointerEvents: "none",
+            }}
+          />
+        </div>
       </main>
     );
 
   if (pathName == "/uploadAvatar")
     return (
-      <main className="w-screen h-screen flex flex-col items-center justify-between bg-signInBg overflow-scroll">
+      <main className="w-screen h-screen flex items-center justify-center bg-signInBg">
         <UploadAvatar />
         <Image
           width={120}
@@ -71,6 +77,7 @@ export const PageLayout = ({
             position: "absolute",
             width: "100vw",
             height: "100vh",
+            pointerEvents: "none",
           }}
         />
       </main>
@@ -78,30 +85,33 @@ export const PageLayout = ({
 
   return (
     <>
-      <main className="pt-10 pb-4 relative w-screen h-screen flex flex-col justify-between items-center bg-generalBg">
-        <Header
-          text={item?.text ? item.text : ""}
-          textSize={item?.textSize}
-          iconLeft={item?.headerIconLeft}
-          iconRight={item?.headerIconRight}
-        />
-        <div className="z-20 w-full h-full py-4 px-8 overflow-y-scroll">
-          {children}
+      <main className="w-screen h-screen flex items-center justify-center bg-generalBg">
+        <div className="relative w-[320px] h-[600px] pt-8 pb-4 flex flex-col items-center justify-between">
+          <Header
+            text={item?.text ? item.text : ""}
+            textSize={item?.textSize}
+            iconLeft={item?.headerIconLeft}
+            iconRight={item?.headerIconRight}
+          />
+          <div className="w-full h-full py-4 px-8 overflow-y-scroll">
+            {children}
+          </div>
+          <Menu />
+          <Image
+            width={120}
+            height={120}
+            src={"/images/phone-frame-img.png"}
+            alt="phone-frame-img"
+            style={{
+              zIndex: 1,
+              top: 0,
+              position: "absolute",
+              width: "100%",
+              height: "100%",
+              pointerEvents: "none",
+            }}
+          />
         </div>
-        <Menu />
-        <Image
-          width={120}
-          height={120}
-          src={"/images/phone-frame-img.png"}
-          alt="phone-frame-img"
-          style={{
-            zIndex: 1,
-            top: 0,
-            position: "absolute",
-            width: "100vw",
-            height: "100vh",
-          }}
-        />
       </main>
     </>
   );

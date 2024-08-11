@@ -23,7 +23,7 @@ export default function Home() {
   }, [user, router]);
 
   return (
-    <div className="pt-16 px-4">
+    <div className="h-full w-full flex flex-col items-start overflow-scroll">
       <Image
         width={20}
         height={20}
@@ -31,7 +31,7 @@ export default function Home() {
         alt="signin-img"
         style={{ width: "100vw", height: "auto" }}
       />
-      <div className="flex flex-col gap-4 p-4">
+      <div className="flex flex-col gap-4 py-4 px-8">
         <Image
           width={120}
           height={120}
