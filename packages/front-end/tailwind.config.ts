@@ -21,6 +21,7 @@ const config = {
     extend: {
       colors: {
         softGray: "#C4C4BA",
+        bgBg: "#708d7c",
         softGrayBg: "#E4E4DD",
         grayBg: "#DFDFD6",
         softGrayPlaceHolder: "#999991",

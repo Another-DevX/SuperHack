@@ -7,7 +7,6 @@ import { useUser } from "@account-kit/react";
 export default function Activities() {
   const [isMounted, setIsMounted] = useState<boolean>(false);
   const { loading, error, data } = useGetActivities();
-  console.log(data);
   const user = useUser();
 
   useEffect(() => {
