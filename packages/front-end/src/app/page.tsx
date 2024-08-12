@@ -18,7 +18,7 @@ export default function Home() {
 
   useEffect(() => {
     if (user) {
-      router.push("activities");
+      router.push("/activities");
     }
   }, [user, router]);
 
