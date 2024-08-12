@@ -1,4 +1,4 @@
-import RateHostContent from "@/components/RateHost";
+import RateHostContent from "@/components/RateHost/Content";
 import React from "react";
 
 export default function RateHost() {

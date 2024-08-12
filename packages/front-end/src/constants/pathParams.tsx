@@ -7,11 +7,12 @@ import ProfileIcon from "@/public/icons/profile-menu-icon.svg";
 import Link from "next/link";
 import Image from "next/image";
 import sessionStorageService from "@/services/storageService";
+import RateHostUploadIcon from "@/components/RateHost/UploadIcon";
 
 let currentActivityId = sessionStorageService.getItem("currentActivityId");
 sessionStorageService.on("storageChange", (e) => {
   if (e.key == "currentActivityId") {
-    currentActivityId = e.newValue
+    currentActivityId = e.newValue;
   }
 });
 
@@ -289,21 +290,7 @@ export const pathParams: PathParamsType[] = [
         />
       </Link>
     ),
-    headerIconRight: () => {
-      return (
-        <Link
-          href={"/activities"}
-          className="z-20 w-8 h-8 absolute flex justify-center items-center right-10 top-1/2 translate-y-[-50%]"
-        >
-          <Image
-            width={22}
-            height={22}
-            src={"/icons/upload-icon.svg"}
-            alt={`plus cicle icon`}
-          />
-        </Link>
-      );
-    },
+    headerIconRight: RateHostUploadIcon,
     notSeenOnMenu: true,
     path: "rateHost",
   },
