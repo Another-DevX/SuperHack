@@ -6,14 +6,12 @@ type Props = {
   label: string;
   type: HTMLInputTypeAttribute;
   placeHolder: string;
-  height?: number;
   name: string;
 };
 export default function InputWithLabel({
   label,
   type,
   placeHolder,
-  height,
   name,
 }: Props) {
   return (
@@ -22,9 +20,7 @@ export default function InputWithLabel({
         {label}
       </Label>
       <Input
-        className={`relative placeholder:absolute placeholder:top-3 ${
-          height ? `h-${height}` : ""
-        }`}
+        className={`relative placeholder:absolute placeholder:top-3`}
         id={placeHolder}
         name={name}
         type={type}

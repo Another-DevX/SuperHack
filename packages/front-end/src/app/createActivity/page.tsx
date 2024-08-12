@@ -51,7 +51,6 @@ return (
         label="Description"
         type="text"
         placeHolder="Explain Your Activity"
-        height={40}
         name="description"
       />
 
