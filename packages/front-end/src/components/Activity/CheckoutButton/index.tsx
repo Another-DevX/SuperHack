@@ -7,20 +7,30 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import { Skeleton } from "@/components/ui/skeleton";
+import { UseMutateFunction } from "@tanstack/react-query";
+import { AxiosResponse } from "axios";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
 type Props = {
   id: number;
+  checkoutFn: UseMutateFunction<AxiosResponse<any, any>, Error, void, unknown>;
+  isCheckoutPending: boolean;
 };
 
-export default function ActivityCheckoutButton({ id }: Props) {
+export default function ActivityCheckoutButton({
+  id,
+  checkoutFn,
+  isCheckoutPending,
+}: Props) {
   return (
     <Dialog>
       <DialogTrigger>
         <div className="w-full btn bg-buttonGreen tex-xs text-white">
-          Check Out
+          {isCheckoutPending && <p>Check Out</p>}
+          {!isCheckoutPending && <Skeleton />}
         </div>
       </DialogTrigger>
       <DialogContent className="w-[280px] flex flex-col rounded-md bg-grayBg">
@@ -42,12 +52,12 @@ export default function ActivityCheckoutButton({ id }: Props) {
                 <p>Cancel</p>
               </DialogClose>
             </div>
-            <Link
-              href={`/checkoutFillIn/${id}`}
+            <div
+              onClick={() => checkoutFn()}
               className="flex-1 btn bg-buttonGreen tex-xs text-white"
             >
               <p>Check Out</p>
-            </Link>
+            </div>
           </div>
         </DialogHeader>
       </DialogContent>

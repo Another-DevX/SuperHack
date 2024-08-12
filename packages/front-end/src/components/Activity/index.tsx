@@ -8,6 +8,7 @@ import { useUser } from "@account-kit/react";
 import { Button } from "../ui/button";
 import { Loader2 } from "lucide-react";
 import ActivityCheckoutButton from "./CheckoutButton";
+import { useRouter } from "next/router";
 
 type Props = {
   id: number;
@@ -36,6 +37,7 @@ export default function ActivityContent({
   setForCheckOut,
 }: Props) {
   const user = useUser();
+  const router = useRouter();
   const { mutate: signUp, isPending: isSignUpPending } = useMutation({
     mutationFn: async () => {
       if (!user) return;
@@ -60,6 +62,22 @@ export default function ActivityContent({
       return await axios.post("/api/signOut", {
         attestationID: localStorage.getItem(`${id}-signUp`),
       });
+    },
+    onSuccess: (data) => {
+      setSimon(false);
+    },
+  });
+
+  const { mutate: checkOut, isPending: isCheckOutPending } = useMutation({
+    mutationFn: async () => {
+      return await axios.post("/api/checkOut", {
+        address: user?.address,
+        hypercertID: id,
+        hostRate: 3,
+      });
+    },
+    onSuccess: () => {
+      router.push(`/checkoutFillIn/${id}`);
     },
   });
 
@@ -166,7 +184,11 @@ export default function ActivityContent({
         </button>
       )}
       {isSignUp && forCheckIn && forCheckOut && (
-        <ActivityCheckoutButton id={id} />
+        <ActivityCheckoutButton
+          id={id}
+          checkoutFn={checkOut}
+          isCheckoutPending={isCheckOutPending}
+        />
       )}
     </div>
   );
