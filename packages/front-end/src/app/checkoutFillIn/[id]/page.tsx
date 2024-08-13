@@ -18,7 +18,6 @@ export default function Page({ params }: { params: { id: number } }) {
           label="Contribution statement"
           type="text"
           placeHolder="Land clearing"
-          height={40}
           name="transformation"
         />
         <InputWithLabel

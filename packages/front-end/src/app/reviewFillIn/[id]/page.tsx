@@ -18,7 +18,6 @@ export default function Page({ params }: { params: { id: number } }) {
           label="Transformation statement"
           type="text"
           placeHolder="transformation"
-          height={40}
           name="transformation"
         />
         <InputWithLabel
